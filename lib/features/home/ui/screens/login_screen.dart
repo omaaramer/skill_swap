@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/core/helpers/extentions.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
