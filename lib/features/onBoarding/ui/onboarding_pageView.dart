@@ -6,8 +6,10 @@ import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/features/onBoarding/data/static/static.dart';
+import 'package:skill_swap/features/onBoarding/ui/custom_button.dart';
 import 'package:skill_swap/features/onBoarding/ui/customslider.dart';
 import 'package:skill_swap/features/onBoarding/ui/dot_indicator.dart';
+import 'package:skill_swap/features/welcome_screen/regester_button.dart';
 
 class OnBoardingPageView extends StatefulWidget {
   const OnBoardingPageView({super.key});
@@ -39,7 +41,12 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
           child: Column(
             children: [
               const SizedBox(height: 10),
-              const CustomSkipButton(text: 'Skip'),
+              BackButtonWidget(
+                text: "Skip",
+                onPressed: () {
+                  context.pushNamed(Routes.welcomeScreen);
+                },
+              ),
               Expanded(
                 flex: 4,
                 child: CustomSliderOnBoarding(pageController: pageController),
@@ -49,52 +56,15 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
                   child: Column(
                     children: [
                       DotIndicator(currentPageIndex: currentIndex),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: AppTextButton(
-                          backgroundColor: AppColors.primary,
-                          buttonText: currentIndex == onBoardingList.length - 1
-                              ? "Get Started"
-                              : "Continue",
-                          textStyle: const TextStyle(color: Colors.white),
-                          onPressed: () {
-                            if (currentIndex == onBoardingList.length - 1) {
-                              context.pushNamed(Routes.welcomeScreen);
-                            } else {
-                              pageController.nextPage(
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.easeIn);
-                            }
-                          },
-                        ),
-                      ),
+                      OnBoardingButton(
+                          currentIndex: currentIndex,
+                          pageController: pageController),
                     ],
                   ))
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomSkipButton extends StatelessWidget {
-  const CustomSkipButton({super.key, required this.text});
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade300,
-          ),
-          child: Text(text),
-        )
-      ],
     );
   }
 }
