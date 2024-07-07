@@ -1,6 +1,14 @@
 class Assets {
   Assets._();
-  
+
+  /// Assets for imagesLOGO
+  /// assets/images/LOGO.svg
+  static const String imagesLOGO = "assets/images/LOGO.svg";
+
+  /// Assets for imagesLOGO
+  /// assets/images/LOGO.png
+  static const String imagesLOGOpng = "assets/images/LOGO.png";
+
   /// Assets for imagesLogo1
   /// assets/images/logo1.png
   static const String imagesLogo1 = "assets/images/logo1.png";
@@ -25,4 +33,3 @@ class Assets {
   /// assets/images/splash.png
   static const String imagesSplash = "assets/images/splash.png";
 }
-
