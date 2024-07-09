@@ -1,5 +1,5 @@
 import 'package:skill_swap/core/theming/assets.dart';
-import 'package:skill_swap/features/onBoarding/data/models/onboarding_model.dart';
+import 'package:skill_swap/data/models/onboarding_model.dart';
 
 List<OnboardingModel> onBoardingList = [
   OnboardingModel(
@@ -23,7 +23,7 @@ List<OnboardingModel> onBoardingList = [
   OnboardingModel(
     title: 'Learn Anytime, Anywhere!',
     description:
-        'Skill Swap is here for you.Grow Together! - Join a community that believes in mutual growth and learning. Together, we can achieve more.',
+        'Grow Together! - Join a community that believes in mutual growth and learning. Together, we can achieve more.',
     image: Assets.imagesOnboarding4,
   ),
 ];

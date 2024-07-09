@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
-import 'package:skill_swap/features/onBoarding/data/static/static.dart';
+import 'package:skill_swap/data/static/onboarding_static_data.dart';
 
 class CustomSliderOnBoarding extends StatelessWidget {
   const CustomSliderOnBoarding({super.key, required this.pageController});
@@ -27,12 +27,12 @@ class CustomSliderOnBoarding extends StatelessWidget {
           const SizedBox(height: 40),
           Text(
             onBoardingList[i].title,
-            style: AppStyle.styleBold22(context),
+            style: AppStyle.styleBold26(context),
           ),
           const SizedBox(height: 20),
           Text(onBoardingList[i].description,
               textAlign: TextAlign.center,
-              style: AppStyle.styleRegular14Grey(context)),
+              style: AppStyle.styleRegular16Grey(context)),
           const SizedBox(height: 20),
         ],
       ),

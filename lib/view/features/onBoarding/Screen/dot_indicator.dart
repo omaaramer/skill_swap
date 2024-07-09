@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skill_swap/features/onBoarding/data/static/static.dart';
-import 'package:skill_swap/features/onBoarding/ui/custom_dot.dart';
+import 'package:skill_swap/data/static/onboarding_static_data.dart';
+import 'package:skill_swap/view/features/onBoarding/Screen/custom_dot.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({super.key, required this.currentPageIndex});

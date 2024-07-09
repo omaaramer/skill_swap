@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -9,6 +10,7 @@ class AppTextFormField extends StatelessWidget {
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
   final String hintText;
+  final String? labelText;
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Color? backgroundColor;
@@ -27,6 +29,7 @@ class AppTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
+    this.labelText,
   });
 
   @override
@@ -34,9 +37,10 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
+        labelText: labelText,
         isDense: true,
         contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+            EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
@@ -48,10 +52,10 @@ class AppTextFormField extends StatelessWidget {
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                // color: ColorsManager.lighterGray,
+                color: Colors.transparent,
                 width: 1.3,
               ),
-              borderRadius: BorderRadius.circular(16.0),
+              borderRadius: BorderRadius.circular(8),
             ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
@@ -67,10 +71,10 @@ class AppTextFormField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
-        // hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
+        hintStyle: hintStyle ?? const TextStyle(color: Colors.grey),
         hintText: hintText,
         suffixIcon: suffixIcon,
-        // fillColor: backgroundColor ?? ColorsManager.moreLightGray,
+        fillColor: backgroundColor ?? Color(0xfff7f7f7),
         filled: true,
       ),
       obscureText: isObscureText ?? false,

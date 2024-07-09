@@ -3,9 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
-import 'package:skill_swap/features/onBoarding/ui/custom_button.dart';
-import 'package:skill_swap/features/welcome_screen/regester_button.dart';
-import 'package:skill_swap/features/welcome_screen/welcome_screen_body.dart';
+import 'package:skill_swap/view/features/onBoarding/Screen/custom_button.dart';
+import 'package:skill_swap/view/features/welcome_screen/regester_button.dart';
+import 'package:skill_swap/view/features/welcome_screen/welcome_screen_body.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -20,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 10),
-              BackButtonWidget(
+              CustomSmallButton(
                   text: "Back",
                   onPressed: () {
                     Navigator.pop(context);

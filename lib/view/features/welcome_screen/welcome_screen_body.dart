@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
-import 'package:skill_swap/features/welcome_screen/regester_button.dart';
+import 'package:skill_swap/view/features/welcome_screen/regester_button.dart';
 
 class WelcomeScreenBody extends StatelessWidget {
   const WelcomeScreenBody({
@@ -18,7 +18,7 @@ class WelcomeScreenBody extends StatelessWidget {
         Text(
           "Unlock a world of limitless skills and knowledge with our free skill swapping app, where sharing is caring!",
           textAlign: TextAlign.center,
-          style: AppStyle.styleRegular14Grey(context)
+          style: AppStyle.styleRegular16Grey(context)
               .copyWith(color: Colors.white),
         ),
         const SizedBox(height: 20),

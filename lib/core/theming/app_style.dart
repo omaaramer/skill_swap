@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 abstract class AppStyle {
-  static TextStyle styleBold22(context) {
+  static TextStyle styleBold26(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 26),
         fontFamily: 'Poppins',
@@ -10,7 +10,15 @@ abstract class AppStyle {
         color: AppColors.primary);
   }
 
-  static TextStyle styleRegular14Grey(context) {
+  static TextStyle styleBold30(context) {
+    return TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 30),
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.bold,
+        color: Colors.black);
+  }
+
+  static TextStyle styleRegular16Grey(context) {
     return TextStyle(
       fontFamily: 'Poppins',
       height: 2,

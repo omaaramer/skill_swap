@@ -3,7 +3,7 @@ import 'package:skill_swap/core/helpers/extentions.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
-import 'package:skill_swap/features/onBoarding/data/static/static.dart';
+import 'package:skill_swap/data/static/onboarding_static_data.dart';
 
 class OnBoardingButton extends StatelessWidget {
   const OnBoardingButton({
