@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:skill_swap/view/features/auth/widgets/divider.dart';
-import 'package:skill_swap/view/features/auth/widgets/have_acount_text_widget.dart';
-import 'package:skill_swap/view/features/auth/widgets/regester_with_acount.dart';
-import 'package:skill_swap/view/features/auth/widgets/screen_header_text.dart';
-import 'package:skill_swap/view/features/auth/widgets/sigin_form.dart';
-import 'package:skill_swap/view/features/auth/widgets/signin_button.dart';
+import 'package:skill_swap/view/auth/widgets/divider.dart';
+import 'package:skill_swap/view/auth/widgets/have_acount_text_widget.dart';
+import 'package:skill_swap/view/auth/widgets/regester_with_acount.dart';
+import 'package:skill_swap/view/auth/widgets/screen_header_text.dart';
+import 'package:skill_swap/view/auth/widgets/sigin_form.dart';
+import 'package:skill_swap/view/auth/widgets/signin_button.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});

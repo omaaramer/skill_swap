@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skill_swap/core/routing/app_router.dart';
-import 'package:skill_swap/core/routing/routes.dart';
+import 'package:get/get.dart';
+import 'package:skill_swap/core/localization/changeLocal.dart';
+import 'package:skill_swap/core/localization/translation.dart';
+import 'package:skill_swap/core/routing/get_routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 class SkillSwap extends StatelessWidget {
@@ -9,11 +11,14 @@ class SkillSwap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LocalController localController = Get.put(LocalController());
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
+      child: GetMaterialApp(
+        locale: localController.language,
+        translations: MyTranslation(),
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
         title: 'SkillSwap',
@@ -22,8 +27,10 @@ class SkillSwap extends StatelessWidget {
           // primarySwatch: AppColores.primary as MaterialColor,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.onBoardingScrreen,
-        onGenerateRoute: AppRouter().onGenerateRoute,
+        routes: routes,
+
+        // initialRoute: Routes.onBoardingScrreen,
+        // onGenerateRoute: AppRouter().onGenerateRoute,
       ),
     );
   }

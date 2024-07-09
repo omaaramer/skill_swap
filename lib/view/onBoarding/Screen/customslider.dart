@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:skill_swap/controller/onboarding_controller.dart';
+import 'package:skill_swap/core/localization/translation.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/data/static/onboarding_static_data.dart';
 
-class CustomSliderOnBoarding extends StatelessWidget {
-  const CustomSliderOnBoarding({super.key, required this.pageController});
-  final PageController pageController;
+class CustomSliderOnBoarding extends GetView<OnBoardingControllerImpl> {
+  const CustomSliderOnBoarding({super.key});
 
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: pageController,
+      controller: controller.pageController,
+      onPageChanged: (value) {
+        controller.onPageChanged(value);
+      },
       itemCount: onBoardingList.length,
       itemBuilder: (context, i) => Column(
         children: [
@@ -26,11 +31,11 @@ class CustomSliderOnBoarding extends StatelessWidget {
           ),
           const SizedBox(height: 40),
           Text(
-            onBoardingList[i].title,
+            "onBoardingTitle1".tr,
             style: AppStyle.styleBold26(context),
           ),
           const SizedBox(height: 20),
-          Text(onBoardingList[i].description,
+          Text("onBoardingSubtitle1".tr,
               textAlign: TextAlign.center,
               style: AppStyle.styleRegular16Grey(context)),
           const SizedBox(height: 20),

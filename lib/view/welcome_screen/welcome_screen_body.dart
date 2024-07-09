@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
-import 'package:skill_swap/view/features/welcome_screen/regester_button.dart';
+import 'package:skill_swap/view/welcome_screen/regester_button.dart';
 
 class WelcomeScreenBody extends StatelessWidget {
   const WelcomeScreenBody({
