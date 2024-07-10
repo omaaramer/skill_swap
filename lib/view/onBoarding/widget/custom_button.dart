@@ -22,3 +22,38 @@ class OnBoardingButton extends GetView<OnBoardingControllerImpl> {
     );
   }
 }
+
+class CustomSmallButton extends StatelessWidget {
+  const CustomSmallButton(
+      {super.key,
+      required this.text,
+      required this.onPressed,
+      this.color,
+      this.backgroundColor});
+  final String text;
+  final void Function() onPressed;
+  final Color? color;
+  final Color? backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: SizedBox(
+        width: MediaQuery.sizeOf(context).width * .25,
+        child: AppTextButton(
+            buttonHeight: 40,
+            verticalPadding: 0,
+            borderRadius: 50,
+            backgroundColor: backgroundColor ?? Colors.white.withOpacity(.1),
+            buttonText: text,
+            textStyle: TextStyle(
+              fontSize: 16,
+              color: color ?? Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
+            onPressed: onPressed),
+      ),
+    );
+  }
+}

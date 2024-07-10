@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
 import 'package:skill_swap/view/welcome_screen/regester_button.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen_body.dart';
 
@@ -28,7 +29,7 @@ class WelcomeScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Center(
                   child: SvgPicture.asset(
-                    Assets.imagesOnboarding1,
+                    Assets.imagesOnboarding3,
                     fit: BoxFit.fill,
                   ),
                 ),

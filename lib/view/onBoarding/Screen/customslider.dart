@@ -31,11 +31,11 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImpl> {
           ),
           const SizedBox(height: 40),
           Text(
-            "onBoardingTitle1".tr,
+            onBoardingList[i].title,
             style: AppStyle.styleBold26(context),
           ),
           const SizedBox(height: 20),
-          Text("onBoardingSubtitle1".tr,
+          Text(onBoardingList[i].description,
               textAlign: TextAlign.center,
               style: AppStyle.styleRegular16Grey(context)),
           const SizedBox(height: 20),

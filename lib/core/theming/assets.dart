@@ -17,13 +17,13 @@ class Assets {
   /// assets/images/LOGO.svg
   static const String imagesLOGO = "assets/images/LOGO.svg";
 
-  /// Assets for imagesLOGOpng
-  /// assets/images/LOGOpng.png
-  static const String imagesLOGOpng = "assets/images/LOGOpng.png";
-
   /// Assets for imagesLogo1
   /// assets/images/logo1.png
   static const String imagesLogo1 = "assets/images/logo1.png";
+
+  /// Assets for imagesLogopng
+  /// assets/images/logopng.png
+  static const String imagesLogopng = "assets/images/logopng.png";
 
   /// Assets for imagesNotoWavingHand
   /// assets/images/noto_waving-hand.png

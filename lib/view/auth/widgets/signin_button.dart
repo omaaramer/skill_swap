@@ -8,15 +8,12 @@ class SiginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: AppTextButton(
-        buttonText: "SIGN IN",
-        borderRadius: 100,
-        verticalPadding: 12,
-        textStyle: const TextStyle(color: Colors.white, fontSize: 22),
-        onPressed: () {},
-      ),
+    return AppTextButton(
+      buttonText: "SIGN IN",
+      borderRadius: 100,
+      verticalPadding: 10,
+      textStyle: const TextStyle(color: Colors.white, fontSize: 20),
+      onPressed: () {},
     );
   }
 }

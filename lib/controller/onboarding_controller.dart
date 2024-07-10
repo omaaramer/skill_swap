@@ -15,7 +15,7 @@ class OnBoardingControllerImpl extends OnBoardingController {
   @override
   next() {
     if (currentPageIndex == onBoardingList.length - 1) {
-      Get.offAllNamed(Routes.welcomeScreen);
+      Get.toNamed(Routes.welcomeScreen);
     } else {
       currentPageIndex++;
       pageController.animateToPage(
