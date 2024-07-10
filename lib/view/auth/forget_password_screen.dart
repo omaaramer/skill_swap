@@ -55,10 +55,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                   validator: (value) {}),
               const SizedBox(height: 20),
               AppTextButton(
-                  buttonText: "Send",
+                  buttonText: "Check",
                   verticalPadding: 10,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
-                  onPressed: () {}),
+                  onPressed: () {
+                    forgetPasswordController.goToVerifyScreen();
+                  }),
             ],
           ),
         ),

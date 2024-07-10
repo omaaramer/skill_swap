@@ -5,4 +5,5 @@ class Routes {
   static const signUpScreen = '/signUpScreen';
   static const verifyScreen = '/verifyScreen';
   static const forgetPasswordScreen = '/forgetPasswordScreen';
+  static const resetPasswordScreen = '/resetPasswordScreen';
 }

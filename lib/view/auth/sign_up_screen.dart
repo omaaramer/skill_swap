@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Auth/sign_up_controller.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
 import 'package:skill_swap/view/auth/widgets/have_acount_text_widget.dart';
@@ -19,6 +21,16 @@ class SignUpScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: ListView(
             children: [
+              SizedBox(
+                height: 170,
+                width: 150,
+                child: Center(
+                  child: SvgPicture.asset(
+                    Assets.imagesOnboarding3,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
               const SizedBox(height: 40),
               Text("Create account", style: AppStyle.styleBold30(context)),
               const Text(

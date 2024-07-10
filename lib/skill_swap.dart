@@ -11,14 +11,14 @@ class SkillSwap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LocalController localController = Get.put(LocalController());
+    // LocalController localController = Get.put(LocalController());
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       child: GetMaterialApp(
-        locale: localController.language,
-        translations: MyTranslation(),
+        // locale: localController.language,
+        // translations: MyTranslation(),
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
         title: 'SkillSwap',

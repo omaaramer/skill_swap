@@ -13,7 +13,6 @@ class ForgetPasswordControllerImpl extends ForgetPasswordController {
   @override
   goToVerifyScreen() {
     Get.offNamed(Routes.verifyScreen);
-    throw UnimplementedError();
   }
 
   @override
