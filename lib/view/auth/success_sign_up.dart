@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/controller/Auth/successsignup_controller.dart';
+import 'package:skill_swap/controller/Auth/success_sign_up_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';

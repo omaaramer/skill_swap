@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/controller/Auth/verfiycodesignup_controller.dart';
+import 'package:skill_swap/controller/Auth/verfiy_code_sign_up_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 
-class VerifyCodeSignUp extends StatelessWidget {
-  const VerifyCodeSignUp({super.key});
+class VerifyCodeSignUpScreen extends StatelessWidget {
+  const VerifyCodeSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -56,7 +56,7 @@ class CheckEmailScreen extends StatelessWidget {
                   verticalPadding: 10,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                   onPressed: () {
-                    checkEmailController.goToSuccessSignUpScreen();
+                    checkEmailController.goToVerifyCodeSignUpScreen();
                   }),
             ],
           ),

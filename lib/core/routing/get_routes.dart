@@ -7,6 +7,7 @@ import 'package:skill_swap/view/auth/sign_in_screen.dart';
 import 'package:skill_swap/view/auth/sign_up_screen.dart';
 import 'package:skill_swap/view/auth/success_reset_password.dart';
 import 'package:skill_swap/view/auth/success_sign_up.dart';
+import 'package:skill_swap/view/auth/verfiy_code_sign_up.dart';
 import 'package:skill_swap/view/auth/verify_screen.dart';
 import 'package:skill_swap/view/onBoarding/onboarding_pageView.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
@@ -23,4 +24,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   Routes.successResetPasswordScreen: (context) =>
       const SuccessResetPasswordScreen(),
   Routes.checkEmailScreen: (context) => const CheckEmailScreen(),
+  Routes.verifyCodeSignUpScreen: (context) => const VerifyCodeSignUpScreen(),
 };

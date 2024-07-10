@@ -4,15 +4,15 @@ import 'package:skill_swap/core/routing/routes.dart';
 
 abstract class CheckEmailController extends GetxController {
   checkEmail();
-  goToSuccessSignUpScreen();
+  goToVerifyCodeSignUpScreen();
 }
 
 class CheckEmailControllerImpl extends CheckEmailController {
   late TextEditingController email;
 
   @override
-  goToSuccessSignUpScreen() {
-    Get.offNamed(Routes.successSignUpScreen);
+  goToVerifyCodeSignUpScreen() {
+    Get.offNamed(Routes.verifyCodeSignUpScreen);
   }
 
   @override

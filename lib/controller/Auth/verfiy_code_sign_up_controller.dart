@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:skill_swap/core/routing/routes.dart';
 
 abstract class VerifyCodeSignUpController extends GetxController {
   checkCode();
@@ -6,17 +7,19 @@ abstract class VerifyCodeSignUpController extends GetxController {
 }
 
 class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
-  String? email;
+  String? verfiyCodeSignUp;
 
   @override
   checkCode() {}
 
   @override
-  goToSuccessSignUp(verfiyCodeSignUp) async {}
+  goToSuccessSignUp(verfiyCodeSignUp) async {
+    Get.toNamed(Routes.successSignUpScreen);
+  }
 
   @override
   void onInit() {
-    email = Get.arguments['email'];
+    // verfiyCodeSignUp = Get.arguments['email'];
     super.onInit();
   }
 
