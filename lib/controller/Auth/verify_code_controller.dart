@@ -7,6 +7,7 @@ abstract class VerifyCodeController extends GetxController {
 }
 
 class VerifyCodeControllerImpl extends VerifyCodeController {
+  late String verifyCode;
   @override
   checkCod() {
     throw UnimplementedError();

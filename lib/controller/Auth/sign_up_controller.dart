@@ -19,7 +19,7 @@ class SignUpControllerImpl extends SignUpController {
 
   @override
   signUp() {
-    throw UnimplementedError();
+    Get.offNamed(Routes.checkEmailScreen);
   }
 
   @override

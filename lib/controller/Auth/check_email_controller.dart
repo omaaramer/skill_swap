@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 
-abstract class ForgetPasswordController extends GetxController {
+abstract class CheckEmailController extends GetxController {
   checkEmail();
-  goToVerifyScreen();
+  goToSuccessSignUpScreen();
 }
 
-class ForgetPasswordControllerImpl extends ForgetPasswordController {
+class CheckEmailControllerImpl extends CheckEmailController {
   late TextEditingController email;
 
   @override
-  goToVerifyScreen() {
-    Get.offNamed(Routes.verifyScreen);
+  goToSuccessSignUpScreen() {
+    Get.offNamed(Routes.successSignUpScreen);
   }
 
   @override

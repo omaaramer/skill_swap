@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/controller/Auth/verify_code_controller.dart';
+import 'package:skill_swap/controller/Auth/verfiycodesignup_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 
-class VerifyCodeScreen extends StatelessWidget {
-  const VerifyCodeScreen({super.key});
+class VerifyCodeSignUp extends StatelessWidget {
+  const VerifyCodeSignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImpl verifyCodeController =
-        Get.put(VerifyCodeControllerImpl());
+    VerifyCodeSignUpControllerImp verifyCodeController =
+        Get.put(VerifyCodeSignUpControllerImp());
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -58,7 +58,7 @@ class VerifyCodeScreen extends StatelessWidget {
                 },
                 //runs when every textfield is filled
                 onSubmit: (String verificationCode) {
-                  verifyCodeController.goToResetPassword();
+                  verifyCodeController.goToSuccessSignUp(verificationCode);
                 }, // end onSubmit
               ),
             ],

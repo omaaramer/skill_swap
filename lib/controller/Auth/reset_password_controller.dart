@@ -4,15 +4,16 @@ import 'package:skill_swap/core/routing/routes.dart';
 
 abstract class ResetPasswordController extends GetxController {
   checkPassword();
-  goToSginInScreen();
+  goToScussessResetScreen();
 }
 
 class ResetPasswordControllerImpl extends ResetPasswordController {
   late TextEditingController passWord;
+  late TextEditingController confirmPassWord;
 
   @override
-  goToSginInScreen() {
-    Get.offNamed(Routes.signInScreen);
+  goToScussessResetScreen() {
+    Get.offNamed(Routes.successResetPasswordScreen);
   }
 
   @override
@@ -21,12 +22,14 @@ class ResetPasswordControllerImpl extends ResetPasswordController {
   @override
   void onInit() {
     passWord = TextEditingController();
+    confirmPassWord = TextEditingController();
     super.onInit();
   }
 
   @override
   void dispose() {
     passWord.dispose();
+    confirmPassWord.dispose();
     super.dispose();
   }
 }

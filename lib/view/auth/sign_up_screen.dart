@@ -64,7 +64,9 @@ class SignUpScreen extends StatelessWidget {
                   buttonText: "Create Account",
                   verticalPadding: 10,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
-                  onPressed: () {}),
+                  onPressed: () {
+                    signUpController.signUp();
+                  }),
               const SizedBox(height: 20),
               HaveAcountWidget(
                 text: "Have an account?",
