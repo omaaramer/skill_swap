@@ -4,7 +4,7 @@ import 'package:skill_swap/controller/onboarding_controller.dart';
 import 'package:skill_swap/core/helpers/extentions.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
-import 'package:skill_swap/view/onBoarding/Screen/customslider.dart';
+import 'package:skill_swap/view/onBoarding/customslider.dart';
 import 'package:skill_swap/view/onBoarding/widget/dot_indicator.dart';
 import 'package:skill_swap/view/welcome_screen/regester_button.dart';
 

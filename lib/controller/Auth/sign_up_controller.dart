@@ -14,7 +14,7 @@ class SignUpControllerImpl extends SignUpController {
   late TextEditingController password;
   @override
   goToSignInScreen() {
-    Get.toNamed(Routes.signInScreen);
+    Get.offNamed(Routes.signInScreen);
   }
 
   @override

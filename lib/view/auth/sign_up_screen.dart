@@ -30,7 +30,6 @@ class SignUpScreen extends StatelessWidget {
                   hintText: "Enter your Username",
                   validator: (value) {}),
               const SizedBox(height: 10),
-              const SizedBox(height: 10),
               AppTextFormField(
                   controller: signUpController.phone,
                   suffixIcon: const Icon(Icons.phone),
@@ -59,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
                 text: "Have an account?",
                 textButton: "Sign In",
                 onPressed: () {
-                  Get.offAllNamed(Routes.signInScreen);
+                  signUpController.goToSignInScreen();
                 },
               )
             ],

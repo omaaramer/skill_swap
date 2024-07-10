@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skill_swap/core/routing/routes.dart';
 
 abstract class SignInController extends GetxController {
   signIn();
   goToSignUpScreen();
+  goToForgetPasswordScreen();
 }
 
 class SignInControllerImpl extends SignInController {
@@ -13,7 +15,9 @@ class SignInControllerImpl extends SignInController {
   signIn() {}
 
   @override
-  goToSignUpScreen() {}
+  goToSignUpScreen() {
+    Get.toNamed(Routes.signUpScreen);
+  }
 
   @override
   void onInit() {
@@ -27,5 +31,10 @@ class SignInControllerImpl extends SignInController {
     email.dispose();
     password.dispose();
     super.dispose();
+  }
+
+  @override
+  goToForgetPasswordScreen() {
+    Get.toNamed(Routes.forgetPasswordScreen);
   }
 }

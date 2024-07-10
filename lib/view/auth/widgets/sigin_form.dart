@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
 
 class CustomAuthForm extends StatelessWidget {
@@ -34,7 +36,10 @@ class CustomAuthForm extends StatelessWidget {
         Align(
           alignment: Alignment.topRight,
           child: TextButton(
-              onPressed: () {}, child: const Text("Forgot Password?")),
+              onPressed: () {
+                Get.toNamed(Routes.forgetPasswordScreen);
+              },
+              child: const Text("Forgot Password?")),
         ),
       ],
     );
