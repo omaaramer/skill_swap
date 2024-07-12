@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Auth/forget_password_controlller.dart';
-import 'package:skill_swap/controller/Auth/sign_up_controller.dart';
-import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/core/helpers/valid_inpnut.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
-import 'package:skill_swap/view/auth/widgets/have_acount_text_widget.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -52,7 +50,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                   controller: forgetPasswordController.email,
                   suffixIcon: const Icon(Icons.email_outlined),
                   hintText: "Email",
-                  validator: (value) {}),
+                  validator: (value) {
+                    return validInput(value!, 7, 50, "email");
+                  }),
               const SizedBox(height: 20),
               AppTextButton(
                   buttonText: "Check",

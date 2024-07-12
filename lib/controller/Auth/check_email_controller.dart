@@ -1,32 +1,32 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:skill_swap/core/routing/routes.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:skill_swap/core/routing/routes.dart';
 
-abstract class CheckEmailController extends GetxController {
-  checkEmail();
-  goToVerifyCodeSignUpScreen();
-}
+// abstract class CheckEmailController extends GetxController {
+//   checkEmail();
+//   goToVerifyCodeSignUpScreen();
+// }
 
-class CheckEmailControllerImpl extends CheckEmailController {
-  late TextEditingController email;
+// class CheckEmailControllerImpl extends CheckEmailController {
+//   late TextEditingController email;
 
-  @override
-  goToVerifyCodeSignUpScreen() {
-    Get.offNamed(Routes.verifyCodeSignUpScreen);
-  }
+//   @override
+//   goToVerifyCodeSignUpScreen() {
+//     Get.offNamed(Routes.verifyCodeSignUpScreen);
+//   }
 
-  @override
-  checkEmail() {}
+//   @override
+//   checkEmail() {}
 
-  @override
-  void onInit() {
-    email = TextEditingController();
-    super.onInit();
-  }
+//   @override
+//   void onInit() {
+//     email = TextEditingController();
+//     super.onInit();
+//   }
 
-  @override
-  void dispose() {
-    email.dispose();
-    super.dispose();
-  }
-}
+//   @override
+//   void dispose() {
+//     email.dispose();
+//     super.dispose();
+//   }
+// }

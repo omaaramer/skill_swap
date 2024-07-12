@@ -15,6 +15,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
+  final bool? isNumber;
   final Function(String?) validator;
   const AppTextFormField({
     super.key,
@@ -30,11 +31,15 @@ class AppTextFormField extends StatelessWidget {
     required this.controller,
     required this.validator,
     this.labelText,
+    this.isNumber,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: isNumber == true
+          ? const TextInputType.numberWithOptions(decimal: true)
+          : TextInputType.text,
       controller: controller,
       decoration: InputDecoration(
         // labelText: labelText,

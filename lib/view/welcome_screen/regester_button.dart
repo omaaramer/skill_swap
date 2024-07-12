@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skill_swap/core/helpers/extentions.dart';
+import 'package:get/get.dart';
 import 'package:skill_swap/core/routing/routes.dart';
-import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_redues_button.dart';
 
 class RegesterationButtons extends StatelessWidget {
@@ -21,7 +20,7 @@ class RegesterationButtons extends StatelessWidget {
             bottomLeftRadius: 8,
             topRightRadius: 32,
             onPressed: () {
-              context.pushNamed(Routes.signInScreen);
+              Get.offAllNamed(Routes.signInScreen);
             },
           ),
         ),
@@ -34,7 +33,7 @@ class RegesterationButtons extends StatelessWidget {
             bottomLeftRadius: 8,
             topRightRadius: 8,
             onPressed: () {
-              context.pushNamed(Routes.signUpScreen);
+              Get.offAllNamed(Routes.signUpScreen);
             },
           ),
         ),

@@ -4,6 +4,7 @@ import 'package:skill_swap/controller/Auth/reset_password_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
+import 'package:skill_swap/core/helpers/valid_inpnut.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -48,13 +49,17 @@ class ResetPasswordScreen extends StatelessWidget {
                   controller: resetPasswordController.passWord,
                   suffixIcon: const Icon(Icons.lock_outline),
                   hintText: "Password",
-                  validator: (value) {}),
+                  validator: (value) {
+                    return validInput(value!, 7, 30, "password");
+                  }),
               const SizedBox(height: 20),
               AppTextFormField(
                   controller: resetPasswordController.confirmPassWord,
                   suffixIcon: const Icon(Icons.lock_outline),
                   hintText: "Confirm Password",
-                  validator: (value) {}),
+                  validator: (value) {
+                    return validInput(value!, 7, 30, "password");
+                  }),
               const SizedBox(height: 20),
               AppTextButton(
                   buttonText: "Save",

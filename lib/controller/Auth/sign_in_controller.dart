@@ -8,15 +8,22 @@ abstract class SignInController extends GetxController {
   goToForgetPasswordScreen();
 }
 
-class SignInControllerImpl extends SignInController {
+class MySignInControllerImpl extends SignInController {
+  late GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController password;
+  bool isObscureText = true;
   @override
-  signIn() {}
+  signIn() {
+    var formDate = formKey.currentState;
+    if (formDate!.validate()) {
+      Get.offNamed(Routes.verifyScreen);
+    } else {}
+  }
 
   @override
   goToSignUpScreen() {
-    Get.toNamed(Routes.signUpScreen);
+    Get.offNamed(Routes.signUpScreen);
   }
 
   @override
@@ -36,5 +43,10 @@ class SignInControllerImpl extends SignInController {
   @override
   goToForgetPasswordScreen() {
     Get.toNamed(Routes.forgetPasswordScreen);
+  }
+
+  showPassword() {
+    isObscureText = !isObscureText;
+    update();
   }
 }

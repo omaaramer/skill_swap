@@ -8,10 +8,12 @@ abstract class SignUpController extends GetxController {
 }
 
 class SignUpControllerImpl extends SignUpController {
+  late GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController username;
   late TextEditingController phone;
   late TextEditingController password;
+  bool isObscureText = true;
   @override
   goToSignInScreen() {
     Get.offNamed(Routes.signInScreen);
@@ -19,7 +21,10 @@ class SignUpControllerImpl extends SignUpController {
 
   @override
   signUp() {
-    Get.offNamed(Routes.checkEmailScreen);
+    var formDate = formKey.currentState;
+    if (formDate!.validate()) {
+      Get.toNamed(Routes.verifyCodeSignUpScreen);
+    } else {}
   }
 
   @override
@@ -38,5 +43,10 @@ class SignUpControllerImpl extends SignUpController {
     phone.dispose();
     password.dispose();
     super.dispose();
+  }
+
+  showPassword() {
+    isObscureText = !isObscureText;
+    update();
   }
 }

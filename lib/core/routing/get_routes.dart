@@ -23,6 +23,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   Routes.successSignUpScreen: (context) => const SuccessSignUpScreen(),
   Routes.successResetPasswordScreen: (context) =>
       const SuccessResetPasswordScreen(),
-  Routes.checkEmailScreen: (context) => const CheckEmailScreen(),
   Routes.verifyCodeSignUpScreen: (context) => const VerifyCodeSignUpScreen(),
 };

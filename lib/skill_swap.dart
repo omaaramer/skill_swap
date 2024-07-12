@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:skill_swap/core/helpers/intialbindings.dart';
 import 'package:skill_swap/core/localization/changeLocal.dart';
 import 'package:skill_swap/core/localization/translation.dart';
 import 'package:skill_swap/core/routing/get_routes.dart';
@@ -17,6 +18,7 @@ class SkillSwap extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: GetMaterialApp(
+        initialBinding: InitialBindings(),
         // locale: localController.language,
         // translations: MyTranslation(),
         // locale: DevicePreview.locale(context),
