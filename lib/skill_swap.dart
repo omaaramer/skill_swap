@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/helpers/intialbindings.dart';
-import 'package:skill_swap/core/localization/changeLocal.dart';
-import 'package:skill_swap/core/localization/translation.dart';
 import 'package:skill_swap/core/routing/get_routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
@@ -29,7 +27,7 @@ class SkillSwap extends StatelessWidget {
           // primarySwatch: AppColores.primary as MaterialColor,
         ),
         debugShowCheckedModeBanner: false,
-        routes: routes,
+        getPages: getPages,
 
         // initialRoute: Routes.onBoardingScrreen,
         // onGenerateRoute: AppRouter().onGenerateRoute,
