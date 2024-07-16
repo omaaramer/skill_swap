@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "570259451863",
+    "project_id": "skill-swap-d8491",
+    "storage_bucket": "skill-swap-d8491.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570259451863:android:aea99c2ca43d5bb4a32592",
+        "android_client_info": {
+          "package_name": "com.example.skill_swap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeYXuj_QNNfKXL_UhntJxwAR0IdG2aaAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
