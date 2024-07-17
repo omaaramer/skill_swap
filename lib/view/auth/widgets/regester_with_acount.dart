@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:skill_swap/controller/Auth/sign_in_with_google.dart';
+import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/assets.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class RegesterationWithAcounts extends StatelessWidget {
   const RegesterationWithAcounts({
@@ -8,6 +13,8 @@ class RegesterationWithAcounts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SignInWithGoogleControllerImpl signInWithGoogleController =
+        Get.put(SignInWithGoogleControllerImpl());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Row(
@@ -15,7 +22,9 @@ class RegesterationWithAcounts extends StatelessWidget {
         children: [
           CustomIcon(
             image: Assets.imagesGoogleLogo,
-            onTap: () {},
+            onTap: () {
+              signInWithGoogleController.signInWithGoogle();
+            },
           ),
           CustomIcon(
             image: Assets.imagesFacebokLogo,

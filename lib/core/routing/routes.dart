@@ -9,4 +9,5 @@ class Routes {
   static const successSignUpScreen = '/successSignUpScreen';
   static const successResetPasswordScreen = '/successResetPasswordScreen';
   static const verifyCodeSignUpScreen = '/VerifyCodeSignUpScreen';
+  static const homePage = '/homePage';
 }

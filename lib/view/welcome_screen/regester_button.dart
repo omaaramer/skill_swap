@@ -14,7 +14,7 @@ class RegesterationButtons extends StatelessWidget {
       children: [
         Expanded(
           child: CustomButton(
-            text: "LOG IN",
+            text: "SIGN IN",
             bottomRightradius: 8,
             topLeftRadius: 8,
             bottomLeftRadius: 8,

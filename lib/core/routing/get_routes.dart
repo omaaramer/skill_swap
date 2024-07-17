@@ -9,6 +9,7 @@ import 'package:skill_swap/view/auth/success_reset_password.dart';
 import 'package:skill_swap/view/auth/success_sign_up.dart';
 import 'package:skill_swap/view/auth/verfiy_code_sign_up.dart';
 import 'package:skill_swap/view/auth/verify_screen.dart';
+import 'package:skill_swap/view/home_page.dart';
 import 'package:skill_swap/view/onBoarding/onboarding_pageView.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 
@@ -49,6 +50,7 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
       name: Routes.verifyCodeSignUpScreen,
       page: () => const VerifyCodeSignUpScreen()),
+  GetPage(name: Routes.homePage, page: () => const HomePage()),
 ];
 
 

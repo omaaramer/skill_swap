@@ -22,7 +22,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MySignInControllerImpl signInController = Get.put(MySignInControllerImpl());
+    SignInControllerImpl signInController = Get.put(SignInControllerImpl());
     return Scaffold(
       body: SafeArea(
         child: PopScope(
@@ -74,7 +74,7 @@ class SignInScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         // const Text("Password",
                         //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                        GetBuilder<MySignInControllerImpl>(
+                        GetBuilder<SignInControllerImpl>(
                           builder: (controller) => AppTextFormField(
                             isObscureText: signInController.isObscureText,
                             suffixIcon: IconButton(
