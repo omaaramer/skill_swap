@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/view/edit_profile/edit_profile_pageview.dart';
+import 'package:skill_swap/view/edit_profile/user_info_screen.dart';
 import 'package:skill_swap/view/auth/forget_password_screen.dart';
 import 'package:skill_swap/view/auth/reset_password.dart';
 import 'package:skill_swap/view/auth/sign_in_screen.dart';
@@ -15,7 +17,7 @@ import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 
 List<GetPage<dynamic>>? getPages = [
   GetPage(
-    name: "/",
+    name: Routes.onBoardingScrreen,
     page: () => const OnBoardingPageView(),
     middlewares: [MyMiddleWare()],
   ),
@@ -50,7 +52,9 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
       name: Routes.verifyCodeSignUpScreen,
       page: () => const VerifyCodeSignUpScreen()),
-  GetPage(name: Routes.homePage, page: () => const HomePage()),
+  GetPage(name: Routes.homePage, page: () => HomePage()),
+  GetPage(name: Routes.userinfo, page: () => UserInfo()),
+  GetPage(name: "/", page: () => EditProfilePageview()),
 ];
 
 

@@ -59,7 +59,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   verticalPadding: 10,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                   onPressed: () {
-                    forgetPasswordController.goToVerifyScreen();
+                    forgetPasswordController.checkEmail();
                   }),
             ],
           ),
