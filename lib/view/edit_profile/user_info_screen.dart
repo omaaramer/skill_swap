@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/controller/profile_controller.dart';
+import 'package:skill_swap/controller/profile/profile_info_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
-import 'components/custom_button.dart';
-import 'components/custom_nav_edit_profile.dart';
-import 'components/custom_text_field.dart';
-import 'components/custom_upload_widget.dart';
 
 class UserInfo extends StatelessWidget {
   static const String id = 'EditeProfileBody';
@@ -67,7 +63,7 @@ class UserInfo extends StatelessWidget {
                 const SizedBox(height: (10)),
                 AppTextButton(
                   buttonText: "Save Changes",
-                  textStyle: TextStyle(color: Colors.white, fontSize: 20),
+                  textStyle: AppStyle.stylerBold20(context),
                   onPressed: () {
                     profileController.addUserData();
                   },

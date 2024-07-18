@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/view/edit_profile/edit_profile.dart';
 import 'package:skill_swap/view/edit_profile/edit_profile_pageview.dart';
 import 'package:skill_swap/view/edit_profile/user_info_screen.dart';
 import 'package:skill_swap/view/auth/forget_password_screen.dart';
@@ -54,7 +55,8 @@ List<GetPage<dynamic>>? getPages = [
       page: () => const VerifyCodeSignUpScreen()),
   GetPage(name: Routes.homePage, page: () => HomePage()),
   GetPage(name: Routes.userinfo, page: () => UserInfo()),
-  GetPage(name: "/", page: () => EditProfilePageview()),
+  GetPage(name: Routes.editProfile, page: () => EditProfilePageview()),
+  GetPage(name: "/", page: () => EditProfile()),
 ];
 
 

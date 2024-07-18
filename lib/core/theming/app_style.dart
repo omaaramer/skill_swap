@@ -35,6 +35,15 @@ abstract class AppStyle {
         fontSize: getResponsiveFontSize(context, fontSize: 50),
         color: Colors.white);
   }
+
+  static TextStyle stylerBold20(context) {
+    return TextStyle(
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Poppins',
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+    );
+  }
 }
 
 // sacleFactor

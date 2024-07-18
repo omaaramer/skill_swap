@@ -109,8 +109,7 @@ class SignUpScreen extends StatelessWidget {
                         AppTextButton(
                             buttonText: "Create Account",
                             verticalPadding: 10,
-                            textStyle: const TextStyle(
-                                color: Colors.white, fontSize: 20),
+                            textStyle: AppStyle.stylerBold20(context),
                             onPressed: () {
                               signUpController.signUp();
                             }),

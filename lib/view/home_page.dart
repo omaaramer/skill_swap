@@ -13,8 +13,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PickDateControllerImpl pickDateController =
-        Get.put(PickDateControllerImpl());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -30,22 +28,7 @@ class HomePage extends StatelessWidget {
         title: Text("Home Page", style: AppStyle.styleBold26(context)),
       ),
       body: Container(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                  "${pickDateController.selectedDate.toLocal()}".split(' ')[0]),
-              const SizedBox(
-                height: 20.0,
-              ),
-              ElevatedButton(
-                onPressed: () => pickDateController.selectDate(context),
-                child: const Text('Select date'),
-              ),
-            ],
-          ),
-        ),
+        child: Center(),
       ),
     );
   }
