@@ -10,6 +10,14 @@ abstract class AppStyle {
         color: AppColors.primary);
   }
 
+  static TextStyle styleBold18(context) {
+    return TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 20),
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.bold,
+        color: AppColors.primary);
+  }
+
   static TextStyle styleBold30(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 30),

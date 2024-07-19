@@ -47,8 +47,7 @@ class UploadeImage extends StatelessWidget {
             AppTextButton(
                 buttonText: "Upload",
                 textStyle: AppStyle.stylerBold20(context),
-                onPressed: () async {
-                  await profileController.getImageFromGallery();
+                onPressed: () {
                   profilepageController.next();
                 }),
           ],
