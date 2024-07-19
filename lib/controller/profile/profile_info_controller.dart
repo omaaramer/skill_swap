@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 abstract class ProfileController extends GetxController {
   getImageFromGallery();
   addUserData();
+  clearTextInput();
 }
 
 class ProfileControllerImpl extends ProfileController {
@@ -90,5 +91,13 @@ class ProfileControllerImpl extends ProfileController {
     phone.dispose();
 
     super.dispose();
+  }
+
+  @override
+  clearTextInput() {
+    email.clear();
+    name.clear();
+    address.clear();
+    phone.clear();
   }
 }

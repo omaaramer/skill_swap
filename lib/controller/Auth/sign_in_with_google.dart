@@ -28,7 +28,7 @@ class SignInWithGoogleControllerImpl extends SignInWithGoogleController {
     // Once signed in, return the UserCredential
     await FirebaseAuth.instance.signInWithCredential(credential);
 
-    Get.offNamed(Routes.homePage);
+    Get.offNamed(Routes.editProfile);
   }
 
   @override

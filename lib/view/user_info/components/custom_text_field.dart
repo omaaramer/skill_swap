@@ -5,6 +5,7 @@ import 'package:skill_swap/core/theming/colores.dart';
 class CustomTextFormField extends StatelessWidget {
   final String hint;
   final IconData icon;
+  final bool? isNumber;
   final TextEditingController mycontroller;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
@@ -15,22 +16,18 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     required this.mycontroller,
     this.validator,
+    this.isNumber,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType:
+          isNumber == true ? TextInputType.number : TextInputType.text,
       controller: mycontroller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       autofocus: false,
-      textCapitalization: TextCapitalization.words,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return "This field can not be empity";
-        }
-
-        return null;
-      },
+      validator: validator,
       cursorColor: Colors.black12,
       decoration: InputDecoration(
         hintText: hint,

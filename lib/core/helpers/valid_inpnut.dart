@@ -18,15 +18,21 @@ validInput(String val, int min, int max, String type) {
     }
   }
 
-  if (val.isEmpty) {
-    return "can't be Empty";
-  }
+  if (type == "password") {
+    if (!GetUtils.isLengthGreaterOrEqual(val, 6)) {
+      return "not valid password";
+    }
 
-  if (val.length < min) {
-    return "can't be less than $min";
-  }
+    if (val.isEmpty) {
+      return "can't be Empty";
+    }
 
-  if (val.length > max) {
-    return "can't be larger than $max";
+    if (val.length < min) {
+      return "can't be less than $min";
+    }
+
+    if (val.length > max) {
+      return "can't be larger than $max";
+    }
   }
 }

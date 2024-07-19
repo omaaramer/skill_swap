@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/onboarding_controller.dart';
@@ -26,7 +27,12 @@ class OnBoardingPageView extends StatelessWidget {
                 color: Colors.black,
                 backgroundColor: Colors.grey.shade300,
                 onPressed: () {
-                  context.pushNamed(Routes.welcomeScreen);
+                  if (FirebaseAuth.instance.currentUser != null &&
+                      FirebaseAuth.instance.currentUser!.emailVerified) {
+                    Get.toNamed(Routes.editProfile);
+                  } else {
+                    Get.toNamed(Routes.welcomeScreen);
+                  }
                 },
               ),
               const Expanded(

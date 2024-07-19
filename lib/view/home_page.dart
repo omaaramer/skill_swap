@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:skill_swap/controller/pick_date_controller.dart';
+import 'package:skill_swap/controller/profile/pick_date_controller.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 

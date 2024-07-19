@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
-import 'package:skill_swap/view/edit_profile/edit_profile.dart';
-import 'package:skill_swap/view/edit_profile/edit_profile_pageview.dart';
-import 'package:skill_swap/view/edit_profile/user_info_screen.dart';
+import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
+import 'package:skill_swap/view/user_info/components/slider.dart';
+import 'package:skill_swap/view/user_info/personal_datails_1.dart';
 import 'package:skill_swap/view/auth/forget_password_screen.dart';
 import 'package:skill_swap/view/auth/reset_password.dart';
 import 'package:skill_swap/view/auth/sign_in_screen.dart';
@@ -18,8 +20,11 @@ import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 
 List<GetPage<dynamic>>? getPages = [
   GetPage(
-    name: Routes.onBoardingScrreen,
-    page: () => const OnBoardingPageView(),
+    name: "/",
+    page: () => FirebaseAuth.instance.currentUser != null &&
+            FirebaseAuth.instance.currentUser!.emailVerified
+        ? EditProfile()
+        : const OnBoardingPageView(),
     middlewares: [MyMiddleWare()],
   ),
   GetPage(
@@ -54,9 +59,9 @@ List<GetPage<dynamic>>? getPages = [
       name: Routes.verifyCodeSignUpScreen,
       page: () => const VerifyCodeSignUpScreen()),
   GetPage(name: Routes.homePage, page: () => HomePage()),
-  GetPage(name: Routes.userinfo, page: () => UserInfo()),
-  GetPage(name: Routes.editProfile, page: () => EditProfilePageview()),
-  GetPage(name: "/", page: () => EditProfile()),
+  GetPage(name: Routes.userinfo, page: () => PersonalDatailsOne()),
+  GetPage(name: Routes.editProfilePageview, page: () => EditProfilePageview()),
+  GetPage(name: Routes.editProfile, page: () => EditProfile()),
 ];
 
 
@@ -82,3 +87,4 @@ List<GetPage<dynamic>>? getPages = [
 //       const SuccessResetPasswordScreen(),
 //   Routes.verifyCodeSignUpScreen: (context) => const VerifyCodeSignUpScreen(),
 // };
+ 
