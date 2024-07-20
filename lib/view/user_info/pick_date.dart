@@ -57,6 +57,7 @@ class PickDate extends StatelessWidget {
                 textStyle: AppStyle.stylerBold20(context),
                 onPressed: () {
                   // Get.toNamed(Routes.editProfile);
+                  pickDateController.saveDate();
                   profileController.next();
                 }),
           ],
