@@ -5,6 +5,7 @@ import 'package:skill_swap/controller/profile/profile_info_controller.dart';
 import 'package:skill_swap/controller/profile/profile_page_view_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
+import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
 import 'package:skill_swap/view/user_info/components/custom_upload_widget.dart';
 
 class UploadeImage extends StatelessWidget {
@@ -22,9 +23,18 @@ class UploadeImage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            Text(
-              "Upload your Pictures",
-              style: AppStyle.styleBold26(context),
+            Row(
+              children: [
+                Text(
+                  "Upload your Pictures",
+                  style: AppStyle.styleBold26(context),
+                ),
+                CustomSmallButton(
+                    text: "Skip",
+                    onPressed: () {
+                      profilepageController.next();
+                    }),
+              ],
             ),
             const SizedBox(height: 20),
             Text(
@@ -33,21 +43,24 @@ class UploadeImage extends StatelessWidget {
               style: AppStyle.styleRegular16Grey(context),
             ),
             const Spacer(),
-            CustomUploadWidget(
-              url: profileController.url,
-              onTap: () async {
-                await profileController.getImageFromGallery();
-              },
-              onPressed: () async {
-                await profileController.getImageFromGallery();
-                // Save Image to some storage
-              },
+            GetBuilder<ProfileControllerImpl>(
+              builder: (_) => CustomUploadWidget(
+                url: profileController.url,
+                onTap: () async {
+                  await profileController.getImageFromGallery();
+                },
+                onPressed: () async {
+                  await profileController.getImageFromGallery();
+                  // Save Image to some storage
+                },
+              ),
             ),
             const Spacer(),
             AppTextButton(
                 buttonText: "Upload",
                 textStyle: AppStyle.stylerBold20(context),
                 onPressed: () {
+                  profileController.addUserData();
                   profilepageController.next();
                 }),
           ],

@@ -83,7 +83,6 @@ class PersonalDatailsOne extends StatelessWidget {
                             buttonText: "Save Changes",
                             textStyle: AppStyle.stylerBold20(context),
                             onPressed: () {
-                              profileController.addUserData();
                               profilepageController.next();
                               profileController.clearTextInput();
                             },

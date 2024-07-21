@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/controller/profile/pick_date_controller.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:skill_swap/controller/profile/profile_info_controller.dart';
 import 'package:skill_swap/controller/profile/profile_page_view_controller.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
@@ -12,9 +12,9 @@ class PickDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfilePageViewControllerImpl profileController = Get.find();
-    PickDateControllerImpl pickDateController =
-        Get.put(PickDateControllerImpl());
+    ProfilePageViewControllerImpl profilePageViewController = Get.find();
+    ProfileControllerImpl profileController = Get.put(ProfileControllerImpl());
+
     return SafeArea(
         child: Scaffold(
       body: Container(
@@ -34,11 +34,11 @@ class PickDate extends StatelessWidget {
               child: CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.date,
                 initialDateTime: DateTime(2000, 1, 1),
-                onDateTimeChanged: pickDateController.updateDate,
+                onDateTimeChanged: profileController.updateBirthDate,
               ),
             ),
             const SizedBox(height: 10),
-            GetBuilder<PickDateControllerImpl>(
+            GetBuilder<ProfileControllerImpl>(
                 builder: (_) => Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 5),
@@ -47,7 +47,7 @@ class PickDate extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8)),
                           color: Color(0xffeee8f0)),
                       child: Text(
-                          "${pickDateController.birthDate.toLocal()}"
+                          "${profileController.birthDate.toLocal()}"
                               .split(' ')[0],
                           style: AppStyle.styleBold26(context)),
                     )),
@@ -57,8 +57,8 @@ class PickDate extends StatelessWidget {
                 textStyle: AppStyle.stylerBold20(context),
                 onPressed: () {
                   // Get.toNamed(Routes.editProfile);
-                  pickDateController.saveDate();
-                  profileController.next();
+
+                  profilePageViewController.next();
                 }),
           ],
         ),

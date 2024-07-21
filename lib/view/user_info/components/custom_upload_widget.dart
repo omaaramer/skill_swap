@@ -36,7 +36,7 @@ class CustomUploadWidget extends StatelessWidget {
             ),
             const SizedBox(height: (15)),
             CustomDottedBorder(
-              url: url,
+              imageUrl: url,
               onPressed: onPressed,
               onTap: onTap,
             )

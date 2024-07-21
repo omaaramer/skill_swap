@@ -1,16 +1,17 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomDottedBorder extends StatelessWidget {
   const CustomDottedBorder({
     super.key,
-    required this.url,
+    required this.imageUrl,
     required this.onPressed,
     required this.onTap,
   });
   final void Function() onPressed;
-  final String? url;
+  final String? imageUrl;
   final void Function() onTap;
 
   @override
@@ -21,8 +22,7 @@ class CustomDottedBorder extends StatelessWidget {
       dashPattern: const [7, 7],
       color: Colors.black38,
       strokeWidth: 2,
-      // padding: EdgeInsets.fromLTRB(115, 37, 115, 37),
-      padding: const EdgeInsets.fromLTRB((75), (25), (75), (25)),
+      padding: const EdgeInsets.fromLTRB(75, 25, 75, 25),
       child: Container(
         height: 70,
         width: 70,
@@ -32,7 +32,7 @@ class CustomDottedBorder extends StatelessWidget {
             boxShadow: [
               BoxShadow(spreadRadius: 6, color: Colors.black38),
             ]),
-        child: url == null
+        child: imageUrl == null
             ? IconButton(
                 icon: const Icon(
                   Icons.upload_rounded,
@@ -45,9 +45,17 @@ class CustomDottedBorder extends StatelessWidget {
                 onTap: onTap,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(35),
-                  child: Image.network(
-                    url!,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl!,
                     fit: BoxFit.cover,
+                    placeholder: (context, url) => const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),

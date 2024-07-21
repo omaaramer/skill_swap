@@ -12,6 +12,7 @@ abstract class ProfileController extends GetxController {
   getImageFromGallery();
   addUserData();
   clearTextInput();
+  updateBirthDate(DateTime newDateTime);
 }
 
 class ProfileControllerImpl extends ProfileController {
@@ -50,10 +51,8 @@ class ProfileControllerImpl extends ProfileController {
 
       // Update the UI or state
       update();
-      print("Image URL: $url");
     } catch (e) {
       // Handle errors
-      print("An error occurred: $e");
     }
   }
 
@@ -62,25 +61,28 @@ class ProfileControllerImpl extends ProfileController {
   @override
   addUserData() {
     // Call the user's CollectionReference to add a new user
-    if (formKey.currentState!.validate()) {
-      return users
-          .add({
-            'full_name': name.text,
-            'address': address.text,
-            'phone': phone.text,
-            'email': email.text,
-            "id": FirebaseAuth.instance.currentUser!.uid,
-            'url': url ?? "none",
-            "time": DateTime.now(),
-          })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
-    } else {
-      Get.defaultDialog(
-        title: 'Warning',
-        middleText: 'Please fill all the fields',
-      );
-    }
+
+    return users
+        .add({
+          'full_name': name.text,
+          'address': address.text,
+          'phone': phone.text,
+          'email': email.text,
+          'birthDate': birthDate,
+          "id": FirebaseAuth.instance.currentUser!.uid,
+          'url': url ?? "none",
+          "time": DateTime.now(),
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
+
+  DateTime birthDate = DateTime.now();
+
+  @override
+  updateBirthDate(DateTime newDateTime) {
+    birthDate = newDateTime;
+    update();
   }
 
   @override
