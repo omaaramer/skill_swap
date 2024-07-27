@@ -58,13 +58,13 @@ class ProfileControllerImpl extends ProfileController {
     }
   }
 
-  CollectionReference skills = FirebaseFirestore.instance.collection('skills');
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   @override
   addUserData() {
     // Call the user's CollectionReference to add a new user
 
-    return skills
+    return users
         .add({
           AppConstant.kFullname: name.text,
           AppConstant.kAddress: address.text,

@@ -29,33 +29,22 @@ class AddSkillControllerImpl extends AddSkillController {
 
   @override
   addSkill() async {
-    var userSnapshot =
-        await FirebaseFirestore.instance.collection('skills').get();
+    CollectionReference skills =
+        FirebaseFirestore.instance.collection('skills');
 
-    for (var doc in userSnapshot.docs) {
-      if (doc.data()[AppConstant.kId] ==
-          FirebaseAuth.instance.currentUser!.uid) {
-        DocumentReference<Map<String, dynamic>> skills =
-            FirebaseFirestore.instance.collection('skills').doc(doc.id);
+    // Call the user's CollectionReference to add a new user
 
-        Map<String, dynamic> updatedData = {
+    return skills
+        .add({
           AppConstant.kIsOnline: isOnline ? "ONLINE" : "IN PERSON",
           AppConstant.kMySkill: mySkill.text,
           AppConstant.kSkillNeeded: skillNeeded.text,
           AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,
-          AppConstant.kProfileImageUrl: AppConstant.kProfileImageUrl,
-          AppConstant.kFullname: AppConstant.kFullname,
           AppConstant.kSkillImageUrl: url,
           AppConstant.kTime: DateTime.now(),
-        };
-        try {
-          await skills.update(updatedData);
-          print('Document updated successfully!');
-        } catch (e) {
-          print('Error updating document: $e');
-        }
-      }
-    }
+        })
+        .then((value) => print("Skill Added"))
+        .catchError((error) => print("===>Failed to add Skill: $error"));
   }
 
   @override

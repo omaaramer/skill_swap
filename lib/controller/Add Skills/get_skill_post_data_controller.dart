@@ -31,7 +31,6 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
       }
     } finally {
       isLoading.value = false;
-      print("posts==> $posts");
     }
   }
 }

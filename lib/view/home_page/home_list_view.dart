@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_skill_post_data_controller.dart';
+import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/view/home_page/custom_swap_card.dart';
 
 class HomePageListView extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomePageListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final postController = Get.put(GetSkillPostDataControllerImpl());
-
+    final userController = Get.put(GetUserControllerImpl());
     return Obx(() {
       if (postController.isLoading.value) {
         return const Center(child: CircularProgressIndicator());
@@ -24,10 +25,13 @@ class HomePageListView extends StatelessWidget {
         itemCount: postController.posts.length,
         itemBuilder: (context, index) {
           final post = postController.posts[index];
+          final user = userController.userList
+              .firstWhere((user) => user.userId == post.skillId);
+
           return PostCard(
-            userName: post.username,
-            address: post.userAddress,
-            userImageUrl: post.profileImage,
+            userName: user.fullname,
+            address: user.address,
+            userImageUrl: user.profileImageUrl,
             skillImageUrl: post.skillImage,
             mySkill: post.mySkill,
             skillNedded: post.skillNeeded,
