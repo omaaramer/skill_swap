@@ -10,9 +10,9 @@ abstract class SignInController extends GetxController {
 }
 
 class SignInControllerImpl extends SignInController {
-  late GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  late TextEditingController email = TextEditingController();
-  late TextEditingController password = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   bool isObscureText = true;
 
   @override

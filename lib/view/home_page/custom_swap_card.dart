@@ -10,7 +10,21 @@ import 'widgets/skill_listile.dart';
 class PostCard extends StatelessWidget {
   const PostCard({
     super.key,
+    required this.userName,
+    required this.address,
+    required this.userImageUrl,
+    required this.skillImageUrl,
+    required this.mySkill,
+    required this.skillNedded,
+    required this.isOnline,
   });
+  final String userName,
+      address,
+      userImageUrl,
+      skillImageUrl,
+      mySkill,
+      isOnline,
+      skillNedded;
 
   @override
   Widget build(BuildContext context) {
@@ -22,34 +36,34 @@ class PostCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           color: Colors.grey.shade300,
         ),
-        child: const Column(
+        child: Column(
           children: [
             CustomUserLisTile(
-              name: 'Omar Amer',
-              address: ' Cairo, Egypt',
-              imageUrl: Assets.imagesOmaar,
+              name: userName,
+              address: address,
+              imageUrl: userImageUrl,
             ),
-            CustomCardDivider(),
-            SizedBox(height: 10),
+            const CustomCardDivider(),
+            const SizedBox(height: 10),
             CustomCardImage(
-              imageUrl: Assets.imagesDownload,
+              imageUrl: skillImageUrl,
             ),
             CustomSkillLisTile(
               title: 'WILL OFFER YOU',
-              skill: ' Flutter Developer',
-              isOnline: true,
+              skill: mySkill,
+              isOnline: isOnline,
             ),
-            CustomCardDivider(
+            const CustomCardDivider(
               endIndent: 20,
               indent: 16,
             ),
             CustomSkillLisTile(
               title: 'IN EXPECTATION FOR',
-              skill: ' Music Production',
-              isOnline: false,
+              skill: skillNedded,
+              isOnline: isOnline,
             ),
-            CustomCardDivider(),
-            CardBottomIconBar()
+            const CustomCardDivider(),
+            const CardBottomIconBar()
           ],
         ),
       ),

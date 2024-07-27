@@ -13,4 +13,5 @@ class Routes {
   static const userinfo = '/UserInfo';
   static const editProfilePageview = '/EditProfilePageview';
   static const editProfile = '/EditProfile';
+  static const addSkillScreen = '/AddSkillScreen';
 }

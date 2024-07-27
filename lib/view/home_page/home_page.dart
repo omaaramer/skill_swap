@@ -1,14 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
-import 'package:skill_swap/core/theming/assets.dart';
-import 'package:skill_swap/core/theming/colores.dart';
-import 'package:skill_swap/skill_swap.dart';
-import 'package:skill_swap/view/home_page/custom_swap_card.dart';
+import 'package:skill_swap/view/home_page/home_list_view.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -24,38 +20,44 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           elevation: 1,
           leading: IconButton(
-            onPressed: () {
-              scaffoldKey.currentState?.openDrawer();
-            },
-            icon: const Icon(Icons.menu),
-          ),
-          centerTitle: true,
-          title:
-              Text("Swap, learn, grow", style: AppStyle.styleBold26(context)),
+              onPressed: () {
+                scaffoldKey.currentState?.openDrawer();
+              },
+              icon: const Icon(Icons.menu)),
         ),
-        body: ListView(
+        body: const Column(
           children: [
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Your Posts", style: AppStyle.styleBold26(context)),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                      ),
-                      onPressed: () {},
-                      child: const Icon(Icons.add)),
-                ],
-              ),
-            ),
-            const PostCard(),
-            const PostCard(),
-            const PostCard(),
+            HomePageHeader(),
+            Expanded(child: HomePageListView()),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class HomePageHeader extends StatelessWidget {
+  const HomePageHeader({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("Swap, learn, grow", style: AppStyle.styleBold26(context)),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  // shape: const CircleBorder(),
+                  ),
+              onPressed: () {
+                Get.toNamed(Routes.addSkillScreen);
+              },
+              child: const Icon(Icons.add)),
+        ],
       ),
     );
   }

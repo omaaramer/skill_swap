@@ -7,11 +7,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skill_swap/constant.dart';
 
 abstract class ProfileController extends GetxController {
   getImageFromGallery();
   addUserData();
-  clearTextInput();
+  // clearTextInput();
   updateBirthDate(DateTime newDateTime);
 }
 
@@ -41,7 +42,8 @@ class ProfileControllerImpl extends ProfileController {
       var imageName = basename(imageFromGallery.path);
 
       // Reference to Firebase Storage
-      var refStorage = FirebaseStorage.instance.ref("profileImages/$imageName");
+      var refStorage = FirebaseStorage.instance
+          .ref("$AppConstant.kCloudStorageProfileImages/$imageName");
 
       // Upload the image
       await refStorage.putFile(_image!);
@@ -56,22 +58,21 @@ class ProfileControllerImpl extends ProfileController {
     }
   }
 
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  CollectionReference skills = FirebaseFirestore.instance.collection('skills');
 
   @override
   addUserData() {
     // Call the user's CollectionReference to add a new user
 
-    return users
+    return skills
         .add({
-          'full_name': name.text,
-          'address': address.text,
-          'phone': phone.text,
-          'email': email.text,
-          'birthDate': birthDate,
-          "id": FirebaseAuth.instance.currentUser!.uid,
-          'url': url ?? "none",
-          "time": DateTime.now(),
+          AppConstant.kFullname: name.text,
+          AppConstant.kAddress: address.text,
+          AppConstant.kPhone: phone.text,
+          AppConstant.kEmail: email.text,
+          AppConstant.kBirthDate: birthDate,
+          AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,
+          AppConstant.kProfileImageUrl: url ?? "none",
         })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
@@ -85,21 +86,20 @@ class ProfileControllerImpl extends ProfileController {
     update();
   }
 
+  // @override
+  // clearTextInput() {
+  //   email.clear();
+  //   name.clear();
+  //   address.clear();
+  //   phone.clear();
+  // }
+
   @override
   void dispose() {
     email.dispose();
     name.dispose();
     address.dispose();
     phone.dispose();
-
     super.dispose();
-  }
-
-  @override
-  clearTextInput() {
-    email.clear();
-    name.clear();
-    address.clear();
-    phone.clear();
   }
 }

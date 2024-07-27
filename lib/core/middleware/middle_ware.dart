@@ -11,6 +11,12 @@ class MyMiddleWare extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     if (myServices.sharedPreferences.getBool(AppConstant.kOnBoardingPref) ==
+            true &&
+        myServices.sharedPreferences.getBool(AppConstant.kUserInfoPref) ==
+            true) {
+      return const RouteSettings(name: Routes.homePage);
+    } else if (myServices.sharedPreferences
+            .getBool(AppConstant.kOnBoardingPref) ==
         true) {
       return const RouteSettings(name: Routes.welcomeScreen);
     }

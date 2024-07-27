@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final String? labelText;
   final bool? isObscureText;
   final Widget? suffixIcon;
+  final int? hintMaxLines;
   final Color? backgroundColor;
   final TextEditingController? controller;
   final bool? isNumber;
@@ -32,11 +33,14 @@ class AppTextFormField extends StatelessWidget {
     required this.validator,
     this.labelText,
     this.isNumber,
+    this.hintMaxLines,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+
       keyboardType: isNumber == true
           ? const TextInputType.numberWithOptions(decimal: true)
           : TextInputType.text,
@@ -77,8 +81,12 @@ class AppTextFormField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
-        hintStyle: hintStyle ?? const TextStyle(color: Colors.black54),
+        hintStyle: hintStyle ??
+            const TextStyle(
+              color: Colors.black54,
+            ),
         hintText: hintText,
+        hintMaxLines: hintMaxLines ?? 1,
         suffixIcon: suffixIcon,
         fillColor: backgroundColor ?? const Color(0xFFF4E9FD),
         filled: true,

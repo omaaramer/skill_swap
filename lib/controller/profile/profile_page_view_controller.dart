@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/core/services/services.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 
 abstract class ProfilePageViewController extends GetxController {
@@ -18,10 +20,12 @@ class ProfilePageViewControllerImpl extends ProfilePageViewController {
     update();
   }
 
+  MyServices myServices = Get.find();
   @override
   next() {
     if (currentIndex == EditProfilePageview.pages.length - 1) {
       Get.toNamed(Routes.homePage);
+      myServices.sharedPreferences.setBool(AppConstant.kUserInfoPref, true);
     } else {
       currentIndex++;
       pageController.animateToPage(

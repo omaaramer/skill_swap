@@ -9,7 +9,7 @@ class CustomSkillLisTile extends StatelessWidget {
       required this.skill,
       required this.isOnline});
   final String title, skill;
-  final bool isOnline;
+  final String isOnline;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -24,7 +24,7 @@ class CustomSkillLisTile extends StatelessWidget {
               color: AppColors.primary,
             ),
             child: Text(
-              isOnline ? "ONLINE" : "IN PERSON",
+              isOnline,
               style: AppStyle.stylerBold20(context).copyWith(fontSize: 12),
             ),
           ),

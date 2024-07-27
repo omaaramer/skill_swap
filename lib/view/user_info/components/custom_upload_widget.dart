@@ -17,15 +17,15 @@ class CustomUploadWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 350,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: const Color(0xFFF4E9FD),
           borderRadius: BorderRadius.circular(30),
         ),
         padding: const EdgeInsets.only(
-          left: (15),
+          left: (20),
           top: (15),
-          right: (15),
+          right: (20),
           bottom: (40),
         ),
         child: Column(

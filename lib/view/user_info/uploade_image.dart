@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:skill_swap/controller/profile/profile_info_controller.dart';
 import 'package:skill_swap/controller/profile/profile_page_view_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
 import 'package:skill_swap/view/user_info/components/custom_upload_widget.dart';
@@ -24,13 +25,15 @@ class UploadeImage extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Upload your Pictures",
                   style: AppStyle.styleBold26(context),
                 ),
                 CustomSmallButton(
-                    text: "Skip",
+                    backgroundColor: AppColors.primary,
+                    text: "Skip ",
                     onPressed: () {
                       profilepageController.next();
                     }),

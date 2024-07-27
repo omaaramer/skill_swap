@@ -1,0 +1,46 @@
+
+default_platform(:android)
+
+# To run the lane, execute the following command:
+# bundle exec fastlane firebase_distribution
+
+platform :android do
+  desc "Lane for Android Firebase App Distribution"
+  lane :firebase_destribution do
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+        upload_timeout: 900,
+        app: "1:570259451863:android:aea99c2ca43d5bb4a32592",
+        firebase_cli_token: "1//03dXM_H70VNu7CgYIARAAGAMSNwF-L9IrduV6grrcj6uKY3brFfP_X2E571NdfEl3P-BxYAHvkliZ_t50bb5PkzYrtsTfqPsgsOk",
+        android_artifact_type: "APK",
+        android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+        testers: "omahar1907@gmail.com, ahlamgomaa304@gmail.com, sahmedtony@gmail.com, ziadabdullah79@gmail.com",
+        release_notes: "Lots of amazing new features to test out!",
+  )
+  end
+end
+
+
+
+
+
+# default_platform(:android)
+
+# platform :android do
+#   desc "Lane for Android Firebase App Distribution"
+#   lane :firebase_destribution do
+#     sh "flutter clean"
+#     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+#     firebase_app_distribution(
+#             app: "1:570259451863:android:aea99c2ca43d5bb4a32592",
+#             firebase_cli_token: "1//03sWco8FihzqeCgYIARAAGAMSNwF-L9IrBhgVtpL_bBLiB1YSTRO8BqHO31_ukscN8aRfAPNyuei7M04hR68LuwaTV9GrLMHWPTA",
+#             android_artifact_path:"../build/app/outputs/flutter-apk/app-production-debug.apk"
+#             # android_artifact_type: "APK",
+#             testers: "ahlamgomaa304@gmail.com, sahmedtony@gmail.com, ziadabdullah79@gmail.com, omahar1907@gmail.com",
+#             release_notes: "Lots of amazing new features to test out!"
+#         )
+#   end
+
+ 
+# end

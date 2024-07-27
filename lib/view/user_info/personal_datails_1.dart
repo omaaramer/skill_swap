@@ -84,7 +84,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             textStyle: AppStyle.stylerBold20(context),
                             onPressed: () {
                               profilepageController.next();
-                              profileController.clearTextInput();
+                              // profileController.clearTextInput();
                             },
                           ),
                         ],

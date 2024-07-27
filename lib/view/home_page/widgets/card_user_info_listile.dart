@@ -18,7 +18,8 @@ class CustomUserLisTile extends StatelessWidget {
         width: 70,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          image: DecorationImage(image: AssetImage(imageUrl)),
+          image:
+              DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover),
         ),
       ),
     );

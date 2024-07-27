@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/view/home_page/add_skill_screen.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 import 'package:skill_swap/view/user_info/personal_datails_1.dart';
@@ -21,11 +22,12 @@ import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: "/",
-    page: () => FirebaseAuth.instance.currentUser != null &&
-            FirebaseAuth.instance.currentUser!.emailVerified
-        ? EditProfile()
-        : const OnBoardingPageView(),
-    middlewares: [MyMiddleWare()],
+    page: () =>
+        // FirebaseAuth.instance.currentUser != null &&
+        // FirebaseAuth.instance.currentUser!.emailVerified
+        //  ?EditProfile()
+        const OnBoardingPageView(),
+    // middlewares: [MyMiddleWare()],
   ),
   GetPage(
     name: Routes.welcomeScreen,
@@ -62,6 +64,7 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: Routes.userinfo, page: () => PersonalDatailsOne()),
   GetPage(name: Routes.editProfilePageview, page: () => EditProfilePageview()),
   GetPage(name: Routes.editProfile, page: () => EditProfile()),
+  GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
 ];
 
 
