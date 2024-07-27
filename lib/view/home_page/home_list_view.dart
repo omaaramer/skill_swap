@@ -26,7 +26,7 @@ class HomePageListView extends StatelessWidget {
         itemBuilder: (context, index) {
           final post = postController.posts[index];
           final user = userController.userList
-              .firstWhere((user) => user.userId == post.skillId);
+              .lastWhere((user) => user.userId == post.skillId);
 
           return PostCard(
             userName: user.fullname,

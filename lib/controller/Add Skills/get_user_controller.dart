@@ -18,11 +18,19 @@ class GetUserControllerImpl extends GetUserController {
   @override
   getUser() async {
     try {
-      final snapshot =
-          await FirebaseFirestore.instance.collection("users").get();
-      var myPosts =
-          snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList();
-      userList.assignAll(myPosts);
+      FirebaseFirestore.instance
+          .collection("users")
+          .snapshots()
+          .listen((snapshot) {
+        var users =
+            snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList();
+        userList.assignAll(users);
+      });
+      // final snapshot =
+      //     await FirebaseFirestore.instance.collection("users").get();
+      // var myPosts =
+      //     snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList();
+      // userList.assignAll(myPosts);
     } catch (e) {
       if (Get.isSnackbarOpen == false) {
         Get.snackbar('Error', 'Failed to fetch posts: $e');

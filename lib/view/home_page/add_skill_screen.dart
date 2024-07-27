@@ -98,6 +98,7 @@ class AddSkillScreen extends StatelessWidget {
                         onPressed: () {
                           addSkillControllerImpl.addSkill();
                           addSkillControllerImpl.goToHomePage();
+                          addSkillControllerImpl.clearTextInput();
                           // getSkillPostDataControllerImpl.getSkillPostData();
                         }),
 

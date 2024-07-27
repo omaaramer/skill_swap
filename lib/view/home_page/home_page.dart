@@ -48,7 +48,7 @@ class HomePageHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Swap, learn, grow", style: AppStyle.styleBold26(context)),
+          Text("Swap, learn, grow", style: AppStyle.styleBold18(context)),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                   // shape: const CircleBorder(),

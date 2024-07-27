@@ -22,12 +22,11 @@ import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: "/",
-    page: () =>
-        // FirebaseAuth.instance.currentUser != null &&
-        // FirebaseAuth.instance.currentUser!.emailVerified
-        //  ?EditProfile()
-        const OnBoardingPageView(),
-    // middlewares: [MyMiddleWare()],
+    page: () => FirebaseAuth.instance.currentUser != null &&
+            FirebaseAuth.instance.currentUser!.emailVerified
+        ? const EditProfile()
+        : const OnBoardingPageView(),
+    middlewares: [MyMiddleWare()],
   ),
   GetPage(
     name: Routes.welcomeScreen,
@@ -61,9 +60,11 @@ List<GetPage<dynamic>>? getPages = [
       name: Routes.verifyCodeSignUpScreen,
       page: () => const VerifyCodeSignUpScreen()),
   GetPage(name: Routes.homePage, page: () => HomePage()),
-  GetPage(name: Routes.userinfo, page: () => PersonalDatailsOne()),
-  GetPage(name: Routes.editProfilePageview, page: () => EditProfilePageview()),
-  GetPage(name: Routes.editProfile, page: () => EditProfile()),
+  GetPage(name: Routes.userinfo, page: () => const PersonalDatailsOne()),
+  GetPage(
+      name: Routes.editProfilePageview,
+      page: () => const EditProfilePageview()),
+  GetPage(name: Routes.editProfile, page: () => const EditProfile()),
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
 ];
 

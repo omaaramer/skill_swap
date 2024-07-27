@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomDottedBorder extends StatelessWidget {
@@ -51,22 +52,19 @@ class CustomDottedBorder extends StatelessWidget {
                 onTap: onTap,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child: Image.network(
-                    imageUrl!,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl!,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
+                    placeholder: (context, url) => const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(
                       Icons.error,
                       color: Colors.red,
                     ),
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: CircularProgressIndicator(
-                          color: Colors.white,
-                        ),
-                      );
-                    },
                   ),
                 ),
               ),

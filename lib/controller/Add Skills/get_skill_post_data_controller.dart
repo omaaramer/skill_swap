@@ -20,11 +20,20 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
   Future<void> fetchPosts() async {
     try {
       isLoading.value = true;
-      final snapshot =
-          await FirebaseFirestore.instance.collection("skills").get();
-      var myPosts =
-          snapshot.docs.map((doc) => PostModel.fromMap(doc.data())).toList();
-      posts.assignAll(myPosts);
+      FirebaseFirestore.instance
+          .collection("skills")
+          .snapshots()
+          .listen((snapshot) {
+        var myPosts =
+            snapshot.docs.map((doc) => PostModel.fromMap(doc.data())).toList();
+        posts.assignAll(myPosts);
+      });
+
+      // final snapshot =
+      //     await FirebaseFirestore.instance.collection("skills").get();
+      // var myPosts =
+      //     snapshot.docs.map((doc) => PostModel.fromMap(doc.data())).toList();
+      // posts.assignAll(myPosts);
     } catch (e) {
       if (Get.isSnackbarOpen == false) {
         Get.snackbar('Error', 'Failed to fetch posts: $e');

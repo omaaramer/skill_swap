@@ -52,6 +52,8 @@ class AddSkillControllerImpl extends AddSkillController {
     mySkill.clear();
     skillOfferedDescription.clear();
     skillNeeded.clear();
+    url = null;
+    _image = null;
     skillRequestedDescription.clear();
   }
 
