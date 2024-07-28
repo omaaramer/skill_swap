@@ -49,11 +49,11 @@ class UploadeImage extends StatelessWidget {
             GetBuilder<ProfileControllerImpl>(
               builder: (_) => CustomUploadWidget(
                 url: profileController.url,
-                onTap: () async {
-                  await profileController.getImageFromGallery();
+                onTap: () {
+                  profileController.getImageFromGallery();
                 },
-                onPressed: () async {
-                  await profileController.getImageFromGallery();
+                onPressed: () {
+                  profileController.getImageFromGallery();
                   // Save Image to some storage
                 },
               ),
@@ -64,7 +64,6 @@ class UploadeImage extends StatelessWidget {
                 textStyle: AppStyle.stylerBold20(context),
                 onPressed: () {
                   profileController.addUserData();
-                  profilepageController.next();
                 }),
           ],
         ),

@@ -12,6 +12,8 @@ abstract class ProfilePageViewController extends GetxController {
 
 class ProfilePageViewControllerImpl extends ProfilePageViewController {
   late PageController pageController;
+  final formKey = GlobalKey<FormState>();
+
   int currentIndex = 0;
   @override
   onchangePage(int index) {

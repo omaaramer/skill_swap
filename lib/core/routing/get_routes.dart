@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
+import 'package:skill_swap/view/home_page/custom_skill_card.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 import 'package:skill_swap/view/user_info/personal_datails_1.dart';
@@ -66,6 +67,9 @@ List<GetPage<dynamic>>? getPages = [
       page: () => const EditProfilePageview()),
   GetPage(name: Routes.editProfile, page: () => const EditProfile()),
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
+  // GetPage(
+  //     name: Routes.detailedPostCard,
+  //     page: () => const DetailedPostCard()),
 ];
 
 

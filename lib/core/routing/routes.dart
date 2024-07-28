@@ -14,4 +14,5 @@ class Routes {
   static const editProfilePageview = '/EditProfilePageview';
   static const editProfile = '/EditProfile';
   static const addSkillScreen = '/AddSkillScreen';
+  static const detailedPostCard = '/DetailedPostCard';
 }

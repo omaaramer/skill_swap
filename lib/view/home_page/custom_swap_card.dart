@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skill_swap/core/theming/assets.dart';
-import 'package:skill_swap/view/auth/widgets/divider.dart';
+import 'package:get/get.dart';
+import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/home_page/widgets/bottom_icon_bar.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_divider.dart';
 import 'widgets/card_image.dart';
@@ -30,41 +30,46 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-      child: Container(
-        height: 510,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey.shade300,
-        ),
-        child: Column(
-          children: [
-            CustomUserLisTile(
-              name: userName,
-              address: address,
-              imageUrl: userImageUrl,
-            ),
-            const CustomCardDivider(),
-            const SizedBox(height: 10),
-            CustomCardImage(
-              imageUrl: skillImageUrl,
-            ),
-            CustomSkillLisTile(
-              title: 'WILL OFFER YOU',
-              skill: mySkill,
-              isOnline: isOnline,
-            ),
-            const CustomCardDivider(
-              endIndent: 20,
-              indent: 16,
-            ),
-            CustomSkillLisTile(
-              title: 'IN EXPECTATION FOR',
-              skill: skillNedded,
-              isOnline: isOnline,
-            ),
-            const CustomCardDivider(),
-            const CardBottomIconBar()
-          ],
+      child: GestureDetector(
+        onTap: () {
+          Get.toNamed(Routes.detailedPostCard);
+        },
+        child: Container(
+          height: 510,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.grey.shade300,
+          ),
+          child: Column(
+            children: [
+              CustomUserLisTile(
+                name: userName,
+                address: address,
+                imageUrl: userImageUrl,
+              ),
+              const CustomCardDivider(),
+              const SizedBox(height: 10),
+              CustomCardImage(
+                imageUrl: skillImageUrl,
+              ),
+              CustomSkillLisTile(
+                title: 'WILL OFFER YOU',
+                skill: mySkill,
+                isOnline: isOnline,
+              ),
+              const CustomCardDivider(
+                endIndent: 20,
+                indent: 16,
+              ),
+              CustomSkillLisTile(
+                title: 'IN EXPECTATION FOR',
+                skill: skillNedded,
+                isOnline: isOnline,
+              ),
+              const CustomCardDivider(),
+              const CardBottomIconBar()
+            ],
+          ),
         ),
       ),
     );

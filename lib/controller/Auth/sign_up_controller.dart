@@ -10,7 +10,7 @@ abstract class SignUpController extends GetxController {
 }
 
 class SignUpControllerImpl extends SignUpController {
-  late GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController username;
   late TextEditingController phone;

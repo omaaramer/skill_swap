@@ -16,7 +16,6 @@ class PersonalDatailsOne extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileControllerImpl profileController = Get.put(ProfileControllerImpl());
     ProfilePageViewControllerImpl profilepageController = Get.find();
-
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -39,14 +38,14 @@ class PersonalDatailsOne extends StatelessWidget {
                     ),
                     const Expanded(child: SizedBox(height: 20)),
                     Form(
-                      key: profileController.formKey,
+                      key: profilepageController.formKey,
                       child: Column(
                         children: [
                           CustomTextFormField(
                             hint: "Your Username",
                             mycontroller: profileController.name,
                             validator: (value) {
-                              return validInput(value!, 3, 20, "username");
+                              return validInput(value!, 3, 20, "text");
                             },
                             icon: Icons.person,
                           ),
@@ -61,11 +60,11 @@ class PersonalDatailsOne extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           CustomTextFormField(
-                            hint: "Your Email",
+                            hint: "Your Title,eg.developer, designer, etc",
                             mycontroller: profileController.email,
                             icon: Icons.email,
                             validator: (value) {
-                              return validInput(value!, 3, 50, "email");
+                              return validInput(value!, 3, 50, "text");
                             },
                           ),
                           const SizedBox(height: 10),
@@ -83,7 +82,10 @@ class PersonalDatailsOne extends StatelessWidget {
                             buttonText: "Save Changes",
                             textStyle: AppStyle.stylerBold20(context),
                             onPressed: () {
-                              profilepageController.next();
+                              if (profilepageController.formKey.currentState!
+                                  .validate()) {
+                                profilepageController.next();
+                              }
                               // profileController.clearTextInput();
                             },
                           ),

@@ -36,7 +36,8 @@ class SignInControllerImpl extends SignInController {
 
   @override
   void signIn() async {
-    if (formKey.currentState!.validate()) {
+    var formDate = formKey.currentState;
+    if (formDate!.validate()) {
       try {
         final credential =
             await FirebaseAuth.instance.signInWithEmailAndPassword(
