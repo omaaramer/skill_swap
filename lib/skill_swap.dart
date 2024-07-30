@@ -23,8 +23,13 @@ class SkillSwap extends StatelessWidget {
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
         title: 'SkillSwap',
+        // darkTheme: ThemeData(
+        //   primaryColor: AppColors.primary,
+        //   brightness: Brightness.dark, // This is the dark theme
+        // ),
         theme: ThemeData(
           primaryColor: AppColors.primary,
+          brightness: Brightness.light, // This is the light theme
         ),
         debugShowCheckedModeBanner: false,
         getPages: getPages,

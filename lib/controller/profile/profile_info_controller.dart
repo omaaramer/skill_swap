@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/data/models/user_model.dart';
 
 abstract class ProfileController extends GetxController {
   getImageFromGallery();
@@ -18,7 +19,7 @@ abstract class ProfileController extends GetxController {
 class ProfileControllerImpl extends ProfileController {
   TextEditingController name = TextEditingController();
   TextEditingController address = TextEditingController();
-  TextEditingController email = TextEditingController();
+  TextEditingController jopTitle = TextEditingController();
   TextEditingController phone = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   final formKey = GlobalKey<FormState>();
@@ -52,6 +53,13 @@ class ProfileControllerImpl extends ProfileController {
     }
   }
 
+  // UserModel user = UserModel(
+  //   fullname: name.text,
+  //   address: address,
+  //   jopTitle: "",
+  //   userId: "",
+  //   profileImageUrl: "",
+  // );
   @override
   addUserData() {
     if (url != null) {
@@ -59,7 +67,7 @@ class ProfileControllerImpl extends ProfileController {
         AppConstant.kFullname: name.text,
         AppConstant.kAddress: address.text,
         AppConstant.kPhone: phone.text,
-        AppConstant.kEmail: email.text,
+        AppConstant.kJopTitle: jopTitle.text,
         AppConstant.kBirthDate: birthDate,
         AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,
         AppConstant.kProfileImageUrl: url ?? "none",
@@ -89,7 +97,7 @@ class ProfileControllerImpl extends ProfileController {
 
   @override
   void dispose() {
-    email.dispose();
+    jopTitle.dispose();
     name.dispose();
     address.dispose();
     phone.dispose();

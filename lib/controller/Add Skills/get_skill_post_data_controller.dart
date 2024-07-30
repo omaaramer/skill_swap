@@ -25,7 +25,7 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
           .snapshots()
           .listen((snapshot) {
         var myPosts =
-            snapshot.docs.map((doc) => PostModel.fromMap(doc.data())).toList();
+            snapshot.docs.map((doc) => PostModel.fromJson(doc.data())).toList();
         posts.assignAll(myPosts);
       });
 

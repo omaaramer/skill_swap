@@ -11,13 +11,15 @@ class OnBoardingButton extends GetView<OnBoardingControllerImpl> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
-      child: AppTextButton(
-        backgroundColor: AppColors.primary,
-        buttonText: controller.changeButtonText(),
-        textStyle: const TextStyle(color: Colors.white),
-        onPressed: () {
-          controller.next();
-        },
+      child: Obx(
+        () => AppTextButton(
+          backgroundColor: AppColors.primary,
+          buttonText: controller.isLastPage.value ? "Get Started" : "Next",
+          textStyle: const TextStyle(color: Colors.white),
+          onPressed: () {
+            controller.next();
+          },
+        ),
       ),
     );
   }

@@ -61,7 +61,7 @@ class PersonalDatailsOne extends StatelessWidget {
                           const SizedBox(height: 10),
                           CustomTextFormField(
                             hint: "Your Title,eg.developer, designer, etc",
-                            mycontroller: profileController.email,
+                            mycontroller: profileController.jopTitle,
                             icon: Icons.email,
                             validator: (value) {
                               return validInput(value!, 3, 50, "text");

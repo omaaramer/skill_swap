@@ -22,7 +22,7 @@ class PostModel {
     required this.dateTime,
   });
 
-  factory PostModel.fromMap(Map<String, dynamic> map) {
+  factory PostModel.fromJson(Map<String, dynamic> map) {
     return PostModel(
       mySkill: map[AppConstant.kMySkill],
       skillNeeded: map[AppConstant.kSkillNeeded],
@@ -33,5 +33,18 @@ class PostModel {
       dateTime: (map[AppConstant.kTime] as Timestamp).toDate(),
       skillId: map[AppConstant.kId],
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      AppConstant.kMySkill: mySkill,
+      AppConstant.kSkillNeeded: skillNeeded,
+      // AppConstant.kSkillOfferedDescription: skillOfferedDescription,
+      // AppConstant.kSkillRequiredDescription: skillRequiredDescription,
+      AppConstant.kSkillImageUrl: skillImage,
+      AppConstant.kIsOnline: isOnline,
+      AppConstant.kTime: dateTime,
+      AppConstant.kId: skillId,
+    };
   }
 }

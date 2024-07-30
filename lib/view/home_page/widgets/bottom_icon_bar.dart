@@ -1,49 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:skill_swap/core/theming/assets.dart';
-import 'package:skill_swap/core/theming/colores.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:icon_broken/icon_broken.dart';
 
 class CardBottomIconBar extends StatelessWidget {
   const CardBottomIconBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                backgroundColor: Colors.grey.shade300,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        MaterialButton(
+          padding: EdgeInsets.only(left: 8.w, right: 8.w, bottom: 8.h),
+          onPressed: () {},
+          child: Row(
+            children: [
+              const CircleAvatar(
+                radius: 22,
+                backgroundImage: NetworkImage(
+                    "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
               ),
-              onPressed: () {},
-              child:
-                  Image.asset(color: AppColors.primary, Assets.imagesSaveIcon)),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              backgroundColor: Colors.grey.shade300,
-            ),
-            onPressed: () {},
-            child: Image.asset(
-              Assets.imagesSwapIcon,
-              color: AppColors.primary,
-            ),
+              SizedBox(width: 8.w),
+              Text(
+                "Write a Comment...",
+                style: TextStyle(fontSize: 13.sp),
+              ),
+            ],
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              backgroundColor: Colors.grey.shade300,
-            ),
-            onPressed: () {},
-            child: Image.asset(
-              Assets.imagesMessageIcon,
-              color: AppColors.primary,
-            ),
-          ),
-        ],
-      ),
+        ),
+        Center(
+          child: Transform.rotate(
+              angle: 90 * (3.14159 / 180), // Convert degrees to radians
+              child: IconButton(
+                icon: Icon(
+                  IconBroken.Swap,
+                  size: 22.sp, // Color of the icon
+                ),
+                onPressed: () {},
+              )),
+        ),
+        IconButton(onPressed: () {}, icon: const Icon(IconBroken.Chat)),
+      ],
     );
   }
 }

@@ -9,16 +9,18 @@ import 'package:skill_swap/data/static/onboarding_static_data.dart';
 abstract class OnBoardingController extends GetxController {
   next();
   onPageChanged(int index);
-  changeButtonText();
 }
 
 class OnBoardingControllerImpl extends OnBoardingController {
   int currentPageIndex = 0;
   late PageController pageController;
   MyServices myServices = Get.find();
+  RxBool isLastPage = false.obs;
   @override
   next() {
     if (currentPageIndex == onBoardingList.length - 1) {
+      isLastPage = true.obs;
+      update();
       if (FirebaseAuth.instance.currentUser != null &&
           FirebaseAuth.instance.currentUser!.emailVerified) {
         myServices.sharedPreferences.setBool(AppConstant.kOnBoardingPref, true);
@@ -46,14 +48,5 @@ class OnBoardingControllerImpl extends OnBoardingController {
   void onInit() {
     pageController = PageController();
     super.onInit();
-  }
-
-  @override
-  changeButtonText() {
-    if (currentPageIndex == onBoardingList.length - 1) {
-      return "Get Started";
-    } else {
-      return "Continue";
-    }
   }
 }

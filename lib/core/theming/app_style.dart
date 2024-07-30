@@ -12,7 +12,7 @@ abstract class AppStyle {
 
   static TextStyle styleBold18(context) {
     return TextStyle(
-        fontSize: getResponsiveFontSize(context, fontSize: 20),
+        fontSize: getResponsiveFontSize(context, fontSize: 18),
         fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         color: AppColors.primary);

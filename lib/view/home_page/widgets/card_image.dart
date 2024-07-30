@@ -7,12 +7,13 @@ class CustomCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Container(
         height: 200,
         width: double.infinity,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
         child: FutureBuilder<Image>(
           future: _loadImage(imageUrl),
@@ -23,7 +24,7 @@ class CustomCardImage extends StatelessWidget {
               return const Center(child: Text('Error loading image'));
             } else {
               return ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(5),
                 child: Image(
                   image: snapshot.data!.image,
                   fit: BoxFit.cover,

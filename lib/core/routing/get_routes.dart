@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
-import 'package:skill_swap/view/home_page/custom_skill_card.dart';
+import 'package:skill_swap/view/home_page/widgets/custom_skill_card.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 import 'package:skill_swap/view/user_info/personal_datails_1.dart';
@@ -16,7 +16,7 @@ import 'package:skill_swap/view/auth/success_reset_password.dart';
 import 'package:skill_swap/view/auth/success_sign_up.dart';
 import 'package:skill_swap/view/auth/verfiy_code_sign_up.dart';
 import 'package:skill_swap/view/auth/verify_screen.dart';
-import 'package:skill_swap/view/home_page/home_page.dart';
+import 'package:skill_swap/view/home_page/main_screen.dart';
 import 'package:skill_swap/view/onBoarding/onboarding_pageView.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 

@@ -23,7 +23,7 @@ class GetUserControllerImpl extends GetUserController {
           .snapshots()
           .listen((snapshot) {
         var users =
-            snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList();
+            snapshot.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
         userList.assignAll(users);
       });
       // final snapshot =
