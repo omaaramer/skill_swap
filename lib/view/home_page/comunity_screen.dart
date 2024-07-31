@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-class ComunityScreen extends StatelessWidget {
-  const ComunityScreen({super.key});
+class CommunityScreen extends StatelessWidget {
+  const CommunityScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

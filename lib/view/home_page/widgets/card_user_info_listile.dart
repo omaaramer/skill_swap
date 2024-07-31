@@ -20,12 +20,11 @@ class CustomUserLisTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  Text(name,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.sp)),
+                  Text(name, style: AppStyle.blackTitle(context)),
                   SizedBox(width: 5.w),
                   Icon(Icons.check_circle,
                       color: AppColors.primary, size: 13.sp),
@@ -39,28 +38,6 @@ class CustomUserLisTile extends StatelessWidget {
             backgroundImage: NetworkImage(imageUrl),
           )
         ],
-      ),
-    );
-    ListTile(
-      minVerticalPadding: 0,
-      contentPadding: EdgeInsets.all(8.sp),
-      title: Row(
-        children: [
-          Text(name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp)),
-          SizedBox(width: 5.w),
-          Icon(Icons.check_circle, color: AppColors.primary, size: 13.sp),
-        ],
-      ),
-      subtitle: Text(jopTitle, style: TextStyle(fontSize: 13.sp)),
-      trailing: Container(
-        height: 70,
-        width: 70,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image:
-              DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover),
-        ),
       ),
     );
   }

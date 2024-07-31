@@ -19,10 +19,10 @@ class CardInfoBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(IconBroken.Location,
-                    color: AppColors.primary, size: 18.sp),
+                    color: AppColors.primary, size: 15.sp),
                 Text(
                   address,
-                  style: TextStyle(fontSize: 13.sp),
+                  style: TextStyle(fontSize: 11.sp),
                 ),
               ],
             ),
@@ -33,10 +33,10 @@ class CardInfoBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(Icons.language_outlined,
-                    color: AppColors.primary.withOpacity(.8), size: 18.sp),
+                    color: AppColors.primary.withOpacity(.8), size: 15.sp),
                 Text(
                   "Arabic",
-                  style: TextStyle(fontSize: 13.sp),
+                  style: TextStyle(fontSize: 11.sp),
                 ),
               ],
             ),

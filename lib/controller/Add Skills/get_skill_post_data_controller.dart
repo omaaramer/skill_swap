@@ -8,7 +8,7 @@ abstract class GetSkillPostDataController extends GetxController {
 
 class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
   var posts = <PostModel>[].obs;
-  var isLoading = false.obs;
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {

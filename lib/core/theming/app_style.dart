@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 abstract class AppStyle {
@@ -8,6 +9,14 @@ abstract class AppStyle {
         fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         color: AppColors.primary);
+  }
+
+  static TextStyle blackTitle(context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold,
+    );
   }
 
   static TextStyle styleBold18(context) {

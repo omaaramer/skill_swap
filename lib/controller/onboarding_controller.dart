@@ -15,12 +15,9 @@ class OnBoardingControllerImpl extends OnBoardingController {
   int currentPageIndex = 0;
   late PageController pageController;
   MyServices myServices = Get.find();
-  RxBool isLastPage = false.obs;
   @override
   next() {
     if (currentPageIndex == onBoardingList.length - 1) {
-      isLastPage = true.obs;
-      update();
       if (FirebaseAuth.instance.currentUser != null &&
           FirebaseAuth.instance.currentUser!.emailVerified) {
         myServices.sharedPreferences.setBool(AppConstant.kOnBoardingPref, true);

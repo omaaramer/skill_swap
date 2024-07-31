@@ -37,10 +37,11 @@ class PostCard extends StatelessWidget {
         },
         child: Container(
           width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(8),
+          // ),
           child: Card(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
             elevation: 20,
             child: Column(
               children: [

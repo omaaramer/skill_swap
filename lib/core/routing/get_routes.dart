@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
+import 'package:skill_swap/view/home_page/chat_screen.dart';
+import 'package:skill_swap/view/home_page/comunity_screen.dart';
+import 'package:skill_swap/view/home_page/profile_screen.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_skill_card.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
@@ -67,10 +70,17 @@ List<GetPage<dynamic>>? getPages = [
       page: () => const EditProfilePageview()),
   GetPage(name: Routes.editProfile, page: () => const EditProfile()),
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
+  GetPage(name: Routes.profileScreen, page: () => const ProfileScreen()),
+  GetPage(name: Routes.chatScreen, page: () => const ChatScreen()),
+  GetPage(name: Routes.communityScreen, page: () => const CommunityScreen()),
   // GetPage(
   //     name: Routes.detailedPostCard,
   //     page: () => const DetailedPostCard()),
 ];
+
+class PostsScreen {
+  const PostsScreen();
+}
 
 
 

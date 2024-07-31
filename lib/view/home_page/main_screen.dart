@@ -21,6 +21,9 @@ class HomePage extends StatelessWidget {
 
         appBar: AppBar(
           elevation: 1,
+          title: Obx(
+            () => Text(controller.titles[controller.selectedIndex.value]),
+          ),
           leading: IconButton(
               onPressed: () {
                 scaffoldKey.currentState?.openDrawer();

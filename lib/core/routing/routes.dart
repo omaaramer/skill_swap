@@ -15,4 +15,8 @@ class Routes {
   static const editProfile = '/EditProfile';
   static const addSkillScreen = '/AddSkillScreen';
   static const detailedPostCard = '/DetailedPostCard';
+  static const profileScreen = '/ProfileScreen';
+  static const chatScreen = '/ChatScreen';
+  static const communityScreen = '/CommunityScreen';
+  static const postsScreen = '/PostsScreen';
 }
