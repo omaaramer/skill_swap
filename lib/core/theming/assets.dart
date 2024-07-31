@@ -57,6 +57,10 @@ class Assets {
   /// assets/images/onboarding4.svg
   static const String imagesOnboarding4 = "assets/images/onboarding4.svg";
 
+  /// Assets for imagesPlaceholder
+  /// assets/images/placeholder.png
+  static const String imagesPlaceholder = "assets/images/placeholder.png";
+
   /// Assets for imagesSaveIcon
   /// assets/images/save_icon.png
   static const String imagesSaveIcon = "assets/images/save_icon.png";

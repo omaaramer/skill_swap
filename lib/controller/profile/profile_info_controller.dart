@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 
 abstract class ProfileController extends GetxController {

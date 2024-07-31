@@ -31,6 +31,16 @@ class CardBottomIconBar extends StatelessWidget {
             ],
           ),
         ),
+        IconButton(
+            onPressed: () {
+              Get.toNamed(Routes.chatScreen);
+            },
+            icon: Row(
+              children: [
+                const Icon(IconBroken.Chat, size: 20),
+                Text("Chat", style: TextStyle(fontSize: 13.sp)),
+              ],
+            )),
         Center(
           child: IconButton(
             icon: Row(
@@ -69,16 +79,6 @@ class CardBottomIconBar extends StatelessWidget {
             },
           ),
         ),
-        IconButton(
-            onPressed: () {
-              Get.toNamed(Routes.chatScreen);
-            },
-            icon: Row(
-              children: [
-                const Icon(IconBroken.Chat, size: 20),
-                Text("Chat", style: TextStyle(fontSize: 13.sp)),
-              ],
-            )),
       ],
     );
   }

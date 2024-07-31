@@ -17,8 +17,13 @@ class CustomUserLisTile extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8, right: 8, top: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          CircleAvatar(
+            radius: 22.sp,
+            backgroundImage: NetworkImage(imageUrl),
+          ),
+          SizedBox(width: 10.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -33,10 +38,8 @@ class CustomUserLisTile extends StatelessWidget {
               Text(jopTitle, style: TextStyle(fontSize: 13.sp)),
             ],
           ),
-          CircleAvatar(
-            radius: 25.sp,
-            backgroundImage: NetworkImage(imageUrl),
-          )
+          const Spacer(),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
         ],
       ),
     );

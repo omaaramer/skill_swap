@@ -3,8 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/view/chat/chat_page.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
-import 'package:skill_swap/view/home_page/chat_screen.dart';
 import 'package:skill_swap/view/home_page/comunity_screen.dart';
 import 'package:skill_swap/view/home_page/profile_screen.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_skill_card.dart';
@@ -71,7 +71,7 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: Routes.editProfile, page: () => const EditProfile()),
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
   GetPage(name: Routes.profileScreen, page: () => const ProfileScreen()),
-  GetPage(name: Routes.chatScreen, page: () => const ChatScreen()),
+  GetPage(name: Routes.chatScreen, page: () => ChatHomePage()),
   GetPage(name: Routes.communityScreen, page: () => const CommunityScreen()),
   // GetPage(
   //     name: Routes.detailedPostCard,
