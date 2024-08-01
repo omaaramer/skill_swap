@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/view/home_page/widgets/bottom_icon_bar.dart';
 import 'package:skill_swap/view/home_page/widgets/card_infi_bar.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_divider.dart';
@@ -17,6 +18,7 @@ class PostCard extends StatelessWidget {
     required this.skillNedded,
     required this.isOnline,
     required this.jopTitle,
+    required this.userModel,
   });
   final String userName,
       address,
@@ -26,11 +28,12 @@ class PostCard extends StatelessWidget {
       jopTitle,
       isOnline,
       skillNedded;
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10, top: 10),
+      padding: const EdgeInsets.only(left: 8, right: 8),
       child: GestureDetector(
         onTap: () {
           // Get.toNamed(Routes.detailedPostCard);
@@ -71,7 +74,7 @@ class PostCard extends StatelessWidget {
                 const SizedBox(height: 10),
                 CardInfoBar(address: address),
                 const CustomCardDivider(),
-                const CardBottomIconBar()
+                CardBottomIconBar(userModel: userModel),
               ],
             ),
           ),

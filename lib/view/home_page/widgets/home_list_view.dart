@@ -19,16 +19,17 @@ class HomePageListView extends StatelessWidget {
         return const Center(child: CircularProgressIndicator());
       }
 
-      if (postController.posts.isEmpty) {
-        return const Center(child: Text('No posts available'));
-      }
+      // if (postController.posts.isEmpty) {
+      //   return const Center(child: Text('No posts available'));
+      // }
 
       return ListView.builder(
         itemCount: postController.posts.length,
         itemBuilder: (context, index) {
           final post = postController.posts[index];
-          final user = userController.userList
-              .lastWhere((user) => user.userId == post.skillId);
+          final user = userController.userList.firstWhere(
+            (user) => user.userId == post.skillId,
+          );
 
           return PostCard(
             jopTitle: user.jopTitle,
@@ -39,6 +40,7 @@ class HomePageListView extends StatelessWidget {
             mySkill: post.mySkill,
             skillNedded: post.skillNeeded,
             isOnline: post.isOnline,
+            userModel: user,
           );
         },
       );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/home/home_page_controller.dart';
 import 'package:icon_broken/icon_broken.dart';
@@ -25,7 +26,7 @@ class CustomBottomNavBar extends StatelessWidget {
           BottomNavigationBarItem(
               icon: CircleAvatar(
                   backgroundColor: AppColors.primary,
-                  child: Icon(IconBroken.Edit, color: Colors.white)),
+                  child: Icon(IconBroken.Edit, color: Colors.white, size: 30)),
               label: "Add Skill"),
           BottomNavigationBarItem(
               icon: Icon(IconBroken.User1), label: "Community"),

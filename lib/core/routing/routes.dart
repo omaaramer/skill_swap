@@ -16,7 +16,8 @@ class Routes {
   static const addSkillScreen = '/AddSkillScreen';
   static const detailedPostCard = '/DetailedPostCard';
   static const profileScreen = '/ProfileScreen';
-  static const chatScreen = '/ChatScreen';
+  static const chatHomePage = '/ChatHomePage';
   static const communityScreen = '/CommunityScreen';
   static const postsScreen = '/PostsScreen';
+  static const chatScreen = '/ChatScreen';
 }

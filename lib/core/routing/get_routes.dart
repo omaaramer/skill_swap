@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/middleware/middle_ware.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/chat/chat_page.dart';
+import 'package:skill_swap/view/chat/chat_screen.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
 import 'package:skill_swap/view/home_page/comunity_screen.dart';
+import 'package:skill_swap/view/home_page/posts_screen.dart';
 import 'package:skill_swap/view/home_page/profile_screen.dart';
-import 'package:skill_swap/view/home_page/widgets/custom_skill_card.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 import 'package:skill_swap/view/user_info/personal_datails_1.dart';
@@ -26,11 +26,14 @@ import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: "/",
-    page: () => FirebaseAuth.instance.currentUser != null &&
-            FirebaseAuth.instance.currentUser!.emailVerified
-        ? const EditProfile()
-        : const OnBoardingPageView(),
-    middlewares: [MyMiddleWare()],
+    page: () =>
+        // FirebaseAuth.instance.currentUser != null &&
+        //         FirebaseAuth.instance.currentUser!.emailVerified
+        //     ? const
+        // EditProfile()
+        //     : const
+        OnBoardingPageView(),
+    // middlewares: [MyMiddleWare()],
   ),
   GetPage(
     name: Routes.welcomeScreen,
@@ -71,8 +74,12 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: Routes.editProfile, page: () => const EditProfile()),
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
   GetPage(name: Routes.profileScreen, page: () => const ProfileScreen()),
-  GetPage(name: Routes.chatScreen, page: () => ChatHomePage()),
+  GetPage(name: Routes.chatHomePage, page: () => ChatHomePage()),
   GetPage(name: Routes.communityScreen, page: () => const CommunityScreen()),
+
+  GetPage(name: Routes.postsScreen, page: () => const PostsPage()),
+
+  // GetPage(name: Routes.chatScreen, page: () => ChatScreen(u)),
   // GetPage(
   //     name: Routes.detailedPostCard,
   //     page: () => const DetailedPostCard()),
@@ -81,16 +88,6 @@ List<GetPage<dynamic>>? getPages = [
 class PostsScreen {
   const PostsScreen();
 }
-
-
-
-
-
-
-
-
-
-
 
 // Map<String, Widget Function(BuildContext)> routes = {
 //   Routes.onBoardingScrreen: (context) => const OnBoardingPageView(),
@@ -105,4 +102,3 @@ class PostsScreen {
 //       const SuccessResetPasswordScreen(),
 //   Routes.verifyCodeSignUpScreen: (context) => const VerifyCodeSignUpScreen(),
 // };
- 

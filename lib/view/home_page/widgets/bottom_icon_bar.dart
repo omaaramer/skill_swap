@@ -1,14 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
-import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
+import 'package:skill_swap/data/models/user_model.dart';
+import 'package:skill_swap/view/chat/chat_screen.dart';
 
 class CardBottomIconBar extends StatelessWidget {
-  const CardBottomIconBar({super.key});
-
+  const CardBottomIconBar({super.key, required this.userModel});
+  final UserModel userModel;
   @override
   Widget build(BuildContext context) {
+    GetUserControllerImpl userController = Get.find();
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,10 +22,10 @@ class CardBottomIconBar extends StatelessWidget {
           onPressed: () {},
           child: Row(
             children: [
-              const CircleAvatar(
-                radius: 22,
-                backgroundImage: NetworkImage(
-                    "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+              CircleAvatar(
+                radius: 16.sp,
+                backgroundImage:
+                    NetworkImage(userController.user!.profileImageUrl),
               ),
               SizedBox(width: 8.w),
               Text(
@@ -33,7 +37,9 @@ class CardBottomIconBar extends StatelessWidget {
         ),
         IconButton(
             onPressed: () {
-              Get.toNamed(Routes.chatScreen);
+              if (userController.user!.userId != userModel.userId) {
+                Get.to(() => ChatScreen(userModel: userModel));
+              }
             },
             icon: Row(
               children: [

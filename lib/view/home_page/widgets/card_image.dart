@@ -8,7 +8,7 @@ class CustomCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 200,
+      height: height ?? 250,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.grey[300],

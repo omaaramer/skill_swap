@@ -6,11 +6,11 @@ class UserModel {
   final String jopTitle;
   final String address;
   final String userId;
-  final String phone;
+  // final String phone;
   // final DateTime birthDate;
 
   UserModel({
-    required this.phone,
+    // required this.phone,
     required this.jopTitle,
     required this.userId,
     required this.address,
@@ -20,7 +20,7 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
-      phone: map[AppConstant.kPhone],
+      // phone: map[AppConstant.kPhone],
       jopTitle: map[AppConstant.kJopTitle],
       address: map[AppConstant.kAddress],
       fullname: map[AppConstant.kFullname],

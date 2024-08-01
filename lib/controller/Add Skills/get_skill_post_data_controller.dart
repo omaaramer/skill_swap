@@ -20,6 +20,8 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
   Future<void> fetchPosts() async {
     try {
       isLoading.value = true;
+      // await Future.delayed(const Duration(seconds: 3));
+
       FirebaseFirestore.instance
           .collection("skills")
           .snapshots()

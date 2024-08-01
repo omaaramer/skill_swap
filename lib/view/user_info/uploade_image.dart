@@ -59,14 +59,12 @@ class UploadeImage extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            profileController.url != null
-                ? const SizedBox()
-                : AppTextButton(
-                    buttonText: "Upload",
-                    textStyle: AppStyle.stylerBold20(context),
-                    onPressed: () {
-                      profileController.addUserData();
-                    }),
+            AppTextButton(
+                buttonText: "Upload",
+                textStyle: AppStyle.stylerBold20(context),
+                onPressed: () {
+                  profileController.addUserData();
+                }),
           ],
         ),
       ),
