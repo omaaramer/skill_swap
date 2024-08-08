@@ -18,4 +18,6 @@ class AppConstant {
   static const String kCloudStorageProfileImages = "profileImages";
   static const String kCloudStorageSkillImages = "SkillImages";
   static const String kJopTitle = "jopTitle";
+
+  static const String kPostBox = "postBox";
 }

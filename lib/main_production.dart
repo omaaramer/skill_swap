@@ -1,26 +1,30 @@
 import 'dart:io';
 
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:skill_swap/constant.dart';
+import 'package:skill_swap/core/services/firebase_notifications.dart';
 import 'package:skill_swap/core/services/services.dart';
+import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/firebase_options.dart';
+
 import 'package:skill_swap/skill_swap.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 
 void main() async {
-  // Disable auto-refresh for App Check during development
-  // FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(false);
-
-  HttpOverrides.global = new MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   // this for fix text being hidden in flutter screenutil in release mode
   await ScreenUtil.ensureScreenSize();
   await initServices();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseNotifications().initNotifications();
+  await Hive.initFlutter();
+  Hive.registerAdapter(PostModelAdapter());
+  await Hive.openBox<PostModel>(AppConstant.kPostBox);
   runApp(
     // DevicePreview(enabled: true, builder: (context) =>
     const SkillSwap(),

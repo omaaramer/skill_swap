@@ -36,9 +36,9 @@ class HomePageListView extends StatelessWidget {
             userName: user.fullname,
             address: user.address,
             userImageUrl: user.profileImageUrl,
-            skillImageUrl: post.skillImage,
-            mySkill: post.mySkill,
-            skillNedded: post.skillNeeded,
+            skillImageUrl: post.skillImage!,
+            mySkill: post.mySkill!,
+            skillNedded: post.skillNeeded!,
             isOnline: post.isOnline,
             userModel: user,
           );

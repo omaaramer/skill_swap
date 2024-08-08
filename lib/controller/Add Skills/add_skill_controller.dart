@@ -9,6 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 
+import 'get_skill_post_data_controller.dart';
+
 abstract class AddSkillController extends GetxController {
   addSkill();
   clearTextInput();
@@ -22,7 +24,8 @@ class AddSkillControllerImpl extends AddSkillController {
   TextEditingController skillNeeded = TextEditingController();
   TextEditingController skillRequestedDescription = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  GetSkillPostDataControllerImpl getSkillPostDataController =
+      Get.put(GetSkillPostDataControllerImpl());
   String? url;
   File? _image;
   final ImagePicker _picker = ImagePicker();
@@ -61,8 +64,6 @@ class AddSkillControllerImpl extends AddSkillController {
 
   @override
   addSkill() async {
-    // you can check if there is user info or not to add skill
-
     if (formKey.currentState!.validate()) {
       if (url == null) {
         Get.snackbar(
@@ -76,23 +77,23 @@ class AddSkillControllerImpl extends AddSkillController {
       CollectionReference skills =
           FirebaseFirestore.instance.collection('skills');
 
-      await skills
-          .add({
-            AppConstant.kIsOnline: isOnline ? "ONLINE" : "IN PERSON",
-            AppConstant.kMySkill: mySkill.text,
-            AppConstant.kSkillNeeded: skillNeeded.text,
-            AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,
-            AppConstant.kSkillImageUrl: url,
-            AppConstant.kTime: DateTime.now(),
-          })
-          .then((value) => Get.toNamed(Routes.homePage))
-          .catchError((error) {
-            Get.snackbar(
-              "Error",
-              "Failed to add Skill: $error",
-              duration: const Duration(seconds: 3),
-            );
-          });
+      await skills.add({
+        AppConstant.kIsOnline: isOnline ? "ONLINE" : "IN PERSON",
+        AppConstant.kMySkill: mySkill.text,
+        AppConstant.kSkillNeeded: skillNeeded.text,
+        AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,
+        AppConstant.kSkillImageUrl: url,
+        AppConstant.kTime: DateTime.now(),
+      }).then((value) {
+        getSkillPostDataController.fetchPosts();
+        Get.toNamed(Routes.homePage);
+      }).catchError((error) {
+        Get.snackbar(
+          "Error",
+          "Failed to add Skill: $error",
+          duration: const Duration(seconds: 3),
+        );
+      });
       // i am invoking this function here to clear the text fields only if the skill added successfully
       clearTextInput();
     } else {
