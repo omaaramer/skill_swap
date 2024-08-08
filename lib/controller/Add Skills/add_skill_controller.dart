@@ -85,7 +85,7 @@ class AddSkillControllerImpl extends AddSkillController {
         AppConstant.kSkillImageUrl: url,
         AppConstant.kTime: DateTime.now(),
       }).then((value) {
-        getSkillPostDataController.fetchPosts();
+        getSkillPostDataController.getPosts();
         Get.toNamed(Routes.homePage);
       }).catchError((error) {
         Get.snackbar(

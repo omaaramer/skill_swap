@@ -26,7 +26,7 @@ class HomePageListView extends StatelessWidget {
       return ListView.builder(
         itemCount: postController.posts.length,
         itemBuilder: (context, index) {
-          final post = postController.posts[index];
+          final post = postController.fetchPosts()[index];
           final user = userController.userList.firstWhere(
             (user) => user.userId == post.skillId,
           );

@@ -6,21 +6,25 @@ import 'package:skill_swap/core/helpers/save_data_on_hive.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 
 abstract class GetSkillPostDataController extends GetxController {
-  Future<void> fetchPosts();
+  Future<void> getPosts();
+  void fetchCachedPosts();
+  fetchPosts();
 }
 
 class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
   RxList<PostModel> posts = <PostModel>[].obs;
   RxBool isLoading = false.obs;
+  List<PostModel> cachedPosts = [];
 
   @override
   void onInit() {
     super.onInit();
-    fetchPosts();
+    fetchCachedPosts();
+    getPosts();
   }
 
   @override
-  Future<void> fetchPosts() async {
+  Future<void> getPosts() async {
     isLoading.value = true;
 
     FirebaseFirestore.instance.collection("skills").get().then((value) {
@@ -34,5 +38,20 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
         Get.snackbar('Error', 'Failed to fetch posts: $error');
       }
     });
+  }
+
+  @override
+  void fetchCachedPosts() {
+    var postsBox = Hive.box<PostModel>(AppConstant.kPostBox);
+
+    cachedPosts.assignAll(postsBox.values.toList());
+  }
+
+  @override
+  List<PostModel> fetchPosts() {
+    if (cachedPosts.isNotEmpty) {
+      return cachedPosts;
+    }
+    return posts;
   }
 }
