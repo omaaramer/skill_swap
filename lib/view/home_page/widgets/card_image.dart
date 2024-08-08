@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardImage extends StatelessWidget {
@@ -8,36 +9,14 @@ class CustomCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 250,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
-      ),
-      child: FutureBuilder<Image>(
-        future: _loadImage(imageUrl),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return const Center(child: Text('Error loading image'));
-          } else {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: Image(
-                image: snapshot.data!.image,
-                fit: BoxFit.cover,
-              ),
-            );
-          }
-        },
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+      child: CachedNetworkImage(
+        width: double.infinity,
+        height: height,
+        imageUrl: imageUrl,
+        fit: BoxFit.cover,
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
   }
-}
-
-Future<Image> _loadImage(String url) async {
-  final image = NetworkImage(url);
-  await image.evict();
-  return Image(image: image);
 }

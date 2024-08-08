@@ -8,6 +8,7 @@ import 'package:skill_swap/view/home_page/add_skill_screen.dart';
 import 'package:skill_swap/view/home_page/comunity_screen.dart';
 import 'package:skill_swap/view/home_page/posts_screen.dart';
 import 'package:skill_swap/view/home_page/profile_screen.dart';
+import 'package:skill_swap/view/home_page/widgets/custom_skill_card.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 import 'package:skill_swap/view/user_info/personal_datails_1.dart';
@@ -78,6 +79,8 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: Routes.communityScreen, page: () => const CommunityScreen()),
 
   GetPage(name: Routes.postsScreen, page: () => const PostsPage()),
+
+  // GetPage(name: Routes.skillDetailsCard, page: () => const SkillDetailsCard( )),
 
   // GetPage(name: Routes.chatScreen, page: () => ChatScreen(u)),
   // GetPage(

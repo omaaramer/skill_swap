@@ -8,9 +8,11 @@ class CustomSkillLisTile extends StatelessWidget {
       {super.key,
       required this.title,
       required this.skill,
-      required this.isOnline});
+      required this.isOnline,
+      this.descreptionMaxLines});
   final String title, skill;
   final String isOnline;
+  final int? descreptionMaxLines;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,7 +41,7 @@ class CustomSkillLisTile extends StatelessWidget {
           Text(
             skill,
             overflow: TextOverflow.ellipsis,
-            maxLines: 1,
+            maxLines: descreptionMaxLines ?? 1,
             style: TextStyle(fontSize: 13.sp),
           ),
         ],

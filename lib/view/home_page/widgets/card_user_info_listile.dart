@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icon_broken/icon_broken.dart';
@@ -19,9 +20,14 @@ class CustomUserLisTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 22.sp,
-            backgroundImage: NetworkImage(imageUrl),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              height: 55,
+              width: 55,
+              fit: BoxFit.cover,
+            ),
           ),
           SizedBox(width: 10.w),
           Column(

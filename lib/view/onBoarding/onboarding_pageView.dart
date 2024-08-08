@@ -15,9 +15,9 @@ class OnBoardingPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(OnBoardingControllerImpl());
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [

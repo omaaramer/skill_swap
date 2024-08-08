@@ -7,12 +7,11 @@ import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_swap_card.dart';
 
 class HomePageListView extends StatelessWidget {
-  const HomePageListView({super.key});
+  const HomePageListView({super.key, required this.postController});
   final String defaultImageUrl = Assets.imagesPlaceholder;
-
+  final GetSkillPostDataControllerImpl postController;
   @override
   Widget build(BuildContext context) {
-    final postController = Get.put(GetSkillPostDataControllerImpl());
     final userController = Get.put(GetUserControllerImpl());
     return Obx(() {
       if (postController.isLoading.value) {
@@ -32,15 +31,8 @@ class HomePageListView extends StatelessWidget {
           );
 
           return PostCard(
-            jopTitle: user.jopTitle,
-            userName: user.fullname,
-            address: user.address,
-            userImageUrl: user.profileImageUrl,
-            skillImageUrl: post.skillImage!,
-            mySkill: post.mySkill!,
-            skillNedded: post.skillNeeded!,
-            isOnline: post.isOnline,
             userModel: user,
+            postModel: post,
           );
         },
       );

@@ -135,7 +135,7 @@ packages:
     source: hosted
     version: "8.9.2"
   cached_network_image:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: cached_network_image
       sha256: "28ea9690a8207179c319965c13cd8df184d5ee721ae2ce60f398ced1219cea1f"
@@ -183,7 +183,7 @@ packages:
     source: hosted
     version: "1.1.1"
   cloud_firestore:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: cloud_firestore
       sha256: "240c1c3598e62ad58ee665b6df9c65172d2fbe4742770c21ed060e013cb8e037"
@@ -295,7 +295,7 @@ packages:
     source: hosted
     version: "1.2.0"
   dotted_border:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: dotted_border
       sha256: "108837e11848ca776c53b30bc870086f84b62ed6e01c503ed976e8f8c7df9c04"
