@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
 
 class CustomUserLisTile extends StatelessWidget {
   const CustomUserLisTile(
@@ -21,12 +22,21 @@ class CustomUserLisTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(100),
             child: CachedNetworkImage(
               imageUrl: imageUrl,
               height: 55,
               width: 55,
               fit: BoxFit.cover,
+              // placeholder: (context, url) {
+              //   return CustomFadingWidget(
+              //     child: Container(
+              //       decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(100),
+              //           color: Colors.grey),
+              //     ),
+              //   );
+              // },
             ),
           ),
           SizedBox(width: 10.w),

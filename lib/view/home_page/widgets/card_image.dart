@@ -9,21 +9,21 @@ class CustomCardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(5),
       child: CachedNetworkImage(
         width: double.infinity,
         height: height,
         imageUrl: imageUrl,
         fit: BoxFit.cover,
-        // placeholder: (context, url) {
-        //   return CustomFadingWidget(
-        //       child: Container(
-        //     color: Colors.grey,
+        // placeholder: (context, url) => CustomFadingWidget(
+        //   child: Container(
         //     width: double.infinity,
         //     height: height,
-        //   ));
-        // },
+        //     decoration: BoxDecoration(
+        //         borderRadius: BorderRadius.circular(5), color: Colors.grey),
+        //   ),
+        // ),
         errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );

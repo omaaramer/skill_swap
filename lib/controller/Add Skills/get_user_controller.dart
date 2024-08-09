@@ -21,7 +21,7 @@ class GetUserControllerImpl extends GetUserController {
 
   @override
   Future<void> getAllUsers() async {
-    isLoading.value = true;
+    isLoading = true.obs;
 
     try {
       FirebaseFirestore.instance.collection("users").get().then((value) {
@@ -29,7 +29,7 @@ class GetUserControllerImpl extends GetUserController {
             value.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
       });
 
-      isLoading.value = false;
+      isLoading = false.obs;
     } catch (e) {
       if (Get.isSnackbarOpen == false) {
         Get.snackbar('Error', 'Failed to fetch posts: $e');

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -20,10 +21,14 @@ class ChatUserItem extends StatelessWidget {
       onPressed: onPressed,
       icon: Row(
         children: [
-          CircleAvatar(
-            radius: radius ?? 22.sp,
-            backgroundImage: NetworkImage(image),
-          ),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
+                imageUrl: image,
+                height: 50,
+                width: 50,
+              )),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

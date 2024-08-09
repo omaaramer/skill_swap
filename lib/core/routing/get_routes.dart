@@ -25,17 +25,15 @@ import 'package:skill_swap/view/onBoarding/onboarding_pageView.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 
 List<GetPage<dynamic>>? getPages = [
-  GetPage(
-    name: "/",
-    page: () =>
-        // FirebaseAuth.instance.currentUser != null &&
-        //         FirebaseAuth.instance.currentUser!.emailVerified
-        //     ? const
-        // EditProfile()
-        //     : const
-        OnBoardingPageView(),
-    // middlewares: [MyMiddleWare()],
-  ),
+  GetPage(name: "/", page: () => HomePage()
+      // FirebaseAuth.instance.currentUser != null &&
+      //         FirebaseAuth.instance.currentUser!.emailVerified
+      //     ? const
+      // EditProfile()
+      //     : const
+      // OnBoardingPageView(),
+      // middlewares: [MyMiddleWare()],
+      ),
   GetPage(
     name: Routes.welcomeScreen,
     page: () => const WelcomeScreen(),
@@ -76,7 +74,8 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
   GetPage(name: Routes.profileScreen, page: () => const ProfileScreen()),
   GetPage(name: Routes.chatHomePage, page: () => ChatHomePage()),
-  GetPage(name: Routes.communityScreen, page: () => const CommunityScreen()),
+  GetPage(
+      name: Routes.communityScreen, page: () => const SwapRequestesScreen()),
 
   GetPage(name: Routes.postsScreen, page: () => const PostsPage()),
 

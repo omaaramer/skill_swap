@@ -20,17 +20,25 @@ class CustomBottomNavBar extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         onTap: controller.onIconTap,
         currentIndex: controller.selectedIndex.value,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(IconBroken.Home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(IconBroken.Chat), label: "Chat"),
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
+              icon: Icon(IconBroken.Home), label: "Home"),
+          const BottomNavigationBarItem(
+              icon: Icon(IconBroken.Chat), label: "Chat"),
+          const BottomNavigationBarItem(
               icon: CircleAvatar(
                   backgroundColor: AppColors.primary,
                   child: Icon(IconBroken.Edit, color: Colors.white, size: 30)),
               label: "Add Skill"),
           BottomNavigationBarItem(
-              icon: Icon(IconBroken.User1), label: "Community"),
-          BottomNavigationBarItem(icon: Icon(IconBroken.Profile), label: "ME"),
+              icon: Transform.rotate(
+                angle: 90 * (3.14159 / 180), // Convert degrees to radians
+                child: Icon(IconBroken.Swap, size: 20.sp // Color of the icon
+                    ),
+              ),
+              label: "Requests"),
+          const BottomNavigationBarItem(
+              icon: Icon(IconBroken.Profile), label: "ME"),
         ],
       ),
     );

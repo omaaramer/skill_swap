@@ -68,7 +68,7 @@ class PostCard extends StatelessWidget {
               const SizedBox(height: 10),
               CardInfoBar(address: userModel.address),
               const CustomCardDivider(),
-              CardBottomIconBar(userModel: userModel),
+              CardBottomIconBar(userModel: userModel, postModel: postModel),
             ],
           ),
         ),

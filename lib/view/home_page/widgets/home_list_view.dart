@@ -16,13 +16,7 @@ class HomePageListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final userController = Get.put(GetUserControllerImpl());
     return Obx(() {
-      if (postController.isLoading.value) {
-        return PostCardLiadingIndicator();
-      }
-
-      // if (postController.posts.isEmpty) {
-      //   return const Center(child: Text('No posts available'));
-      // }
+      const PostCardLiadingIndicator();
 
       return ListView.builder(
         itemCount: postController.posts.length,

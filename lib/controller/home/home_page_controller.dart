@@ -16,10 +16,10 @@ class HomePageControllerImpl extends HomePageController {
     const PostsPage(),
     ChatHomePage(),
     const AddSkillScreen(),
-    const CommunityScreen(),
+    const SwapRequestesScreen(),
     const ProfileScreen(),
   ];
-  List<String> titles = ['Posts', 'Chat', 'Add Skill', 'Community', 'Profile'];
+  List<String> titles = ['Posts', 'Chat', 'Add Skill', 'Requests', 'Profile'];
   var selectedIndex = 0.obs;
 
   @override

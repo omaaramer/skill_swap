@@ -1,15 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
+import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
+import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/view/chat/chat_screen.dart';
 
+import 'swap_button.dart';
+
 class CardBottomIconBar extends StatelessWidget {
-  const CardBottomIconBar({super.key, required this.userModel});
+  const CardBottomIconBar(
+      {super.key, required this.userModel, required this.postModel});
   final UserModel userModel;
+  final PostModel postModel;
   @override
   Widget build(BuildContext context) {
     GetUserControllerImpl userController = Get.find();
@@ -22,10 +29,23 @@ class CardBottomIconBar extends StatelessWidget {
           onPressed: () {},
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 16.sp,
-                backgroundImage:
-                    NetworkImage(userController.user!.profileImageUrl),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: CachedNetworkImage(
+                  imageUrl: userModel.profileImageUrl,
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.cover,
+                  // placeholder: (context, url) {
+                  //   return CustomFadingWidget(
+                  //     child: Container(
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(100),
+                  //           color: Colors.grey),
+                  //     ),
+                  //   );
+                  // },
+                ),
               ),
               SizedBox(width: 8.w),
               Text(
@@ -47,44 +67,7 @@ class CardBottomIconBar extends StatelessWidget {
                 Text("Chat", style: TextStyle(fontSize: 13.sp)),
               ],
             )),
-        Center(
-          child: IconButton(
-            icon: Row(
-              children: [
-                Row(
-                  children: [
-                    Transform.rotate(
-                      angle: 90 * (3.14159 / 180), // Convert degrees to radians
-                      child: Icon(
-                        IconBroken.Swap,
-                        size: 20.sp, // Color of the icon
-                      ),
-                    ),
-                    Text("Swap", style: TextStyle(fontSize: 13.sp)),
-                  ],
-                ),
-              ],
-            ),
-            onPressed: () {
-              Get.defaultDialog(
-                title: "Swap",
-                content: const Text("Send a Swap Request?"),
-                confirm: TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text("Yes"),
-                ),
-                cancel: TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text("No"),
-                ),
-              );
-            },
-          ),
-        ),
+        SwapButton(userModel: userModel, postModel: postModel),
       ],
     );
   }
