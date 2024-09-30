@@ -5,10 +5,10 @@ import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/view/chat/chat_page.dart';
 import 'package:skill_swap/view/chat/chat_screen.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
-import 'package:skill_swap/view/home_page/comunity_screen.dart';
 import 'package:skill_swap/view/home_page/posts_screen.dart';
-import 'package:skill_swap/view/home_page/profile_screen.dart';
+import 'package:skill_swap/view/my_profile/profile_screen.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_skill_card.dart';
+import 'package:skill_swap/view/swap_requests/recieve_screen.dart';
 import 'package:skill_swap/view/user_info/personal_info_page_view.dart';
 import 'package:skill_swap/view/user_info/components/slider.dart';
 import 'package:skill_swap/view/user_info/personal_datails_1.dart';
@@ -24,16 +24,21 @@ import 'package:skill_swap/view/home_page/main_screen.dart';
 import 'package:skill_swap/view/onBoarding/onboarding_pageView.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen.dart';
 
+import '../../view/onBoarding/language_screen.dart';
+
 List<GetPage<dynamic>>? getPages = [
-  GetPage(name: "/", page: () => HomePage()
-      // FirebaseAuth.instance.currentUser != null &&
-      //         FirebaseAuth.instance.currentUser!.emailVerified
-      //     ? const
-      // EditProfile()
-      //     : const
-      // OnBoardingPageView(),
-      // middlewares: [MyMiddleWare()],
-      ),
+  GetPage(
+    name: "/",
+    page: () => LanguageSelectionScreen(),
+    // HomePage()
+    // FirebaseAuth.instance.currentUser != null &&
+    //         FirebaseAuth.instance.currentUser!.emailVerified
+    //     ? const
+    // EditProfile()
+    //     : const
+    // OnBoardingPageView(),
+    // middlewares: [MyMiddleWare()],
+  ),
   GetPage(
     name: Routes.welcomeScreen,
     page: () => const WelcomeScreen(),
@@ -74,17 +79,9 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: Routes.addSkillScreen, page: () => const AddSkillScreen()),
   GetPage(name: Routes.profileScreen, page: () => const ProfileScreen()),
   GetPage(name: Routes.chatHomePage, page: () => ChatHomePage()),
-  GetPage(
-      name: Routes.communityScreen, page: () => const SwapRequestesScreen()),
-
   GetPage(name: Routes.postsScreen, page: () => const PostsPage()),
-
-  // GetPage(name: Routes.skillDetailsCard, page: () => const SkillDetailsCard( )),
-
-  // GetPage(name: Routes.chatScreen, page: () => ChatScreen(u)),
-  // GetPage(
-  //     name: Routes.detailedPostCard,
-  //     page: () => const DetailedPostCard()),
+  GetPage(
+      name: Routes.onBoardingScrreen, page: () => const OnBoardingPageView()),
 ];
 
 class PostsScreen {

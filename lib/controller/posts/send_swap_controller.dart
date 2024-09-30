@@ -27,12 +27,12 @@ class SendSwapControllerImpl extends SendSwapController {
         .collection('SwapRequests');
 
     docref.add({
-      'userId': getUserController.user!.userId,
-      'fullname': getUserController.user!.fullname,
+      'swaperId': getUserController.user!.userId,
+      'from': getUserController.user!.fullname,
       'swap': postModel.mySkill,
-      'swapBy': "user",
+      'swapBy': "My skill",
       'jopTitle': getUserController.user!.jopTitle,
-      'profileImageUrl': getUserController.user!.profileImageUrl,
+      'SkillImageUrl': postModel.skillImage,
       'postId': postModel.skillId,
       'timestamp': Timestamp.now(),
     }).then((value) {

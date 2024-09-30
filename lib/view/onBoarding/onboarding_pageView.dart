@@ -23,7 +23,7 @@ class OnBoardingPageView extends StatelessWidget {
             children: [
               const SizedBox(height: 10),
               CustomSmallButton(
-                text: "Skip",
+                text: "skip".tr,
                 color: Colors.black,
                 backgroundColor: Colors.grey.shade300,
                 onPressed: () {

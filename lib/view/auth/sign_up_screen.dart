@@ -54,29 +54,8 @@ class SignUpScreen extends StatelessWidget {
                       key: signUpController.formKey,
                       child: Column(
                         children: [
-                          AppTextFormField(
-                              controller: signUpController.username,
-                              suffixIcon: const Icon(
-                                Icons.person_outline,
-                                color: AppColors.primary,
-                              ),
-                              hintText: "Enter your Username",
-                              validator: (value) {
-                                return validInput(value!, 7, 50, "username");
-                              }),
-                          const SizedBox(height: 10),
-                          AppTextFormField(
-                              isNumber: true,
-                              controller: signUpController.phone,
-                              suffixIcon: const Icon(
-                                Icons.phone,
-                                color: AppColors.primary,
-                              ),
-                              hintText: "Phone",
-                              validator: (value) {
-                                return validInput(value!, 7, 50, "phone");
-                              }),
-                          const SizedBox(height: 10),
+                        
+                         
                           AppTextFormField(
                               controller: signUpController.email,
                               suffixIcon: const Icon(

@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class GetUserController extends GetxController {
   getAllUsers();
-  getUserData();
+  getMyrData();
 }
 
 class GetUserControllerImpl extends GetUserController {
@@ -15,7 +15,7 @@ class GetUserControllerImpl extends GetUserController {
   @override
   void onInit() {
     getAllUsers();
-    getUserData();
+    getMyrData();
     super.onInit();
   }
 
@@ -27,8 +27,8 @@ class GetUserControllerImpl extends GetUserController {
       FirebaseFirestore.instance.collection("users").get().then((value) {
         userList.value =
             value.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
+        print("====================== ${userList} ======================");
       });
-
       isLoading = false.obs;
     } catch (e) {
       if (Get.isSnackbarOpen == false) {
@@ -39,7 +39,7 @@ class GetUserControllerImpl extends GetUserController {
 
   UserModel? user;
   @override
-  getUserData() {
+  getMyrData() {
     FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)

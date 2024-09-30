@@ -1,29 +1,26 @@
+import 'package:get/get.dart';
 import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/data/models/onboarding_model.dart';
 
 List<OnboardingModel> onBoardingList = [
   OnboardingModel(
-    title: 'Welcome to Skill Swap!',
-    description:
-        'Discover a community where you can learn new skills and share your expertise with others. Let\'s get started!',
+    title: 'onBoardingTitle1'.tr,
+    description: 'onBoardingSubtitle1'.tr,
     image: Assets.imagesOnboarding1,
   ),
   OnboardingModel(
-    title: 'Find Your Perfect Match!',
-    description:
-        'Browse through a diverse range of skills and connect with people who can help you learn and grow.',
+    title: 'onBoardingTitle2'.tr,
+    description: 'onBoardingSubtitle2'.tr,
     image: Assets.imagesOnboarding2,
   ),
   OnboardingModel(
-    title: 'Share Your Knowledge!',
-    description:
-        'Have a talent or expertise? Offer your skills to others and become a mentor in our vibrant community.',
+    title: 'onBoardingTitle3'.tr,
+    description: 'onBoardingSubtitle3'.tr,
     image: Assets.imagesOnboarding3,
   ),
   OnboardingModel(
-    title: 'Learn Anytime, Anywhere!',
-    description:
-        'Grow Together! - Join a community that believes in mutual growth and learning. Together, we can achieve more.',
+    title: 'onBoardingTitle4'.tr,
+    description: 'onBoardingSubtitle4'.tr,
     image: Assets.imagesOnboarding4,
   ),
 ];

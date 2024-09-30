@@ -3,25 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
-
-class SwapRequestesScreen extends StatelessWidget {
-  const SwapRequestesScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-        itemCount: 5,
-        separatorBuilder: (context, index) => const SizedBox(height: 2),
-        itemBuilder: (context, index) => const CustomSwapRequsetItem());
-  }
-}
+import 'package:skill_swap/data/models/skill_request_model.dart';
+import 'package:skill_swap/view/swap_requests/widgets/skill_container.dart';
 
 class CustomSwapRequsetItem extends StatelessWidget {
-  const CustomSwapRequsetItem({
-    super.key,
-  });
-
+  const CustomSwapRequsetItem({super.key, required this.skillRequestModel});
+  final SkillRequestModel skillRequestModel;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,7 +18,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
       child: Container(
         height: 150.h,
         decoration: BoxDecoration(
-          color: const Color(0xFFDCCEF8),
+          color: AppColors.secondary,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
@@ -41,8 +30,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: CachedNetworkImage(
-                  imageUrl:
-                      "https://fps.cdnpk.net/photos/home/cover_v3.webp?w=1500",
+                  imageUrl: " skillRequestModel.skillImageUrl ?? ''",
                   // height: 140.h,
                   height: double.infinity,
                   width: 100.w,
@@ -60,9 +48,9 @@ class CustomSwapRequsetItem extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Omar Amer",
+                            Text('skillRequestModel.fullname',
                                 style: AppStyle.blackTitle(context)),
-                            Text('Flutter developer',
+                            Text('skillRequestModel.jopTitle',
                                 style: TextStyle(fontSize: 13.sp)),
                           ],
                         ),
@@ -76,7 +64,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CustomSkillContainer(),
+                        CustomSkillContainer(skill: 'skillRequestModel.skill'),
                         Transform.rotate(
                           angle: 90 *
                               (3.14159 / 180), // Convert degrees to radians
@@ -85,7 +73,9 @@ class CustomSwapRequsetItem extends StatelessWidget {
                             size: 20.sp, // Color of the icon
                           ),
                         ),
-                        const CustomSkillContainer(),
+                        CustomSkillContainer(
+                          skill: 'skillRequestModel.skill',
+                        ),
                       ],
                     ),
                     const Spacer(),
@@ -100,32 +90,6 @@ class CustomSwapRequsetItem extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomSkillContainer extends StatelessWidget {
-  const CustomSkillContainer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100.w,
-      decoration: BoxDecoration(
-          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(8)),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),
-          child: Text(
-            "Flutter developer - Flutter developer Flutter developer",
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12.sp),
           ),
         ),
       ),

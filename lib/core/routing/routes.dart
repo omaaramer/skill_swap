@@ -21,4 +21,5 @@ class Routes {
   static const postsScreen = '/PostsScreen';
   static const chatScreen = '/ChatScreen';
   static const skillDetailsCard = '/SkillDetailsCard';
+  static const recieveSwapScreen = '/RecieveSwapScreen';
 }

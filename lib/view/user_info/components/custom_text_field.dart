@@ -6,7 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   final String hint;
   final IconData icon;
   final bool? isNumber;
-  final TextEditingController mycontroller;
+  final TextEditingController? mycontroller;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   const CustomTextFormField({
@@ -14,7 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.hint,
     required this.icon,
     this.onChanged,
-    required this.mycontroller,
+    this.mycontroller,
     this.validator,
     this.isNumber,
   });

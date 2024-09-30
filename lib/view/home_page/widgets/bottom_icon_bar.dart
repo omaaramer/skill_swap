@@ -1,15 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
-import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/view/chat/chat_screen.dart';
-
 import 'swap_button.dart';
 
 class CardBottomIconBar extends StatelessWidget {
@@ -32,7 +29,7 @@ class CardBottomIconBar extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: CachedNetworkImage(
-                  imageUrl: userModel.profileImageUrl,
+                  imageUrl: userController.user!.profileImageUrl,
                   height: 40,
                   width: 40,
                   fit: BoxFit.cover,

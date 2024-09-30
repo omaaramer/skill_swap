@@ -1,6 +1,8 @@
 class AppConstant {
   static const String kOnBoardingPref = "onBoarding";
   static const String kUserInfoPref = "onBoarding";
+  static const String kPostBox = "postBox";
+
   static const String kMySkill = "Skill_offered";
   static const String kMySkillDescription = "Skill_offered_description";
   static const String kSkillNeeded = "Skill_requested";
@@ -18,6 +20,4 @@ class AppConstant {
   static const String kCloudStorageProfileImages = "profileImages";
   static const String kCloudStorageSkillImages = "SkillImages";
   static const String kJopTitle = "jopTitle";
-
-  static const String kPostBox = "postBox";
 }

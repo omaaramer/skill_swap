@@ -13,7 +13,7 @@ class OnBoardingButton extends GetView<OnBoardingControllerImpl> {
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: AppTextButton(
         backgroundColor: AppColors.primary,
-        buttonText: "Next",
+        buttonText: "next".tr,
         textStyle: const TextStyle(color: Colors.white),
         onPressed: () {
           controller.next();
