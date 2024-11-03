@@ -1,8 +1,12 @@
 class SwapRequest {
   final String receiverName;
+  final String receiverJopTitle;
+  final String receiverImage;
+  final String senderImage;
   final String receiverSkill;
   final String senderId;
   final String senderName;
+  final String senderJopTitle;
   final String senderSkill;
   final String skillImage;
   final String receiverId;
@@ -11,6 +15,10 @@ class SwapRequest {
   final DateTime requestTime;
 
   SwapRequest({
+    required this.receiverJopTitle,
+    required this.receiverImage,
+    required this.senderImage,
+    required this.senderJopTitle,
     required this.senderName,
     required this.senderSkill,
     required this.receiverName,
@@ -24,6 +32,10 @@ class SwapRequest {
   });
 
   factory SwapRequest.fromJson(Map<String, dynamic> json) => SwapRequest(
+        receiverJopTitle: json['receiverJopTitle'],
+        receiverImage: json['receiverImage'],
+        senderImage: json['senderImage'],
+        senderJopTitle: json['senderJopTitle'],
         senderName: json['senderName'],
         senderSkill: json['senderSkill'],
         receiverName: json['receiverName'],
@@ -36,6 +48,10 @@ class SwapRequest {
         requestTime: DateTime.parse(json['requestTime']),
       );
   Map<String, dynamic> toJson() => {
+        'receiverJopTitle': receiverJopTitle,
+        'receiverImage': receiverImage,
+        'senderImage': senderImage,
+        'senderJopTitle': senderJopTitle,
         'senderName': senderName,
         'senderSkill': senderSkill,
         'receiverName': receiverName,

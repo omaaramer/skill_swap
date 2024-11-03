@@ -36,8 +36,8 @@ class CardBottomIconBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100),
                 child: CachedNetworkImage(
                   imageUrl: userController.user!.profileImageUrl,
-                  height: 40,
-                  width: 40,
+                  height: 25,
+                  width: 25,
                   fit: BoxFit.cover,
                   // placeholder: (context, url) {
                   //   return CustomFadingWidget(
@@ -67,7 +67,7 @@ class CardBottomIconBar extends StatelessWidget {
             icon: Row(
               children: [
                 const Icon(IconBroken.Chat, size: 20),
-                Text("Chat", style: TextStyle(fontSize: 13.sp)),
+                Text("Connect", style: TextStyle(fontSize: 13.sp)),
               ],
             )),
         SwapButton(

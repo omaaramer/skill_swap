@@ -17,6 +17,7 @@ class SkillModelAdapter extends TypeAdapter<SkillModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return SkillModel(
+      skillId: fields[7] as String?,
       userId: fields[6] as String,
       mySkill: fields[0] as String?,
       skillNeeded: fields[1] as String?,
@@ -24,14 +25,13 @@ class SkillModelAdapter extends TypeAdapter<SkillModel> {
       skillImage: fields[3] as String?,
       isOnline: fields[4] as String,
       dateTime: fields[5] as DateTime,
-      skillId: fields[7] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, SkillModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.mySkill)
       ..writeByte(1)
@@ -45,7 +45,9 @@ class SkillModelAdapter extends TypeAdapter<SkillModel> {
       ..writeByte(5)
       ..write(obj.dateTime)
       ..writeByte(6)
-      ..write(obj.userId);
+      ..write(obj.userId)
+      ..writeByte(7)
+      ..write(obj.skillId);
   }
 
   @override

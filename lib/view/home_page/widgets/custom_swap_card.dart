@@ -73,6 +73,8 @@ class PostCard extends StatelessWidget {
                 userModel: userModel,
                 postModel: postModel,
                 reciever: RecieverModel(
+                  receiverImage: userModel.profileImageUrl,
+                  receiverJopTitle: userModel.jopTitle,
                   receiverId: userModel.userId,
                   receiverName: userModel.fullname,
                   skillId: postModel.skillId!,

@@ -10,24 +10,30 @@ class RecieveSwapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetSwapRequestControllerImpl getSwapRequestController =
-        Get.put(GetSwapRequestControllerImpl());
-    final requestsList = getSwapRequestController.swapRequests;
+    final getSwapRequestController = Get.find<GetSwapRequestControllerImpl>();
 
-    // Use .where() and check if it's not empty to avoid errors
-    final myrequests = getSwapRequestController.swapRequests
-        .where(
-          (request) =>
-              request.receiverId == FirebaseAuth.instance.currentUser!.uid,
-        )
-        .toList();
+    return Obx(() {
+      if (getSwapRequestController.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      }
 
-    SwapRequest request = myrequests.first;
-    return ListView.separated(
-      itemCount: requestsList.length,
-      separatorBuilder: (context, index) => const SizedBox(height: 2),
-      itemBuilder: (context, index) =>
-          CustomSwapRequsetItem(swapRequest: request),
-    );
+      final myRequests = getSwapRequestController.swapRequests
+          .where((request) =>
+              request.receiverId == FirebaseAuth.instance.currentUser!.uid)
+          .toList();
+
+      if (myRequests.isEmpty) {
+        return const Center(child: Text('No swap requests found'));
+      }
+
+      return ListView.separated(
+        itemCount: myRequests.length,
+        separatorBuilder: (context, index) => const SizedBox(height: 2),
+        itemBuilder: (context, index) {
+          SwapRequest request = myRequests[index];
+          return CustomSwapRequsetItem(swapRequest: request);
+        },
+      );
+    });
   }
 }

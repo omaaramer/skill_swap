@@ -30,7 +30,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: CachedNetworkImage(
-                  imageUrl: swapRequest.skillImage,
+                  imageUrl: swapRequest.senderImage,
                   // height: 140.h,
                   height: double.infinity,
                   width: 100.w,
@@ -50,7 +50,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
                           children: [
                             Text(swapRequest.senderName,
                                 style: AppStyle.blackTitle(context)),
-                            Text(swapRequest.receiverName,
+                            Text(swapRequest.senderJopTitle,
                                 style: TextStyle(fontSize: 13.sp)),
                           ],
                         ),

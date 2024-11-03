@@ -23,13 +23,13 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
 
   @override
   Future<void> getPosts() async {
-    isLoading = true.obs;
+    isLoading.value = true;
 
     FirebaseFirestore.instance.collection("skills").get().then((value) {
       var myPosts =
           value.docs.map((doc) => SkillModel.fromJson(doc.data())).toList();
       posts.assignAll(myPosts);
-      isLoading = false.obs;
+      isLoading.value = false;
       // saveDataOnHive(posts, AppConstant.kPostBox);
     }).catchError((error) {
       if (Get.isSnackbarOpen == false) {

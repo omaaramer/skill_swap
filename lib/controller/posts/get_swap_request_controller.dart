@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/data/models/swap_request_model.dart';
 
 abstract class GetSwapRequestController extends GetxController {
@@ -10,24 +8,27 @@ abstract class GetSwapRequestController extends GetxController {
 
 class GetSwapRequestControllerImpl extends GetSwapRequestController {
   RxList<SwapRequest> swapRequests = <SwapRequest>[].obs;
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {
-    getSwapRequests();
     super.onInit();
+    getSwapRequests(); // Start listening to real-time updates
   }
 
   @override
-  Future<void> getSwapRequests() async {
-    await FirebaseFirestore.instance
-        .collection("swapRequests")
-        .get()
-        .then((value) {
-      swapRequests.value =
-          value.docs.map((doc) => SwapRequest.fromJson(doc.data())).toList();
-      print("swapRequests============= ${swapRequests.length}");
-    }).catchError((e) {
-      Get.snackbar("Error", "Failed to fetch posts: $e");
+  void getSwapRequests() {
+    isLoading.value = true;
+
+    FirebaseFirestore.instance.collection("swapRequests").snapshots().listen(
+        (snapshot) {
+      var myRequests =
+          snapshot.docs.map((doc) => SwapRequest.fromJson(doc.data())).toList();
+      swapRequests.assignAll(myRequests);
+      isLoading.value = false;
+    }, onError: (e) {
+      isLoading.value = false;
+      Get.snackbar("Error", "Failed to fetch swap requests: $e");
     });
   }
 }
