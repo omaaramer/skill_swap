@@ -4,13 +4,19 @@ import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/controller/posts/send_swap_controller.dart';
 import 'package:skill_swap/data/models/post_model.dart';
+import 'package:skill_swap/data/models/reciever_model.dart';
+import 'package:skill_swap/data/models/swap_request_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 
 class SwapButton extends StatelessWidget {
   const SwapButton(
-      {super.key, required this.userModel, required this.postModel});
+      {super.key,
+      required this.userModel,
+      required this.postModel,
+      required this.reciever});
   final UserModel userModel;
-  final PostModel postModel;
+  final SkillModel postModel;
+  final RecieverModel reciever;
   @override
   Widget build(BuildContext context) {
     SendSwapControllerImpl sendSwapController = Get.put(SendSwapControllerImpl(
@@ -40,7 +46,9 @@ class SwapButton extends StatelessWidget {
           content: const Text("Send a Swap Request?"),
           confirm: TextButton(
             onPressed: () {
-              sendSwapController.sendSwapRequest();
+              sendSwapController.sendSwapRequest(
+                receiver: reciever,
+              );
               Get.back();
             },
             child: const Text("Yes"),

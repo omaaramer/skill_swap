@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:skill_swap/controller/profile/profile_info_controller.dart';
+import 'package:skill_swap/controller/profile/add_user_info.dart';
 import 'package:skill_swap/controller/profile/profile_page_view_controller.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';

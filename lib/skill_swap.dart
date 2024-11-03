@@ -1,11 +1,9 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/helpers/intialbindings.dart';
 import 'package:skill_swap/core/routing/get_routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
-
 import 'core/localization/changeLocal.dart';
 import 'core/localization/translation.dart';
 

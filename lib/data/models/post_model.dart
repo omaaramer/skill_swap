@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 part 'post_model.g.dart';
 
 @HiveType(typeId: 0)
-class PostModel {
+class SkillModel {
   @HiveField(0)
   final String? mySkill;
   @HiveField(1)
@@ -18,39 +18,44 @@ class PostModel {
   @HiveField(5)
   final DateTime dateTime;
   @HiveField(6)
-  final String skillId;
+  final String userId;
+  @HiveField(7)
+  final String? skillId;
 
-  PostModel({
+  SkillModel({
     required this.skillId,
+    required this.userId,
     required this.mySkill,
     required this.skillNeeded,
-    required this.description,
+    this.description,
     required this.skillImage,
     required this.isOnline,
     required this.dateTime,
   });
 
-  factory PostModel.fromJson(Map<String, dynamic> map) {
-    return PostModel(
+  factory SkillModel.fromJson(Map<String, dynamic> map) {
+    return SkillModel(
+      skillId: map['skillId'] ?? '',
       mySkill: map[AppConstant.kMySkill] ?? '',
       skillNeeded: map[AppConstant.kSkillNeeded] ?? '',
       description: map[AppConstant.kMySkillDescription] ?? '',
       skillImage: map[AppConstant.kSkillImageUrl] ?? '',
       isOnline: map[AppConstant.kIsOnline],
       dateTime: (map[AppConstant.kTime] as Timestamp).toDate(),
-      skillId: map[AppConstant.kId],
+      userId: map[AppConstant.kId],
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
+      'skillId': skillId,
       AppConstant.kMySkill: mySkill,
       AppConstant.kSkillNeeded: skillNeeded,
       AppConstant.kSkillNeededDescription: description,
       AppConstant.kSkillImageUrl: skillImage,
       AppConstant.kIsOnline: isOnline,
       AppConstant.kTime: dateTime,
-      AppConstant.kId: skillId,
+      AppConstant.kId: userId,
     };
   }
 }

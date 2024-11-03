@@ -5,15 +5,21 @@ import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/data/models/post_model.dart';
+import 'package:skill_swap/data/models/reciever_model.dart';
+import 'package:skill_swap/data/models/swap_request_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/view/chat/chat_screen.dart';
 import 'swap_button.dart';
 
 class CardBottomIconBar extends StatelessWidget {
   const CardBottomIconBar(
-      {super.key, required this.userModel, required this.postModel});
+      {super.key,
+      required this.userModel,
+      required this.postModel,
+      required this.reciever});
   final UserModel userModel;
-  final PostModel postModel;
+  final SkillModel postModel;
+  final RecieverModel reciever;
   @override
   Widget build(BuildContext context) {
     GetUserControllerImpl userController = Get.find();
@@ -64,7 +70,11 @@ class CardBottomIconBar extends StatelessWidget {
                 Text("Chat", style: TextStyle(fontSize: 13.sp)),
               ],
             )),
-        SwapButton(userModel: userModel, postModel: postModel),
+        SwapButton(
+          userModel: userModel,
+          postModel: postModel,
+          reciever: reciever,
+        ),
       ],
     );
   }

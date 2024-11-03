@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class GetUserController extends GetxController {
   getAllUsers();
-  getMyrData();
+  getMyData();
 }
 
 class GetUserControllerImpl extends GetUserController {
@@ -15,7 +15,7 @@ class GetUserControllerImpl extends GetUserController {
   @override
   void onInit() {
     getAllUsers();
-    getMyrData();
+    getMyData();
     super.onInit();
   }
 
@@ -39,7 +39,7 @@ class GetUserControllerImpl extends GetUserController {
 
   UserModel? user;
   @override
-  getMyrData() {
+  getMyData() {
     FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)

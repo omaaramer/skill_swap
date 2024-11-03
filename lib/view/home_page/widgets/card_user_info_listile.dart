@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
-import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
 
 class CustomUserLisTile extends StatelessWidget {
   const CustomUserLisTile(

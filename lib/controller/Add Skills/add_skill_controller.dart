@@ -74,10 +74,10 @@ class AddSkillControllerImpl extends AddSkillController {
         return;
       }
 
-      CollectionReference skills =
+      CollectionReference skillsRef =
           FirebaseFirestore.instance.collection('skills');
 
-      await skills.add({
+      await skillsRef.add({
         AppConstant.kIsOnline: isOnline ? "ONLINE" : "IN PERSON",
         AppConstant.kMySkill: mySkill.text,
         AppConstant.kSkillNeeded: skillNeeded.text,
@@ -85,6 +85,8 @@ class AddSkillControllerImpl extends AddSkillController {
         AppConstant.kSkillImageUrl: url,
         AppConstant.kTime: DateTime.now(),
       }).then((value) {
+        skillsRef.doc(value.id).update({'skillId': value.id});
+
         getSkillPostDataController.getPosts();
         Get.toNamed(Routes.homePage);
       }).catchError((error) {

@@ -11,7 +11,7 @@ class AppConstant {
   static const String kSkillImageUrl = "skill_image_url";
   static const String kProfileImageUrl = "profile_image_url";
   static const String kTime = "time";
-  static const String kId = "skill_id";
+  static const String kId = "user_id";
   static const String kEmail = "email";
   static const String kPhone = "phone";
   static const String kBirthDate = "birthDate";

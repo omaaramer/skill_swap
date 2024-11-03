@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:skill_swap/constant.dart';
-import 'package:skill_swap/core/services/firebase_notifications.dart';
 import 'package:skill_swap/core/services/services.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/firebase_options.dart';
@@ -23,8 +22,8 @@ void main() async {
   );
   // FirebaseNotifications().initNotifications();
   await Hive.initFlutter();
-  Hive.registerAdapter(PostModelAdapter());
-  await Hive.openBox<PostModel>(AppConstant.kPostBox);
+  Hive.registerAdapter(SkillModelAdapter());
+  await Hive.openBox<SkillModel>(AppConstant.kPostBox);
   runApp(
     // DevicePreview(enabled: true, builder: (context) =>
     const SkillSwap(),

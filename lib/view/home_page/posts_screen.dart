@@ -16,7 +16,7 @@ class PostsPage extends StatelessWidget {
         Expanded(
             child: RefreshIndicator(
           onRefresh: () async {
-            postController.fetchPosts();
+            postController.getPosts();
           },
           child: HomePageListView(postController: postController),
         )),

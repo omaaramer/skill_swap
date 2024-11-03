@@ -26,9 +26,10 @@ class ProfileControllerImpl extends ProfileController {
   File? _image;
   String? url;
   DateTime birthDate = DateTime.now();
-  DocumentReference users = FirebaseFirestore.instance
+  DocumentReference usersRef = FirebaseFirestore.instance
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser!.uid);
+
   @override
   Future<void> getImageFromGallery() async {
     try {
@@ -59,13 +60,14 @@ class ProfileControllerImpl extends ProfileController {
       final UserModel user = UserModel(
         fullname: name.text,
         address: address.text,
-        // phone: phone.text,
+        phone: phone.text,
+        birthDate: birthDate,
         jopTitle: jopTitle.text,
-        userId: FirebaseAuth.instance.currentUser!.uid,
+        userId: FirebaseAuth.instance.currentUser!.uid, // مالوش لازمة
         profileImageUrl: url ?? "none",
       );
 
-      users.set(user.toMap()).then((value) {
+      usersRef.set(user.toJson()).then((value) {
         Get.offNamed(Routes.homePage);
       }).catchError((error) {
         Get.snackbar(

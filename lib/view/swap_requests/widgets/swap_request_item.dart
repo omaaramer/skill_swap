@@ -5,12 +5,12 @@ import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
-import 'package:skill_swap/data/models/skill_request_model.dart';
+import 'package:skill_swap/data/models/swap_request_model.dart';
 import 'package:skill_swap/view/swap_requests/widgets/skill_container.dart';
 
 class CustomSwapRequsetItem extends StatelessWidget {
-  const CustomSwapRequsetItem({super.key, required this.skillRequestModel});
-  final SkillRequestModel skillRequestModel;
+  const CustomSwapRequsetItem({super.key, required this.swapRequest});
+  final SwapRequest swapRequest;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,7 +30,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: CachedNetworkImage(
-                  imageUrl: " skillRequestModel.skillImageUrl ?? ''",
+                  imageUrl: swapRequest.skillImage,
                   // height: 140.h,
                   height: double.infinity,
                   width: 100.w,
@@ -48,9 +48,9 @@ class CustomSwapRequsetItem extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('skillRequestModel.fullname',
+                            Text(swapRequest.senderName,
                                 style: AppStyle.blackTitle(context)),
-                            Text('skillRequestModel.jopTitle',
+                            Text(swapRequest.receiverName,
                                 style: TextStyle(fontSize: 13.sp)),
                           ],
                         ),
@@ -64,7 +64,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomSkillContainer(skill: 'skillRequestModel.skill'),
+                        CustomSkillContainer(skill: swapRequest.senderSkill),
                         Transform.rotate(
                           angle: 90 *
                               (3.14159 / 180), // Convert degrees to radians
@@ -74,7 +74,7 @@ class CustomSwapRequsetItem extends StatelessWidget {
                           ),
                         ),
                         CustomSkillContainer(
-                          skill: 'skillRequestModel.skill',
+                          skill: swapRequest.receiverSkill,
                         ),
                       ],
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_swap/data/models/post_model.dart';
+import 'package:skill_swap/data/models/reciever_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/view/home_page/widgets/bottom_icon_bar.dart';
 import 'package:skill_swap/view/home_page/widgets/card_infi_bar.dart';
@@ -16,7 +17,7 @@ class SkillDetailsCard extends StatelessWidget {
   });
 
   final UserModel userModel;
-  final PostModel postModel;
+  final SkillModel postModel;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,16 @@ class SkillDetailsCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   CardInfoBar(address: userModel.address),
                   const CustomCardDivider(),
-                  CardBottomIconBar(userModel: userModel, postModel: postModel),
+                  CardBottomIconBar(
+                    userModel: userModel,
+                    postModel: postModel,
+                    reciever: RecieverModel(
+                      receiverId: userModel.userId,
+                      receiverName: userModel.fullname,
+                      skillId: postModel.skillId!,
+                      skill: postModel.mySkill!,
+                    ),
+                  ),
                 ],
               ),
             ),

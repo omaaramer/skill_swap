@@ -6,29 +6,30 @@ part of 'post_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class PostModelAdapter extends TypeAdapter<PostModel> {
+class SkillModelAdapter extends TypeAdapter<SkillModel> {
   @override
   final int typeId = 0;
 
   @override
-  PostModel read(BinaryReader reader) {
+  SkillModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return PostModel(
-      skillId: fields[6] as String,
+    return SkillModel(
+      userId: fields[6] as String,
       mySkill: fields[0] as String?,
       skillNeeded: fields[1] as String?,
       description: fields[2] as String?,
       skillImage: fields[3] as String?,
       isOnline: fields[4] as String,
       dateTime: fields[5] as DateTime,
+      skillId: fields[7] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, PostModel obj) {
+  void write(BinaryWriter writer, SkillModel obj) {
     writer
       ..writeByte(7)
       ..writeByte(0)
@@ -44,7 +45,7 @@ class PostModelAdapter extends TypeAdapter<PostModel> {
       ..writeByte(5)
       ..write(obj.dateTime)
       ..writeByte(6)
-      ..write(obj.skillId);
+      ..write(obj.userId);
   }
 
   @override
@@ -53,7 +54,7 @@ class PostModelAdapter extends TypeAdapter<PostModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PostModelAdapter &&
+      other is SkillModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
