@@ -21,7 +21,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseNotifications().initNotifications();
+  // FirebaseNotifications().initNotifications();
   await Hive.initFlutter();
   Hive.registerAdapter(PostModelAdapter());
   await Hive.openBox<PostModel>(AppConstant.kPostBox);
