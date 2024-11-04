@@ -72,7 +72,6 @@ class CardBottomIconBar extends StatelessWidget {
             )),
         SwapButton(
           userModel: userModel,
-          postModel: postModel,
           reciever: reciever,
         ),
       ],

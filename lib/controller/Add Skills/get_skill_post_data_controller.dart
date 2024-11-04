@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:skill_swap/data/models/post_model.dart';
+import 'package:skill_swap/view/home_page/widgets/custom_bottom_sheet.dart';
 
 abstract class GetSkillPostDataController extends GetxController {
   Future<void> getPosts();
@@ -36,6 +38,20 @@ class GetSkillPostDataControllerImpl extends GetSkillPostDataController {
         Get.snackbar('Error', 'Failed to fetch posts: $error');
       }
     });
+  }
+
+  void showSwapSkillBottomSheet(
+      BuildContext context, Function(SkillModel) onSkillSelected) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      isScrollControlled: true,
+      builder: (context) {
+        return SwapSkillBottomSheet(onSkillSelected: onSkillSelected);
+      },
+    );
   }
 
   // @override

@@ -8,12 +8,11 @@ import 'package:skill_swap/data/models/user_model.dart';
 
 abstract class SendSwapController extends GetxController {
   final UserModel userModel;
-  final SkillModel postModel;
   SendSwapController({
     required this.userModel,
-    required this.postModel,
   });
-  Future<void> sendSwapRequest({required RecieverModel receiver});
+  Future<void> sendSwapRequest(
+      {required RecieverModel receiver, required SkillModel skillModel});
 
   void listenForSwapRequests(String receiverId);
 
@@ -23,11 +22,12 @@ abstract class SendSwapController extends GetxController {
 }
 
 class SendSwapControllerImpl extends SendSwapController {
-  SendSwapControllerImpl({required super.userModel, required super.postModel});
+  SendSwapControllerImpl({required super.userModel});
   GetUserControllerImpl getUserController = Get.put(GetUserControllerImpl());
 
   @override
-  Future<void> sendSwapRequest({required RecieverModel receiver}) async {
+  Future<void> sendSwapRequest(
+      {required RecieverModel receiver, required SkillModel skillModel}) async {
     // UserModel receiver = getUserController.userList
     //     .firstWhere((user) => user.userId == receiverName);
 
@@ -42,9 +42,9 @@ class SendSwapControllerImpl extends SendSwapController {
       receiverSkill: receiver.skill,
       senderName: getUserController.user!.fullname,
       receiverId: receiver.receiverId,
-      senderSkill: "sender skill",
+      senderSkill: skillModel.mySkill!,
       receiverSkillId: receiver.skillId,
-      skillImage: postModel.skillImage!,
+      skillImage: skillModel.skillImage!,
       status: 'pending',
       requestTime: DateTime.now(),
     );

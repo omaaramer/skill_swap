@@ -11,7 +11,7 @@ class PostCardLiadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color color = Colors.grey;
+    const Color color = Colors.grey;
     return CustomFadingWidget(
       child: ListView.builder(
         itemCount: 3,
@@ -21,14 +21,14 @@ class PostCardLiadingIndicator extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: [
-                UserListileLoadingIndgiator(color: color),
+                const UserListileLoadingIndgiator(color: color),
                 const CustomCardDivider(),
-                SkillLoadingIndicator(color: color),
+                const SkillLoadingIndicator(color: color),
                 const CustomCardDivider(
                   endIndent: 20,
                   indent: 16,
                 ),
-                SkillLoadingIndicator(
+                const SkillLoadingIndicator(
                   color: color,
                 ),
                 Padding(
