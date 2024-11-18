@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/onboarding_controller.dart';
-import 'package:skill_swap/core/localization/translation.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/data/static/onboarding_static_data.dart';
 

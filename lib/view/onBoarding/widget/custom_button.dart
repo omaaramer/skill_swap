@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:skill_swap/controller/onboarding_controller.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class OnBoardingButton extends GetView<OnBoardingControllerImpl> {
   const OnBoardingButton({super.key});
@@ -13,8 +14,8 @@ class OnBoardingButton extends GetView<OnBoardingControllerImpl> {
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: AppTextButton(
         backgroundColor: AppColors.primary,
-        buttonText: "next".tr,
-        textStyle: const TextStyle(color: Colors.white),
+        buttonText: S.of(context).next,
+        textStyle: const TextStyle(color: AppColors.white),
         onPressed: () {
           controller.next();
         },
@@ -45,11 +46,11 @@ class CustomSmallButton extends StatelessWidget {
             buttonHeight: 40,
             verticalPadding: 0,
             borderRadius: 50,
-            backgroundColor: backgroundColor ?? Colors.white.withOpacity(.1),
+            backgroundColor: backgroundColor ?? AppColors.white.withOpacity(.1),
             buttonText: text,
             textStyle: TextStyle(
               fontSize: 16,
-              color: color ?? Colors.white,
+              color: color ?? AppColors.white,
               fontWeight: FontWeight.w500,
             ),
             onPressed: onPressed),

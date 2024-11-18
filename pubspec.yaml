@@ -55,7 +55,8 @@ dependencies:
   syncfusion_flutter_datepicker: ^26.1.42
   cloud_firestore: ^5.1.0
   dotted_border: ^2.1.0
-
+  flutter_localizations:
+        sdk: flutter
 
 dev_dependencies:
   build_runner: ^2.4.12
@@ -112,3 +113,5 @@ flutter_assets:
   output_path: lib/core/theming/
   filename: assets.dart
   field_prefix: null
+flutter_intl:
+  enabled: true

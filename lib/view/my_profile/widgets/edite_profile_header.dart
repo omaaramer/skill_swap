@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/view/home_page/widgets/card_image.dart';
 
 class EditeProfileHeader extends StatelessWidget {
@@ -34,7 +34,7 @@ class EditeProfileHeader extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
                     radius: 16.sp,
-                    backgroundColor: Colors.white24,
+                    backgroundColor: AppColors.background,
                     child: IconButton(
                         onPressed: () {},
                         icon: Icon(IconBroken.Camera, size: 20.sp)),
@@ -57,7 +57,7 @@ class EditeProfileHeader extends StatelessWidget {
                 ),
                 CircleAvatar(
                   radius: 16.sp,
-                  backgroundColor: Colors.white38,
+                  backgroundColor: AppColors.background,
                   child: IconButton(
                       onPressed: () {},
                       icon: Icon(IconBroken.Camera, size: 20.sp)),

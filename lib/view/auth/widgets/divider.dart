@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           child: Divider(
             height: 20,
             thickness: 1,
-            color: Colors.grey,
+            color: AppColors.grey,
           ),
         ),
-        SizedBox(width: 10),
-        Text("Or Continue With"),
-        SizedBox(width: 10),
-        Expanded(
+        const SizedBox(width: 10),
+        Text(S.of(context).orContinueWith),
+        const SizedBox(width: 10),
+        const Expanded(
           child: Divider(
             height: 20, // Adjusted height to match the first Divider
             thickness: 1,
-            color: Colors.grey, // Changed color for visibility
+            color: AppColors.grey, // Changed color for visibility
           ),
         ),
       ],

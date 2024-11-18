@@ -5,7 +5,7 @@ import 'package:skill_swap/controller/profile/profile_page_view_controller.dart'
 import 'package:skill_swap/core/helpers/valid_inpnut.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
-import 'package:skill_swap/core/widgets/custom_text_field.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/user_info/components/custom_text_field.dart';
 
 class PersonalDatailsOne extends StatelessWidget {
@@ -30,11 +30,11 @@ class PersonalDatailsOne extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
-                      Text("Personal Details",
+                      Text(S.of(context).personalDetails,
                           style: AppStyle.styleBold26(context)),
                       const SizedBox(height: 10),
                       Text(
-                        "Provide your personal details to enhance your Skill Swap experience and connect with like-minded individuals.",
+                        S.of(context).personalDetailsMessage,
                         textAlign: TextAlign.center,
                         style: AppStyle.styleRegular16Grey(context),
                       ),
@@ -44,7 +44,7 @@ class PersonalDatailsOne extends StatelessWidget {
                         child: Column(
                           children: [
                             CustomTextFormField(
-                              hint: "Your Username",
+                              hint: S.of(context).username,
                               mycontroller: profileController.name,
                               validator: (value) {
                                 return validInput(value!, 3, 20, "text");
@@ -53,7 +53,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             CustomTextFormField(
-                              hint: "Your Address",
+                              hint: S.of(context).address,
                               mycontroller: profileController.address,
                               icon: Icons.home,
                               validator: (value) {
@@ -62,7 +62,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             CustomTextFormField(
-                              hint: "Your Title,eg.developer, designer, etc",
+                              hint: S.of(context).titlePlaceholder,
                               mycontroller: profileController.jopTitle,
                               icon: Icons.email,
                               validator: (value) {
@@ -72,7 +72,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             const SizedBox(height: 10),
                             CustomTextFormField(
                               isNumber: true,
-                              hint: "Your Phone Number",
+                              hint: S.of(context).phoneNumber,
                               mycontroller: profileController.phone,
                               icon: Icons.phone,
                               validator: (value) {
@@ -81,7 +81,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             ),
                             const SizedBox(height: 40),
                             AppTextButton(
-                              buttonText: "Save Changes",
+                              buttonText: S.of(context).saveChanges,
                               textStyle: AppStyle.stylerBold20(context),
                               onPressed: () {
                                 if (profilepageController.formKey.currentState!

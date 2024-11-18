@@ -10,12 +10,11 @@ import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/auth/widgets/divider.dart';
 import 'package:skill_swap/view/auth/widgets/have_acount_text_widget.dart';
 import 'package:skill_swap/view/auth/widgets/regester_with_acount.dart';
 import 'package:skill_swap/view/auth/widgets/screen_header_text.dart';
-import 'package:skill_swap/view/auth/widgets/sigin_form.dart';
-import 'package:skill_swap/view/auth/widgets/signin_button.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -29,17 +28,16 @@ class SignInScreen extends StatelessWidget {
         body: SafeArea(
           child: PopScope(
             canPop: false,
-            onPopInvoked: ((didpop) {
-              if (didpop) {
+            onPopInvokedWithResult: (didPop, result) {
+              if (didPop) {
                 return;
               }
               alertExitApp();
-            }),
+            },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ListView(
                 children: [
-                  // const SizedBox(height: 40),
                   SizedBox(
                     height: 170,
                     width: 150,
@@ -51,9 +49,10 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const AuthScreenTextHeader(
-                      title: "Hi ,Welcome Back!",
-                      subTitle: "Hello again , You have been missed!"),
+                  AuthScreenTextHeader(
+                    title: S.of(context).signIn,
+                    subTitle: S.of(context).welcomeBackMessage2,
+                  ),
                   const SizedBox(height: 40),
                   Form(
                       key: signInController.formKey,
@@ -69,7 +68,7 @@ class SignInScreen extends StatelessWidget {
                                 color: AppColors.primary,
                               ),
                               hintText: "name@gmail.com ",
-                              labelText: "Email",
+                              labelText: S.of(context).email,
                               validator: (val) {
                                 return validInput(val!, 7, 50, "email");
                               }),
@@ -90,7 +89,7 @@ class SignInScreen extends StatelessWidget {
                                     color: AppColors.primary),
                               ),
                               hintText: "*********",
-                              labelText: "Password",
+                              labelText: S.of(context).password,
                               validator: (val) {
                                 return validInput(val!, 7, 30, "password");
                               },
@@ -103,17 +102,21 @@ class SignInScreen extends StatelessWidget {
                                 onPressed: () {
                                   Get.toNamed(Routes.forgetPasswordScreen);
                                 },
-                                child: const Text("Forgot Password?")),
+                                child: Text(
+                                  S.of(context).forgotPassword,
+                                )),
                           ),
                         ],
                       )),
                   const SizedBox(height: 20),
                   AppTextButton(
-                    buttonText: "SIGN IN",
+                    buttonText: S.of(context).signIn,
                     borderRadius: 100,
                     verticalPadding: 10,
-                    textStyle:
-                        const TextStyle(color: Colors.white, fontSize: 20),
+                    textStyle: const TextStyle(
+                      color: AppColors.white,
+                      fontSize: 20,
+                    ),
                     onPressed: () {
                       signInController.signIn();
                     },
@@ -124,8 +127,8 @@ class SignInScreen extends StatelessWidget {
                   const RegesterationWithAcounts(),
                   // const SizedBox(height: 40),
                   HaveAcountWidget(
-                    text: "Don't have an account?",
-                    textButton: "Sign Up",
+                    text: S.of(context).noAccount,
+                    textButton: S.of(context).signUp,
                     onPressed: () {
                       signInController.goToSignUpScreen();
                     },

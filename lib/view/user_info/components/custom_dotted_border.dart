@@ -5,11 +5,11 @@ import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomDottedBorder extends StatelessWidget {
   const CustomDottedBorder({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.onPressed,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final void Function() onPressed;
   final String? imageUrl;
@@ -21,21 +21,21 @@ class CustomDottedBorder extends StatelessWidget {
       borderType: BorderType.RRect,
       radius: const Radius.circular(20),
       dashPattern: const [7, 7],
-      color: Colors.black38,
+      color: AppColors.lightBlack,
       strokeWidth: 2,
       padding: const EdgeInsets.all(20),
       child: Container(
         height: 100,
         width: 100,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.primary,
           boxShadow: [
             BoxShadow(
               blurRadius: 8,
               spreadRadius: 2,
-              color: Colors.black38.withOpacity(0.5),
-              offset: const Offset(0, 4),
+              color: AppColors.background,
+              offset: Offset(0, 4),
             ),
           ],
         ),
@@ -43,7 +43,7 @@ class CustomDottedBorder extends StatelessWidget {
             ? IconButton(
                 icon: const Icon(
                   Icons.upload_rounded,
-                  color: Colors.white,
+                  color: AppColors.white,
                   size: 40,
                 ),
                 onPressed: onPressed,
@@ -58,12 +58,12 @@ class CustomDottedBorder extends StatelessWidget {
                     placeholder: (context, url) => const Padding(
                       padding: EdgeInsets.all(12),
                       child: CircularProgressIndicator(
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                     errorWidget: (context, url, error) => const Icon(
                       Icons.error,
-                      color: Colors.red,
+                      color: AppColors.red,
                     ),
                   ),
                 ),

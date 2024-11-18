@@ -8,6 +8,7 @@ import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/reciever_model.dart';
 import 'package:skill_swap/data/models/swap_request_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/chat/chat_screen.dart';
 import 'swap_button.dart';
 
@@ -52,7 +53,7 @@ class CardBottomIconBar extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
               Text(
-                "Write a Comment...",
+                S.of(context).writeComment,
                 style: TextStyle(fontSize: 11.sp),
               ),
             ],
@@ -67,7 +68,7 @@ class CardBottomIconBar extends StatelessWidget {
             icon: Row(
               children: [
                 const Icon(IconBroken.Chat, size: 20),
-                Text("Connect", style: TextStyle(fontSize: 13.sp)),
+                Text(S.of(context).connect, style: TextStyle(fontSize: 13.sp)),
               ],
             )),
         SwapButton(

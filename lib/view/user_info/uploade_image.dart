@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:skill_swap/controller/profile/add_user_info.dart';
-import 'package:skill_swap/controller/profile/profile_page_view_controller.dart';
+import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
-import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
-import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/user_info/components/custom_upload_widget.dart';
 
 class UploadeImage extends StatelessWidget {
@@ -15,7 +13,6 @@ class UploadeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileControllerImpl profileController = Get.find();
-    ProfilePageViewControllerImpl profilepageController = Get.find();
 
     return SafeArea(
         child: Scaffold(
@@ -25,23 +22,28 @@ class UploadeImage extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Upload your Pictures",
+                  S.of(context).uploadPictures,
                   style: AppStyle.styleBold26(context),
                 ),
-                CustomSmallButton(
-                    backgroundColor: AppColors.primary,
-                    text: "Skip ",
+                TextButton(
+                  onPressed: () {},
+                  child: TextButton(
                     onPressed: () {
-                      profilepageController.next();
-                    }),
+                      Navigator.of(context).pushNamed(Routes.homePage);
+                    },
+                    child: Text(
+                      S.of(context).skip,
+                      style: AppStyle.styleBold26(context),
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 20),
             Text(
-              "Personalize your account with a profile picture upload",
+              S.of(context).profilePictureMessage,
               textAlign: TextAlign.center,
               style: AppStyle.styleRegular16Grey(context),
             ),
@@ -60,7 +62,7 @@ class UploadeImage extends StatelessWidget {
             ),
             const Spacer(),
             AppTextButton(
-                buttonText: "Upload",
+                buttonText: S.of(context).next,
                 textStyle: AppStyle.stylerBold20(context),
                 onPressed: () {
                   profileController.addUserData();

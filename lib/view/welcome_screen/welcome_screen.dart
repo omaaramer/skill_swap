@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
 import 'package:skill_swap/view/welcome_screen/welcome_screen_body.dart';
 
@@ -19,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 10),
               CustomSmallButton(
-                  text: "Back",
+                  text: S.of(context).skip,
                   onPressed: () {
                     Navigator.pop(context);
                   }),

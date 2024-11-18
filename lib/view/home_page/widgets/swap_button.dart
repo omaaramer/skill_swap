@@ -7,6 +7,7 @@ import 'package:skill_swap/controller/posts/send_swap_controller.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/reciever_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class SwapButton extends StatelessWidget {
   const SwapButton(
@@ -32,7 +33,7 @@ class SwapButton extends StatelessWidget {
                   size: 20.sp, // Color of the icon
                 ),
               ),
-              Text("Swap", style: TextStyle(fontSize: 13.sp)),
+              Text(S.of(context).swap, style: TextStyle(fontSize: 13.sp)),
             ],
           ),
         ],

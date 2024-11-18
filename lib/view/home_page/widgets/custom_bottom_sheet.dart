@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_skill_post_data_controller.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 
 class SwapSkillBottomSheet extends StatelessWidget {
@@ -18,7 +19,7 @@ class SwapSkillBottomSheet extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.5,
       padding: const EdgeInsets.all(16.0),
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
@@ -23,7 +24,7 @@ class CustomButton extends StatelessWidget {
             const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           ),
           backgroundColor: WidgetStateProperty.all<Color>(
-            Colors.white.withOpacity(.1),
+            AppColors.white.withOpacity(.1),
           ),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -39,7 +40,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontSize: 18, color: Colors.white),
+          style: const TextStyle(fontSize: 18, color: AppColors.white),
         ));
   }
 }

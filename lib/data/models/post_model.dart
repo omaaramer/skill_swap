@@ -14,7 +14,7 @@ class SkillModel {
   @HiveField(3)
   final String? skillImage;
   @HiveField(4)
-  final String isOnline;
+  final bool isOnline; // Change to bool
   @HiveField(5)
   final DateTime dateTime;
   @HiveField(6)
@@ -29,18 +29,18 @@ class SkillModel {
     required this.skillNeeded,
     this.description,
     required this.skillImage,
-    required this.isOnline,
+    required this.isOnline, // bool type
     required this.dateTime,
   });
 
   factory SkillModel.fromJson(Map<String, dynamic> map) {
     return SkillModel(
+      skillImage: map[AppConstant.kSkillImageUrl] ?? '',
       skillId: map['skillId'] ?? '',
       mySkill: map[AppConstant.kMySkill] ?? '',
       skillNeeded: map[AppConstant.kSkillNeeded] ?? '',
       description: map[AppConstant.kMySkillDescription] ?? '',
-      skillImage: map[AppConstant.kSkillImageUrl] ?? '',
-      isOnline: map[AppConstant.kIsOnline],
+      isOnline: map[AppConstant.kIsOnline] == false, // Safely cast to bool
       dateTime: (map[AppConstant.kTime] as Timestamp).toDate(),
       userId: map[AppConstant.kId],
     );
@@ -53,7 +53,7 @@ class SkillModel {
       AppConstant.kSkillNeeded: skillNeeded,
       AppConstant.kSkillNeededDescription: description,
       AppConstant.kSkillImageUrl: skillImage,
-      AppConstant.kIsOnline: isOnline,
+      AppConstant.kIsOnline: isOnline, // Stored as bool
       AppConstant.kTime: dateTime,
       AppConstant.kId: userId,
     };

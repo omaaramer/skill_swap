@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/onboarding_controller.dart';
-import 'package:skill_swap/core/helpers/extentions.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/onBoarding/widget/custom_button.dart';
 import 'package:skill_swap/view/onBoarding/customslider.dart';
 import 'package:skill_swap/view/onBoarding/widget/dot_indicator.dart';
-import 'package:skill_swap/view/welcome_screen/regester_button.dart';
 
 class OnBoardingPageView extends StatelessWidget {
   const OnBoardingPageView({super.key});
@@ -23,9 +23,9 @@ class OnBoardingPageView extends StatelessWidget {
             children: [
               const SizedBox(height: 10),
               CustomSmallButton(
-                text: "skip".tr,
-                color: Colors.black,
-                backgroundColor: Colors.grey.shade300,
+                text: S.of(context).skip,
+                color: AppColors.black,
+                backgroundColor: AppColors.background,
                 onPressed: () {
                   if (FirebaseAuth.instance.currentUser != null &&
                       FirebaseAuth.instance.currentUser!.emailVerified) {

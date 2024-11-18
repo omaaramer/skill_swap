@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/chat/chat_controller.dart';
-import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/view/chat/widgets/widget_chat_bubble.dart';
 
 class ChatListView extends GetView<ChatControllerImpl> {

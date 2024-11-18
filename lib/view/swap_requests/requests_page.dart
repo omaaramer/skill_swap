@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 import 'recieve_screen.dart';
 import 'send_screen.dart';
@@ -29,12 +30,12 @@ class _MyStatefulWidgetState extends State<RequestsPage>
         bottom: TabBar(
           indicatorSize: TabBarIndicatorSize.label,
           controller: _tabController,
-          tabs: const <Widget>[
+          tabs: <Widget>[
             Tab(
-              child: Text("  SEND  "),
+              child: Text(S.of(context).send),
             ),
             Tab(
-              child: Text("  RECEIVED  "),
+              child: Text(S.of(context).receive),
             ),
           ],
         ),

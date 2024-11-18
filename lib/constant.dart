@@ -7,7 +7,7 @@ class AppConstant {
   static const String kMySkillDescription = "Skill_offered_description";
   static const String kSkillNeeded = "Skill_requested";
   static const String kSkillNeededDescription = "Skill_requested_description";
-  static const String kIsOnline = "isOnline";
+  static const String kIsOnline = "true";
   static const String kSkillImageUrl = "skill_image_url";
   static const String kProfileImageUrl = "profile_image_url";
   static const String kTime = "time";

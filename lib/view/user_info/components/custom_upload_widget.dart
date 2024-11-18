@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 import 'custom_dotted_border.dart';
 
@@ -19,7 +21,7 @@ class CustomUploadWidget extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color(0xFFF4E9FD),
+          color: AppColors.background,
           borderRadius: BorderRadius.circular(30),
         ),
         padding: const EdgeInsets.only(
@@ -30,9 +32,9 @@ class CustomUploadWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Text(
-              'Upload image',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            Text(
+              S.of(context).chooseImage,
+              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: (15)),
             CustomDottedBorder(

@@ -11,7 +11,7 @@ class CustomDot extends StatelessWidget {
       height: 8,
       width: isActive ? 32 : 8,
       decoration: ShapeDecoration(
-        color: isActive ? AppColors.primary : Colors.grey.shade300,
+        color: isActive ? AppColors.primary : AppColors.secondary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );

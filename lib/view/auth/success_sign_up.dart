@@ -4,6 +4,7 @@ import 'package:skill_swap/controller/Auth/success_sign_up_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class SuccessSignUpScreen extends StatelessWidget {
   const SuccessSignUpScreen({Key? key}) : super(key: key);
@@ -16,7 +17,8 @@ class SuccessSignUpScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0.0,
-        title: Text("Success", style: AppStyle.styleBold26(context)),
+        title:
+            Text(S.of(context).success, style: AppStyle.styleBold26(context)),
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -27,15 +29,16 @@ class SuccessSignUpScreen extends StatelessWidget {
             size: 200,
             color: AppColors.primary,
           )),
-          Text("Congratulations", style: AppStyle.styleBold30(context)),
-          Text("Your account has been created successfully"),
+          Text(S.of(context).success, style: AppStyle.styleBold30(context)),
+          Text(S.of(context).accountCreatedSuccess),
           const Spacer(),
           SizedBox(
             width: double.infinity,
             child: AppTextButton(
-                buttonText: "Continue",
+                buttonText: S.of(context).next,
                 verticalPadding: 10,
-                textStyle: const TextStyle(color: Colors.white, fontSize: 20),
+                textStyle:
+                    const TextStyle(color: AppColors.white, fontSize: 20),
                 onPressed: () {
                   controller.goToPageLogin();
                 }),

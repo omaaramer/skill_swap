@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 
 class SiginButton extends StatelessWidget {
@@ -10,7 +11,7 @@ class SiginButton extends StatelessWidget {
       buttonText: "SIGN IN",
       borderRadius: 100,
       verticalPadding: 10,
-      textStyle: const TextStyle(color: Colors.white, fontSize: 20),
+      textStyle: const TextStyle(color: AppColors.white, fontSize: 20),
       onPressed: () {},
     );
   }

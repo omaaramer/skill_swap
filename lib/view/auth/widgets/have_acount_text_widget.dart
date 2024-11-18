@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skill_swap/core/helpers/extentions.dart';
-import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 
 class HaveAcountWidget extends StatelessWidget {

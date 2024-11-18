@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class ChatTextFormField extends StatelessWidget {
   const ChatTextFormField(
@@ -29,7 +30,7 @@ class ChatTextFormField extends StatelessWidget {
                   vertical: 4.h,
                   horizontal: 16.w,
                 ),
-                hintText: 'Type your message...',
+                hintText: S.of(context).typeMessage,
               ),
             ),
           ),

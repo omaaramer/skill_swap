@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomSkillContainer extends StatelessWidget {
   const CustomSkillContainer({
@@ -13,7 +14,7 @@ class CustomSkillContainer extends StatelessWidget {
     return Container(
       width: 100.w,
       decoration: BoxDecoration(
-          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(8)),
+          color: AppColors.background, borderRadius: BorderRadius.circular(8)),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),

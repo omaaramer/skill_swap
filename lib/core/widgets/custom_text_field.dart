@@ -68,26 +68,26 @@ class AppTextFormField extends StatelessWidget {
             ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.red,
+            color: AppColors.red,
             width: 1.3,
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.red,
+            color: AppColors.red,
             width: 1.3,
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
         hintStyle: hintStyle ??
             const TextStyle(
-              color: Colors.black54,
+              color: AppColors.lightBlack,
             ),
         hintText: hintText,
         hintMaxLines: hintMaxLines ?? 1,
         suffixIcon: suffixIcon,
-        fillColor: backgroundColor ?? const Color(0xFFF4E9FD),
+        fillColor: backgroundColor ?? AppColors.background,
         filled: true,
       ),
       obscureText: isObscureText ?? false,

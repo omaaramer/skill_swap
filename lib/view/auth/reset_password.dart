@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Auth/reset_password_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
 import 'package:skill_swap/core/helpers/valid_inpnut.dart';
@@ -64,7 +65,8 @@ class ResetPasswordScreen extends StatelessWidget {
               AppTextButton(
                   buttonText: "Save",
                   verticalPadding: 10,
-                  textStyle: const TextStyle(color: Colors.white, fontSize: 20),
+                  textStyle:
+                      const TextStyle(color: AppColors.white, fontSize: 20),
                   onPressed: () {
                     resetPasswordController.goToScussessResetScreen();
                   }),

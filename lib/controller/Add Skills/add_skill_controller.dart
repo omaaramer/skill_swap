@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/core/routing/routes.dart';
-
 import 'get_skill_post_data_controller.dart';
 
 abstract class AddSkillController extends GetxController {
@@ -78,7 +77,7 @@ class AddSkillControllerImpl extends AddSkillController {
           FirebaseFirestore.instance.collection('skills');
 
       await skillsRef.add({
-        AppConstant.kIsOnline: isOnline ? "ONLINE" : "IN PERSON",
+        "isOnline": isOnline ? true : false,
         AppConstant.kMySkill: mySkill.text,
         AppConstant.kSkillNeeded: skillNeeded.text,
         AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/reciever_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/home_page/widgets/bottom_icon_bar.dart';
 import 'package:skill_swap/view/home_page/widgets/card_infi_bar.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_divider.dart';
@@ -39,9 +40,11 @@ class PostCard extends StatelessWidget {
               ),
               const CustomCardDivider(),
               CustomSkillLisTile(
-                title: 'WILL OFFER YOU',
+                title: S.of(context).willOfferYou,
                 skill: postModel.mySkill!,
-                isOnline: postModel.isOnline,
+                isOnline: postModel.isOnline
+                    ? S.of(context).online
+                    : S.of(context).inPerson,
                 descreptionMaxLines: 10,
               ),
               const CustomCardDivider(
@@ -49,9 +52,11 @@ class PostCard extends StatelessWidget {
                 indent: 16,
               ),
               CustomSkillLisTile(
-                title: 'IN EXPECTATION FOR',
+                title: S.of(context).inExpectationFor,
                 skill: postModel.skillNeeded!,
-                isOnline: postModel.isOnline,
+                isOnline: postModel.isOnline
+                    ? S.of(context).online
+                    : S.of(context).inPerson,
                 descreptionMaxLines: 10,
               ),
               GestureDetector(

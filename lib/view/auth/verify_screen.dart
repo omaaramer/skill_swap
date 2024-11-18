@@ -3,6 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Auth/verify_code_controller.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 
 class VerifyCodeScreen extends StatelessWidget {
   const VerifyCodeScreen({super.key});
@@ -49,7 +50,7 @@ class VerifyCodeScreen extends StatelessWidget {
                 // fieldHeight: 150,
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 numberOfFields: 5,
-                borderColor: Color(0xFF512DA8),
+                borderColor: AppColors.primary,
                 //set to true to show as box or false to show as dash
                 showFieldAsBox: true,
                 //runs when a code is typed in

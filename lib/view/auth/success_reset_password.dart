@@ -35,7 +35,8 @@ class SuccessResetPasswordScreen extends StatelessWidget {
             child: AppTextButton(
                 buttonText: "Continue",
                 verticalPadding: 10,
-                textStyle: const TextStyle(color: Colors.white, fontSize: 20),
+                textStyle:
+                    const TextStyle(color: AppColors.white, fontSize: 20),
                 onPressed: () {
                   controller.goToPageLogin();
                 }),

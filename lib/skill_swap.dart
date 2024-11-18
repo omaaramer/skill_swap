@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/helpers/intialbindings.dart';
 import 'package:skill_swap/core/routing/get_routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
-import 'core/localization/changeLocal.dart';
-import 'core/localization/translation.dart';
+import 'package:skill_swap/generated/l10n.dart';
+import 'core/localization/change_local.dart';
 
 class SkillSwap extends StatelessWidget {
   const SkillSwap({super.key});
@@ -20,14 +21,14 @@ class SkillSwap extends StatelessWidget {
       child: GetMaterialApp(
         initialBinding: InitialBindings(),
         locale: localController.language,
-        translations: MyTranslation(),
-        // locale: DevicePreview.locale(context),
-        // builder: DevicePreview.appBuilder,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
         title: 'SkillSwap',
-        // darkTheme: ThemeData(
-        //   primaryColor: AppColors.primary,
-        //   brightness: Brightness.dark, // This is the dark theme
-        // ),
         theme: ThemeData(
           primaryColor: AppColors.primary,
           brightness: Brightness.light, // This is the light theme

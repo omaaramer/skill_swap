@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/services/services.dart';
+import 'package:intl/intl.dart';
 
 class LocalController extends GetxController {
   late Locale language;
@@ -25,5 +26,10 @@ class LocalController extends GetxController {
       language = Locale(Get.deviceLocale!.languageCode);
     }
     super.onInit();
+  }
+
+  static bool isArabic() {
+    String locale = Intl.getCurrentLocale();
+    return locale == 'ar';
   }
 }

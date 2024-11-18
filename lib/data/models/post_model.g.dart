@@ -23,7 +23,7 @@ class SkillModelAdapter extends TypeAdapter<SkillModel> {
       skillNeeded: fields[1] as String?,
       description: fields[2] as String?,
       skillImage: fields[3] as String?,
-      isOnline: fields[4] as String,
+      isOnline: fields[4] as bool,
       dateTime: fields[5] as DateTime,
     );
   }

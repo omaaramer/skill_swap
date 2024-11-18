@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:skill_swap/controller/profile/add_user_info.dart';
 import 'package:skill_swap/controller/profile/profile_page_view_controller.dart';
-import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class PickDate extends StatelessWidget {
   const PickDate({super.key});
@@ -22,10 +23,11 @@ class PickDate extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            Text("Date of Birth", style: AppStyle.styleBold26(context)),
+            Text(S.of(context).dateOfBirth,
+                style: AppStyle.styleBold26(context)),
             const SizedBox(height: 10),
             Text(
-              "Enter your date of birth for better skill matching and personalized recommendations.",
+              S.of(context).dobMessage,
               textAlign: TextAlign.center,
               style: AppStyle.styleRegular16Grey(context),
             ),
@@ -45,7 +47,7 @@ class PickDate extends StatelessWidget {
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
-                          color: Color(0xffeee8f0)),
+                          color: AppColors.secondary),
                       child: Text(
                           "${profileController.birthDate.toLocal()}"
                               .split(' ')[0],
@@ -53,7 +55,7 @@ class PickDate extends StatelessWidget {
                     )),
             const SizedBox(height: 10),
             AppTextButton(
-                buttonText: "Select Date",
+                buttonText: S.of(context).selectDate,
                 textStyle: AppStyle.stylerBold20(context),
                 onPressed: () {
                   // Get.toNamed(Routes.editProfile);

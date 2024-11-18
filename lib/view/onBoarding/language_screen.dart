@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:skill_swap/core/localization/changeLocal.dart';
+import 'package:skill_swap/core/localization/change_local.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class LanguageSelectionScreen extends GetView<LocalController> {
   const LanguageSelectionScreen({super.key});
@@ -22,7 +24,7 @@ class LanguageSelectionScreen extends GetView<LocalController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'lang'.tr,
+              S.of(context).lang,
               style: AppStyle.styleBold26(context),
             ),
             const SizedBox(height: 20),
@@ -30,8 +32,8 @@ class LanguageSelectionScreen extends GetView<LocalController> {
               padding: const EdgeInsets.symmetric(horizontal: 100),
               child: AppTextButton(
                   verticalPadding: 0,
-                  buttonText: 'en'.tr,
-                  textStyle: TextStyle(color: Colors.white, fontSize: 16.sp),
+                  buttonText: S.of(context).en,
+                  textStyle: TextStyle(color: AppColors.white, fontSize: 16.sp),
                   onPressed: () {
                     controller.changeLanguage('en');
                     Get.toNamed(Routes.onBoardingScrreen);
@@ -42,8 +44,8 @@ class LanguageSelectionScreen extends GetView<LocalController> {
               padding: const EdgeInsets.symmetric(horizontal: 100),
               child: AppTextButton(
                   verticalPadding: 0,
-                  buttonText: 'ar'.tr,
-                  textStyle: TextStyle(color: Colors.white, fontSize: 16.sp),
+                  buttonText: S.of(context).ar,
+                  textStyle: TextStyle(color: AppColors.white, fontSize: 16.sp),
                   onPressed: () {
                     controller.changeLanguage('ar');
                     Get.toNamed(Routes.onBoardingScrreen);

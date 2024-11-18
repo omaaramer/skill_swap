@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Auth/sign_in_with_google.dart';
-import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/assets.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 
 class RegesterationWithAcounts extends StatelessWidget {
   const RegesterationWithAcounts({
@@ -53,9 +51,9 @@ class CustomIcon extends StatelessWidget {
         width: 50,
         decoration: const ShapeDecoration(
           shape: CircleBorder(
-            side: BorderSide(color: Color(0xFFF4E9FD), width: 1),
-          ),
-          color: Color(0xFFF4E9FD),
+              // side: BorderSide(color: AppColors.secondary, width: 1),
+              ),
+          color: AppColors.background,
         ),
         child: Center(
           child: Image.asset(image),

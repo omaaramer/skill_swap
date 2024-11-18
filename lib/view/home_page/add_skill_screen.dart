@@ -6,7 +6,8 @@ import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
-import 'package:skill_swap/view/home_page/widgets/cutoem_toggle_button.dart';
+import 'package:skill_swap/generated/l10n.dart';
+import 'package:skill_swap/view/home_page/widgets/custom_toggle_button.dart';
 import 'package:skill_swap/view/user_info/components/custom_upload_widget.dart';
 
 class AddSkillScreen extends StatelessWidget {
@@ -22,7 +23,7 @@ class AddSkillScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             elevation: 1,
-            title: const Text("Add Skill"),
+            title: Text(S.of(context).addSkill),
             centerTitle: true,
             leading: IconButton(
               onPressed: () {
@@ -44,18 +45,18 @@ class AddSkillScreen extends StatelessWidget {
                       children: [
                         const SizedBox(height: 20),
                         AppTextFormField(
-                          hintText: "My Skill/ My Service (eg. piano) ",
+                          hintText: S.of(context).mySkillServicePlaceholder,
                           controller: addSkillControllerImpl.mySkill,
                           validator: (value) {
-                            return validInput(value!, 3, 50, "username");
+                            return validInput(value!, 3, 50, "text");
                           },
                         ),
                         const SizedBox(height: 20),
                         AppTextFormField(
-                          hintText: "Skill you want to get (eg. programming) ",
+                          hintText: S.of(context).desiredSkillPlaceholder,
                           controller: addSkillControllerImpl.skillNeeded,
                           validator: (value) {
-                            return validInput(value!, 3, 50, "username");
+                            return validInput(value!, 3, 50, "text");
                           },
                         ),
                         const SizedBox(height: 20),
@@ -73,7 +74,10 @@ class AddSkillScreen extends StatelessWidget {
                         const SizedBox(height: 20),
                         Center(
                           child: AnimatedToggle(
-                              values: const ["ONLINE", "IN PERSON"],
+                              values: [
+                                S.of(context).online,
+                                S.of(context).inPerson,
+                              ],
                               onToggleCallback: (index) {
                                 index == 0
                                     ? addSkillControllerImpl.isOnline = true
@@ -85,7 +89,7 @@ class AddSkillScreen extends StatelessWidget {
                           height: 10,
                         )),
                         AppTextButton(
-                            buttonText: "POST",
+                            buttonText: S.of(context).post,
                             textStyle: AppStyle.stylerBold20(context),
                             onPressed: () {
                               addSkillControllerImpl.checkIfUserInfoExist();

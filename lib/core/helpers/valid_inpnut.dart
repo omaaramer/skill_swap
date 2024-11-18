@@ -26,11 +26,11 @@ String? validInput(String val, int min, int max, String type) {
       }
       break;
 
-    // case "text":
-    //   if (!GetUtils.isLengthLessThan(val, 3)) {
-    //     return "Can't be less than $min characters";
-    //   }
-    //   break;
+    case "text":
+      if (!GetUtils.isLengthLessThan(val, max)) {
+        return "Can't be more than $max characters";
+      }
+      break;
 
     case "phone":
       if (!GetUtils.isPhoneNumber(val)) {

@@ -28,10 +28,10 @@ class CustomTextFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       autofocus: false,
       validator: validator,
-      cursorColor: Colors.black12,
+      cursorColor: AppColors.primary,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: const TextStyle(color: Colors.grey),
+        hintStyle: const TextStyle(color: AppColors.grey),
         icon: Container(
           height: 50,
           width: 40,
@@ -41,23 +41,23 @@ class CustomTextFormField extends StatelessWidget {
           ),
           child: Icon(
             icon,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
         // prefixIcon: Icon(Icons.person, size: 25, color: Colors.grey,),
         // contentPadding: EdgeInsets.only(left: 30),
         border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
+          borderSide: BorderSide(color: AppColors.lightBlack),
         ),
         enabled: true,
         enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
+          borderSide: BorderSide(color: AppColors.lightBlack),
         ),
         focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black),
+          borderSide: BorderSide(color: AppColors.black),
         ),
         errorBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.redAccent),
+          borderSide: BorderSide(color: AppColors.red),
         ),
       ),
     );

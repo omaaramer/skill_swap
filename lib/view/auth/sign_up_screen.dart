@@ -10,6 +10,7 @@ import 'package:skill_swap/core/helpers/valid_inpnut.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/core/widgets/custom_text_field.dart';
+import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/auth/widgets/have_acount_text_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -24,12 +25,12 @@ class SignUpScreen extends StatelessWidget {
           child: GetBuilder<SignUpControllerImpl>(
             builder: (signUpController) => PopScope(
               canPop: false,
-              onPopInvoked: ((didpop) {
-                if (didpop) {
+              onPopInvokedWithResult: (didPop, result) {
+                if (didPop) {
                   return;
                 }
                 alertExitApp();
-              }),
+              },
               child: Container(
                 padding: const EdgeInsets.all(16),
                 child: ListView(
@@ -45,24 +46,21 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    Text("Create account",
+                    Text(S.of(context).signUp,
                         style: AppStyle.styleBold30(context)),
-                    const Text(
-                        "Create an account and enjoy a world of learning and connections."),
+                    Text(S.of(context).welcomeBackMessage1),
                     const SizedBox(height: 40),
                     Form(
                       key: signUpController.formKey,
                       child: Column(
                         children: [
-                        
-                         
                           AppTextFormField(
                               controller: signUpController.email,
                               suffixIcon: const Icon(
                                 Icons.email_outlined,
                                 color: AppColors.primary,
                               ),
-                              hintText: "Email",
+                              hintText: S.of(context).email,
                               validator: (value) {
                                 return validInput(value!, 7, 50, "email");
                               }),
@@ -82,14 +80,14 @@ class SignUpScreen extends StatelessWidget {
                                     color: AppColors.primary,
                                   ),
                                 ),
-                                hintText: "Password",
+                                hintText: S.of(context).password,
                                 validator: (value) {
                                   return validInput(value!, 7, 50, "password");
                                 }),
                           ),
                           const SizedBox(height: 10),
                           AppTextButton(
-                              buttonText: "Create Account",
+                              buttonText: S.of(context).signUp,
                               verticalPadding: 10,
                               textStyle: AppStyle.stylerBold20(context),
                               onPressed: () {
@@ -100,8 +98,8 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     HaveAcountWidget(
-                      text: "Have an account?",
-                      textButton: "Sign In",
+                      text: S.of(context).haveAccount,
+                      textButton: S.of(context).signIn,
                       onPressed: () {
                         signUpController.goToSignInScreen();
                       },

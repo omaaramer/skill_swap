@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomCardDivider extends StatelessWidget {
   const CustomCardDivider({super.key, this.endIndent, this.indent});
@@ -6,7 +7,7 @@ class CustomCardDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: Colors.grey,
+      color: AppColors.grey,
       thickness: 1,
       endIndent: endIndent ?? 0,
       indent: indent ?? 0,

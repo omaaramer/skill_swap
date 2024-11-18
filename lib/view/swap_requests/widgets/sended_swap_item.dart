@@ -16,12 +16,12 @@ class SendedSwaps extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.secondary,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: AppColors.background,
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3),
+            offset: Offset(0, 3),
           ),
         ],
       ),
@@ -55,9 +55,9 @@ class SendedSwaps extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     swapRequest.receiverJopTitle,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.grey[600],
+                      color: AppColors.lightBlack,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -65,7 +65,7 @@ class SendedSwaps extends StatelessWidget {
                     'Experience - 5 year +',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.green,
+                      color: AppColors.primary,
                     ),
                   ),
                 ],
@@ -82,7 +82,7 @@ class SendedSwaps extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.favorite, color: Colors.red),
+                  Icon(Icons.favorite, color: AppColors.red),
                   SizedBox(width: 4),
                   Text('5K+'),
                 ],
@@ -108,7 +108,7 @@ class SendedSwaps extends StatelessWidget {
               buttonHeight: 20.h,
               verticalPadding: 2,
               buttonText: 'UNSWAP',
-              textStyle: const TextStyle(color: Colors.white),
+              textStyle: const TextStyle(color: AppColors.white),
               onPressed: () {}),
         ],
       ),

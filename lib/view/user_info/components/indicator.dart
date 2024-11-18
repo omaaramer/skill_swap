@@ -16,6 +16,7 @@ class SmothIndicator extends StatelessWidget {
         count: EditProfilePageview.pages.length,
         effect: const JumpingDotEffect(
           activeDotColor: AppColors.primary,
+          dotColor: AppColors.secondary,
           dotWidth: 12,
           dotHeight: 12,
           spacing: 10,
