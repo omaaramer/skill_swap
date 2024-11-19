@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 
-class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({
+class ProfileAchivements extends StatelessWidget {
+  const ProfileAchivements({
     super.key,
   });
 
@@ -20,8 +19,7 @@ class ProfileInfo extends StatelessWidget {
         ),
         Column(
           children: [
-            Text('Experience',
-                style: AppStyle.styleRegular16Grey(context)),
+            Text('Experience', style: AppStyle.styleRegular16Grey(context)),
             Text('5', style: AppStyle.blackTitle(context)),
           ],
         ),

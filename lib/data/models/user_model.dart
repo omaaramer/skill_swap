@@ -6,6 +6,8 @@ class UserModel {
   final String jopTitle;
   final String address;
   final String userId;
+  final String? aboutMe;
+  final String? bio;
   final String? phone;
   final DateTime? birthDate;
 
@@ -13,6 +15,8 @@ class UserModel {
     this.phone,
     this.birthDate,
     required this.jopTitle,
+    this.aboutMe,
+    this.bio,
     required this.userId,
     required this.address,
     required this.fullname,
@@ -21,8 +25,10 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
+      aboutMe: map[AppConstant.kAboutMe],
       // phone: map[AppConstant.kPhone],
       // birthDate: DateTime.parse(map[AppConstant.kBirthDate]),
+      bio: map[AppConstant.kBio],
       jopTitle: map[AppConstant.kJopTitle],
       address: map[AppConstant.kAddress],
       fullname: map[AppConstant.kFullname],
@@ -33,6 +39,8 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
+      AppConstant.kBio: bio,
+      AppConstant.kAboutMe: aboutMe,
       AppConstant.kJopTitle: jopTitle,
       AppConstant.kAddress: address,
       AppConstant.kFullname: fullname,

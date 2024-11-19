@@ -40,7 +40,7 @@ class SkillModel {
       mySkill: map[AppConstant.kMySkill] ?? '',
       skillNeeded: map[AppConstant.kSkillNeeded] ?? '',
       description: map[AppConstant.kMySkillDescription] ?? '',
-      isOnline: map[AppConstant.kIsOnline] == false, // Safely cast to bool
+      isOnline: map[AppConstant.kIsOnline] == true, // Safely cast to bool
       dateTime: (map[AppConstant.kTime] as Timestamp).toDate(),
       userId: map[AppConstant.kId],
     );

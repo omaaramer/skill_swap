@@ -33,14 +33,14 @@ class SendSwapControllerImpl extends SendSwapController {
 
     final docRef = FirebaseFirestore.instance.collection('swapRequests');
     SwapRequest request = SwapRequest(
-      senderImage: getUserController.user!.profileImageUrl,
+      senderImage: getUserController.user.value!.profileImageUrl,
       receiverImage: receiver.receiverImage,
       receiverJopTitle: receiver.receiverJopTitle,
-      senderJopTitle: getUserController.user!.jopTitle,
-      senderId: getUserController.user!.userId,
+      senderJopTitle: getUserController.user.value!.jopTitle,
+      senderId: getUserController.user.value!.userId,
       receiverName: receiver.receiverName,
       receiverSkill: receiver.skill,
-      senderName: getUserController.user!.fullname,
+      senderName: getUserController.user.value!.fullname,
       receiverId: receiver.receiverId,
       senderSkill: skillModel.mySkill!,
       receiverSkillId: receiver.skillId,

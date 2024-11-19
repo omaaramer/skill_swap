@@ -52,7 +52,7 @@ class EditeProfileHeader extends StatelessWidget {
                 CircleAvatar(
                   radius: 60.sp,
                   backgroundImage: NetworkImage(
-                    userController.user!.profileImageUrl,
+                    userController.user.value!.profileImageUrl,
                   ),
                 ),
                 CircleAvatar(

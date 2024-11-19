@@ -36,7 +36,7 @@ class CardBottomIconBar extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: CachedNetworkImage(
-                  imageUrl: userController.user!.profileImageUrl,
+                  imageUrl: userController.user.value!.profileImageUrl,
                   height: 25,
                   width: 25,
                   fit: BoxFit.cover,
@@ -61,7 +61,7 @@ class CardBottomIconBar extends StatelessWidget {
         ),
         IconButton(
             onPressed: () {
-              if (userController.user!.userId != userModel.userId) {
+              if (userController.user.value!.userId != userModel.userId) {
                 Get.to(() => ChatScreen(userModel: userModel));
               }
             },

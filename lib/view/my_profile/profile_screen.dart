@@ -24,39 +24,77 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             ProfileHeader(userController: userController),
-            Text(userController.user!.fullname,
-                style: AppStyle.blackTitle(context)),
-            Text(userController.user!.jopTitle,
-                style: AppStyle.styleRegular16Grey(context)),
+            GetX<GetUserControllerImpl>(
+                init: userController,
+                builder: (controller) {
+                  return Column(
+                    children: [
+                      Text(controller.user.value!.fullname,
+                          style: AppStyle.blackTitle(context)),
+                      Text(
+                        controller.user.value!.bio!,
+                        style: AppStyle.styleRegular16Grey(context),
+                      ),
+                    ],
+                  );
+                }),
             SizedBox(height: 20.sp),
-            const ProfileInfo(),
+            const ProfileAchivements(),
             SizedBox(height: 20.sp),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomOutlineButton(
-                    onPressed: () {
-                      Get.to(() => const AddSkillScreen());
-                    },
-                    child: Text('Add Skills',
-                        style: AppStyle.styleBold18(context)),
-                  ),
+            const profile_buttons(),
+            SizedBox(width: 50.sp),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("حول", style: AppStyle.blackTitle(context)),
+                    GetX<GetUserControllerImpl>(builder: (controller) {
+                      return Text(
+                        controller.user.value!.aboutMe!,
+                        style: AppStyle.styleRegular16Grey(context),
+                      );
+                    })
+                  ],
                 ),
-                SizedBox(width: 5.sp),
-                Expanded(
-                  child: CustomOutlineButton(
-                    onPressed: () {
-                      Get.to(() => const EditProfileScreen());
-                    },
-                    child: Icon(IconBroken.Edit,
-                        color: AppColors.primary, size: 20.sp),
-                  ),
-                ),
-              ],
-            )
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class profile_buttons extends StatelessWidget {
+  const profile_buttons({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: CustomOutlineButton(
+            onPressed: () {
+              Get.off(() => const AddSkillScreen());
+            },
+            child: Text('Add Skills', style: AppStyle.styleBold18(context)),
+          ),
+        ),
+        SizedBox(width: 5.sp),
+        Expanded(
+          child: CustomOutlineButton(
+            onPressed: () {
+              Get.to(() => const EditProfileScreen());
+            },
+            child: Icon(IconBroken.Edit, color: AppColors.primary, size: 20.sp),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
@@ -33,7 +32,7 @@ class ProfileHeader extends StatelessWidget {
             child: CircleAvatar(
               radius: 60.sp,
               backgroundImage: NetworkImage(
-                userController.user!.profileImageUrl,
+                userController.user.value!.profileImageUrl,
               ),
             ),
           )

@@ -45,7 +45,7 @@ class PersonalDatailsOne extends StatelessWidget {
                           children: [
                             CustomTextFormField(
                               hint: S.of(context).username,
-                              mycontroller: profileController.name,
+                              controller: profileController.name,
                               validator: (value) {
                                 return validInput(value!, 3, 20, "text");
                               },
@@ -54,7 +54,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             const SizedBox(height: 10),
                             CustomTextFormField(
                               hint: S.of(context).address,
-                              mycontroller: profileController.address,
+                              controller: profileController.address,
                               icon: Icons.home,
                               validator: (value) {
                                 return validInput(value!, 3, 50, "address");
@@ -63,7 +63,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             const SizedBox(height: 10),
                             CustomTextFormField(
                               hint: S.of(context).titlePlaceholder,
-                              mycontroller: profileController.jopTitle,
+                              controller: profileController.jopTitle,
                               icon: Icons.email,
                               validator: (value) {
                                 return validInput(value!, 3, 50, "text");
@@ -73,7 +73,7 @@ class PersonalDatailsOne extends StatelessWidget {
                             CustomTextFormField(
                               isNumber: true,
                               hint: S.of(context).phoneNumber,
-                              mycontroller: profileController.phone,
+                              controller: profileController.phone,
                               icon: Icons.phone,
                               validator: (value) {
                                 return validInput(value!, 11, 11, "phone");
