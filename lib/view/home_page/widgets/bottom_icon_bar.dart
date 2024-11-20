@@ -36,7 +36,8 @@ class CardBottomIconBar extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: CachedNetworkImage(
-                  imageUrl: userController.user.value!.profileImageUrl,
+                  imageUrl:
+                      "${userController.user.value!.profileImageUrl}?timestamp=${DateTime.now().millisecondsSinceEpoch}",
                   height: 25,
                   width: 25,
                   fit: BoxFit.cover,

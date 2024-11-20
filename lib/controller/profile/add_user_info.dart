@@ -1,6 +1,8 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:path/path.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
@@ -9,12 +11,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/controller/profile/edite_profile_controler.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 
 abstract class ProfileController extends GetxController {
-  getImageFromGallery();
+  getImageFromGallery({required ImageSource source, required String userId});
   addUserData();
   updateBirthDate(DateTime newDateTime);
+  Future<File?> cropImage({required File imageFile});
 }
 
 class ProfileControllerImpl extends ProfileController {
@@ -24,34 +28,77 @@ class ProfileControllerImpl extends ProfileController {
   TextEditingController phone = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   final formKey = GlobalKey<FormState>();
-  File? _image;
+
   String? url;
+  Rxn<File> selectedImage = Rxn<File>(); // Reactive variable
   DateTime birthDate = DateTime.now();
   DocumentReference usersRef = FirebaseFirestore.instance
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser!.uid);
 
   @override
-  Future<void> getImageFromGallery() async {
+  Future<void> getImageFromGallery(
+      {required ImageSource source, required String userId}) async {
     try {
-      XFile? imageFromGallery =
-          await _picker.pickImage(source: ImageSource.gallery);
+      // Pick an image from the gallery
+      XFile? pickedImage = await _picker.pickImage(source: source);
 
-      if (imageFromGallery == null) return;
+      if (pickedImage == null) return;
 
-      _image = File(imageFromGallery.path);
-      var imageName = basename(imageFromGallery.path);
+      // Convert to a File object
+      File? _image = File(pickedImage.path);
+      _image = await cropImage(imageFile: _image);
+      if (_image != null) {
+        selectedImage.value = _image; // Update the reactive variable
+      }
+
+      // Use the user ID to generate a unique file name
+      String imageName =
+          "${userId}_profile_image"; // e.g., userId_profile_image
       var refStorage = FirebaseStorage.instance
           .ref("${AppConstant.kCloudStorageProfileImages}/$imageName");
 
+      // Upload the image
       await refStorage.putFile(_image!);
+      Get.back();
+      // Get the download URL
       url = await refStorage.getDownloadURL();
+
+      // Notify listeners of changes
       update();
     } catch (e) {
       Get.defaultDialog(
         title: "Error",
         middleText: "Failed to upload image. Please try again.",
       );
+    }
+  }
+
+  // Method to crop an image
+  @override
+  Future<File?> cropImage({required File imageFile}) async {
+    try {
+      CroppedFile? croppedImage = await ImageCropper().cropImage(
+        sourcePath: imageFile.path,
+        uiSettings: [
+          AndroidUiSettings(
+            toolbarTitle: 'Crop Image',
+            toolbarColor: AppColors.primary,
+            toolbarWidgetColor: AppColors.white,
+            activeControlsWidgetColor: AppColors.primary,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false,
+          ),
+          IOSUiSettings(
+            minimumAspectRatio: 1.0,
+          ),
+        ],
+      );
+      if (croppedImage == null) return null;
+      return File(croppedImage.path);
+    } catch (e) {
+      log('Error cropping image: $e');
+      return null;
     }
   }
 
@@ -63,7 +110,7 @@ class ProfileControllerImpl extends ProfileController {
         address: address.text,
         phone: phone.text,
         birthDate: birthDate,
-        jopTitle: jopTitle.text,
+        jobTitle: jopTitle.text,
         userId: FirebaseAuth.instance.currentUser!.uid, // مالوش لازمة
         profileImageUrl: url ?? "none",
       );

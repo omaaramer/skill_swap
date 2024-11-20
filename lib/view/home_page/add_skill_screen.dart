@@ -61,13 +61,10 @@ class AddSkillScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         GetBuilder<AddSkillControllerImpl>(
-                          builder: (_) => CustomUploadWidget(
+                          builder: (controller) => CustomUploadWidget(
                             url: addSkillControllerImpl.url,
                             onPressed: () {
-                              addSkillControllerImpl.getImageFromGallery();
-                            },
-                            onTap: () {
-                              addSkillControllerImpl.getImageFromGallery();
+                              controller.getImageFromGallery();
                             },
                           ),
                         ),

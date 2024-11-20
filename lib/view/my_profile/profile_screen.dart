@@ -24,20 +24,18 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             ProfileHeader(userController: userController),
-            GetX<GetUserControllerImpl>(
-                init: userController,
-                builder: (controller) {
-                  return Column(
-                    children: [
-                      Text(controller.user.value!.fullname,
-                          style: AppStyle.blackTitle(context)),
-                      Text(
-                        controller.user.value!.bio!,
-                        style: AppStyle.styleRegular16Grey(context),
-                      ),
-                    ],
-                  );
-                }),
+            GetX<GetUserControllerImpl>(builder: (controller) {
+              return Column(
+                children: [
+                  Text(controller.user.value!.fullname,
+                      style: AppStyle.blackTitle(context)),
+                  Text(
+                    controller.user.value!.bio ?? "click edit to add bio",
+                    style: AppStyle.styleRegular16Grey(context),
+                  ),
+                ],
+              );
+            }),
             SizedBox(height: 20.sp),
             const ProfileAchivements(),
             SizedBox(height: 20.sp),
@@ -53,7 +51,8 @@ class ProfileScreen extends StatelessWidget {
                     Text("حول", style: AppStyle.blackTitle(context)),
                     GetX<GetUserControllerImpl>(builder: (controller) {
                       return Text(
-                        controller.user.value!.aboutMe!,
+                        controller.user.value!.aboutMe ??
+                            "click edit to add about me",
                         style: AppStyle.styleRegular16Grey(context),
                       );
                     })

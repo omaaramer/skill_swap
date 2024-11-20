@@ -21,5 +21,5 @@ class AppConstant {
   static const String kFullname = "full_name";
   static const String kCloudStorageProfileImages = "profileImages";
   static const String kCloudStorageSkillImages = "SkillImages";
-  static const String kJopTitle = "jopTitle";
+  static const String kJobTitle = "jopTitle";
 }

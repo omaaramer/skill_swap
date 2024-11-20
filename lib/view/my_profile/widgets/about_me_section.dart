@@ -27,7 +27,7 @@ class AboutMeSection extends StatelessWidget {
           children: [
             Text("حول", style: AppStyle.blackTitle(context)),
             CustomTextFormField(
-              initialValue: userController.user.value!.aboutMe,
+              initialValue: userController.user.value!.aboutMe ?? "",
               onChanged: (value) {
                 editProfileControllerImpl.aboutController.text = value;
               },
@@ -43,7 +43,7 @@ class AboutMeSection extends StatelessWidget {
                       .validate()) {
                     editProfileControllerImpl.updateAboutMeInfo();
                     Get.back();
-                    userController.getAllUsers();
+                    // userController.getAllUsers();
                   }
                 },
                 child: const Text("ok"))

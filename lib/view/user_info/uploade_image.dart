@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/controller/profile/add_user_info.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
+import 'package:skill_swap/core/widgets/show_photo_bottom_sheet.dart';
 import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/user_info/components/custom_upload_widget.dart';
 
@@ -13,7 +16,7 @@ class UploadeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileControllerImpl profileController = Get.find();
-
+    GetUserControllerImpl userController = Get.put(GetUserControllerImpl());
     return SafeArea(
         child: Scaffold(
       body: Container(
@@ -50,15 +53,17 @@ class UploadeImage extends StatelessWidget {
             const Spacer(),
             GetBuilder<ProfileControllerImpl>(
               builder: (_) => CustomUploadWidget(
-                url: profileController.url,
-                onTap: () {
-                  profileController.getImageFromGallery();
-                },
-                onPressed: () {
-                  profileController.getImageFromGallery();
-                  // Save Image to some storage
-                },
-              ),
+                  url: profileController.url,
+                  onPressed: () {
+                    showPhotoBottomSheet(
+                      context: context,
+                      onTap: (ImageSource source) {
+                        profileController.getImageFromGallery(
+                            source: source,
+                            userId: userController.user.value!.userId);
+                      },
+                    );
+                  }),
             ),
             const Spacer(),
             AppTextButton(

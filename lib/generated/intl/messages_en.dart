@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CropImage": MessageLookupByLibrary.simpleMessage("Crop Image"),
         "accountCreatedSuccess": MessageLookupByLibrary.simpleMessage(
             "Your account has been created successfully"),
         "addSkill": MessageLookupByLibrary.simpleMessage("Add Skill"),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "noImage": MessageLookupByLibrary.simpleMessage("No image selected"),
         "onBoardingSubtitle1": MessageLookupByLibrary.simpleMessage(
             "Discover a community where you can learn new skills and share your expertise with others. Let\'s get started!"),
         "onBoardingSubtitle2": MessageLookupByLibrary.simpleMessage(
@@ -82,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingTitle4":
             MessageLookupByLibrary.simpleMessage("Learn Anytime, Anywhere!"),
         "online": MessageLookupByLibrary.simpleMessage("Online"),
+        "or": MessageLookupByLibrary.simpleMessage("OR"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("Or Continue With"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -101,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "requests": MessageLookupByLibrary.simpleMessage("Requests"),
         "resetPasswordMessage": MessageLookupByLibrary.simpleMessage(
             "Enter your email and we will send you a link to reset your password."),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
         "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
@@ -117,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Type your message here"),
         "uploadPictures":
             MessageLookupByLibrary.simpleMessage("Upload your Pictures"),
+        "useCamera": MessageLookupByLibrary.simpleMessage("Use a Camera"),
+        "useGallery": MessageLookupByLibrary.simpleMessage("Browse Gallery"),
         "username": MessageLookupByLibrary.simpleMessage("Your Username"),
         "welcomeBackMessage1":
             MessageLookupByLibrary.simpleMessage("Hi, Welcome Back!"),

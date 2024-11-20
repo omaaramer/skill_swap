@@ -36,7 +36,7 @@ class SkillDetailsCard extends StatelessWidget {
                 children: [
                   CustomUserLisTile(
                     name: userModel.fullname,
-                    jopTitle: userModel.jopTitle,
+                    jopTitle: userModel.jobTitle,
                     imageUrl: userModel.profileImageUrl,
                   ),
                   const CustomCardDivider(),
@@ -69,7 +69,7 @@ class SkillDetailsCard extends StatelessWidget {
                     postModel: postModel,
                     reciever: RecieverModel(
                       receiverImage: userModel.profileImageUrl,
-                      receiverJopTitle: userModel.jopTitle,
+                      receiverJopTitle: userModel.jobTitle,
                       receiverId: userModel.userId,
                       receiverName: userModel.fullname,
                       skillId: postModel.skillId!,

@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../constant.dart';
 import '../Add Skills/get_user_controller.dart';
 
@@ -22,9 +21,9 @@ class EditProfileControllerImpl extends EditProfileController {
   var isEditingAbout = false.obs;
 
   final GetUserControllerImpl userController = Get.find();
-  final TextEditingController aboutController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController bioController = TextEditingController();
+  late TextEditingController aboutController;
+  late TextEditingController nameController;
+  late TextEditingController bioController;
 
   final DocumentReference usersRef = FirebaseFirestore.instance
       .collection('users')
@@ -33,9 +32,11 @@ class EditProfileControllerImpl extends EditProfileController {
   @override
   void onInit() {
     super.onInit();
-    nameController.text = userController.user.value!.fullname;
-    bioController.text = userController.user.value!.jopTitle;
-    // Initialize `aboutController` if necessary
+    // Initialize controllers with user's current data
+    final user = userController.user.value!;
+    nameController = TextEditingController(text: user.fullname);
+    bioController = TextEditingController(text: user.bio ?? '');
+    aboutController = TextEditingController(text: user.aboutMe ?? '');
   }
 
   @override
@@ -52,26 +53,35 @@ class EditProfileControllerImpl extends EditProfileController {
       // Prepare the fields to be updated only if they have changed
       Map<String, String> updates = {};
 
-      if (nameController.text != userController.user.value!.fullname) {
-        updates[AppConstant.kFullname] = nameController.text;
+      if (nameController.text.trim() != userController.user.value!.fullname) {
+        updates[AppConstant.kFullname] = nameController.text.trim();
       }
-      if (bioController.text != userController.user.value!.jopTitle) {
-        updates[AppConstant.kBio] = bioController.text;
+      if (bioController.text.trim() != userController.user.value!.bio) {
+        updates[AppConstant.kBio] = bioController.text.trim();
       }
-      if (aboutController.text.isNotEmpty &&
-          aboutController.text != (userController.user.value!.aboutMe ?? '')) {
-        updates[AppConstant.kAboutMe] = aboutController.text;
+      if (aboutController.text.trim() !=
+          (userController.user.value!.aboutMe ?? '')) {
+        updates[AppConstant.kAboutMe] = aboutController.text.trim();
       }
 
       // Update only if there are changes
       if (updates.isNotEmpty) {
         await usersRef.update(updates);
+
+        // Update local user object using copyWith
+        userController.user.value = userController.user.value!.copyWith(
+          fullname: updates[AppConstant.kFullname],
+          bio: updates[AppConstant.kBio],
+          aboutMe: updates[AppConstant.kAboutMe],
+        );
+
         log('Fields updated successfully: ${updates.keys}');
       } else {
         log('No changes detected, nothing to update.');
       }
     } catch (e) {
       log('Error updating document: $e');
+      Get.snackbar('Error', 'Failed to update profile info. Please try again.');
     }
   }
 
@@ -87,17 +97,18 @@ class EditProfileControllerImpl extends EditProfileController {
 
   @override
   void saveName(String value) {
-    nameController.text = value;
+    nameController.text = value.trim();
     toggleEditingName();
   }
 
   @override
   void saveBio(String value) {
-    bioController.text = value;
+    bioController.text = value.trim();
     toggleEditingBio();
   }
 
   void saveAbout(String value) {
-    aboutController.text = value;
+    aboutController.text = value.trim();
+    isEditingAbout.value = false;
   }
 }

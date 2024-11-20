@@ -36,7 +36,7 @@ class SendSwapControllerImpl extends SendSwapController {
       senderImage: getUserController.user.value!.profileImageUrl,
       receiverImage: receiver.receiverImage,
       receiverJopTitle: receiver.receiverJopTitle,
-      senderJopTitle: getUserController.user.value!.jopTitle,
+      senderJopTitle: getUserController.user.value!.jobTitle,
       senderId: getUserController.user.value!.userId,
       receiverName: receiver.receiverName,
       receiverSkill: receiver.skill,

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CropImage": MessageLookupByLibrary.simpleMessage("قص صورة"),
         "accountCreatedSuccess":
             MessageLookupByLibrary.simpleMessage("تم إنشاء حسابك بنجاح"),
         "addSkill": MessageLookupByLibrary.simpleMessage("إضافة مهارة"),
@@ -61,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "مهارتي/ خدمتي (مثل: البيانو)"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "noImage": MessageLookupByLibrary.simpleMessage("لم يتم اخيار صورة"),
         "onBoardingSubtitle1": MessageLookupByLibrary.simpleMessage(
             "اكتشف مجتمعًا يمكنك من خلاله تعلم مهارات جديدة ومشاركة خبرتك مع الآخرين. هيا نبدأ!"),
         "onBoardingSubtitle2": MessageLookupByLibrary.simpleMessage(
@@ -78,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingTitle4":
             MessageLookupByLibrary.simpleMessage("تعلم في أي وقت، في أي مكان!"),
         "online": MessageLookupByLibrary.simpleMessage("عبر الإنترنت"),
+        "or": MessageLookupByLibrary.simpleMessage("او"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("أو متابعة بواسطة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -96,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "requests": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "resetPasswordMessage": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور."),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
         "selectDate": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
         "send": MessageLookupByLibrary.simpleMessage("المرسلة"),
@@ -110,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "المسمى الوظيفي الخاص بك، مثل: مطور، مصمم، إلخ"),
         "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالتك هنا"),
         "uploadPictures": MessageLookupByLibrary.simpleMessage("ارفع صورك"),
+        "useCamera": MessageLookupByLibrary.simpleMessage("استخدم الكاميرا"),
+        "useGallery": MessageLookupByLibrary.simpleMessage("تصفح المعرض"),
         "username":
             MessageLookupByLibrary.simpleMessage("اسم المستخدم الخاص بك"),
         "welcomeBackMessage1":

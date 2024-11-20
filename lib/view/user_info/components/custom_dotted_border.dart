@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 
 class CustomDottedBorder extends StatelessWidget {
@@ -8,12 +9,10 @@ class CustomDottedBorder extends StatelessWidget {
     super.key,
     required this.imageUrl,
     required this.onPressed,
-    required this.onTap,
   });
 
   final void Function() onPressed;
   final String? imageUrl;
-  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class CustomDottedBorder extends StatelessWidget {
                 onPressed: onPressed,
               )
             : InkWell(
-                onTap: onTap,
+                onTap: onPressed,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: CachedNetworkImage(

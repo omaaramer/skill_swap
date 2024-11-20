@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/generated/l10n.dart';
 
@@ -9,11 +10,9 @@ class CustomUploadWidget extends StatelessWidget {
     super.key,
     required this.url,
     required this.onPressed,
-    required this.onTap,
   });
   final void Function() onPressed;
   final String? url;
-  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,6 @@ class CustomUploadWidget extends StatelessWidget {
             CustomDottedBorder(
               imageUrl: url,
               onPressed: onPressed,
-              onTap: onTap,
             )
           ],
         ),

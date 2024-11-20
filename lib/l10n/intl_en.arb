@@ -68,5 +68,11 @@
     "success": "Success",
     "post": "POST",
     "desiredSkillPlaceholder": "Skill you want to get (eg. programming)",
-    "mySkillServicePlaceholder": "My Skill/ My Service (eg. piano)"
+    "mySkillServicePlaceholder": "My Skill/ My Service (eg. piano)",
+    "noImage": "No image selected",
+    "save": "Save",
+    "or": "OR",
+    "useCamera": "Use a Camera",
+    "useGallery": "Browse Gallery",
+    "CropImage" : "Crop Image"
 }

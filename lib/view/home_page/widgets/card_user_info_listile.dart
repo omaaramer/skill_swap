@@ -22,7 +22,8 @@ class CustomUserLisTile extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(100),
             child: CachedNetworkImage(
-              imageUrl: imageUrl,
+              imageUrl:
+                  "$imageUrl?timestamp=${DateTime.now().millisecondsSinceEpoch}",
               height: 55,
               width: 55,
               fit: BoxFit.cover,

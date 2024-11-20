@@ -749,6 +749,66 @@ class S {
       args: [],
     );
   }
+
+  /// `No image selected`
+  String get noImage {
+    return Intl.message(
+      'No image selected',
+      name: 'noImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OR`
+  String get or {
+    return Intl.message(
+      'OR',
+      name: 'or',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use a Camera`
+  String get useCamera {
+    return Intl.message(
+      'Use a Camera',
+      name: 'useCamera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Browse Gallery`
+  String get useGallery {
+    return Intl.message(
+      'Browse Gallery',
+      name: 'useGallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crop Image`
+  String get CropImage {
+    return Intl.message(
+      'Crop Image',
+      name: 'CropImage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

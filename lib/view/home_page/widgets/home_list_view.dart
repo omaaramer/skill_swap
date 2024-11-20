@@ -23,16 +23,6 @@ class HomePageListView extends StatelessWidget {
         return const PostCardLiadingIndicator();
       }
 
-      // // Display message if there are no posts
-      // if (postController.posts.isEmpty) {
-      //   return Center(
-      //     child: Text(
-      //       "No Posts Available",
-      //       style: AppStyle.blackTitle(context),
-      //     ),
-      //   );
-      // }
-
       // Display list of posts if data is loaded and not empty
       return ListView.builder(
         itemCount: postController.posts.length,

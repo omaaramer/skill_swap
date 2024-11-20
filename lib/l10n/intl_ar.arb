@@ -68,6 +68,13 @@
     "success": "نجاح",
     "post": "نشر",
     "desiredSkillPlaceholder": "المهارة التي تريد الحصول عليها (مثل: البرمجة)",
-    "mySkillServicePlaceholder": "مهارتي/ خدمتي (مثل: البيانو)"
+    "mySkillServicePlaceholder": "مهارتي/ خدمتي (مثل: البيانو)",
+    "noImage": "لم يتم اخيار صورة",
+    "save": "حفظ",
+    "or": "او",
+    "useCamera": "استخدم الكاميرا",
+    "useGallery": "تصفح المعرض",
+    "CropImage" : "قص صورة"
+    
 
 }
