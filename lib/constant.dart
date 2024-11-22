@@ -10,6 +10,7 @@ class AppConstant {
   static const String kIsOnline = "true";
   static const String kSkillImageUrl = "skill_image_url";
   static const String kProfileImageUrl = "profile_image_url";
+  static const String kProfileCoverImage = "cover_image_url";
   static const String kTime = "time";
   static const String kBio = "bio";
   static const String kAboutMe = "about_me";

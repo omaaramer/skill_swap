@@ -3,6 +3,7 @@ import 'package:skill_swap/constant.dart';
 class UserModel {
   final String fullname;
   final String profileImageUrl;
+  final String? profileCoverImage;
   final String jobTitle; // Corrected spelling
   final String address;
   final String userId;
@@ -12,6 +13,7 @@ class UserModel {
   final DateTime? birthDate;
 
   UserModel({
+    this.profileCoverImage,
     required this.fullname,
     required this.profileImageUrl,
     required this.jobTitle,
@@ -26,6 +28,7 @@ class UserModel {
   /// Factory constructor to create a UserModel from JSON
   factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
+      profileCoverImage: map[AppConstant.kProfileCoverImage],
       fullname: map[AppConstant.kFullname] ?? 'Unknown User',
       profileImageUrl: map[AppConstant.kProfileImageUrl] ?? '',
       jobTitle: map[AppConstant.kJobTitle] ?? 'Unspecified',
@@ -43,6 +46,7 @@ class UserModel {
   /// Method to convert UserModel into JSON
   Map<String, dynamic> toJson() {
     return {
+      AppConstant.kProfileCoverImage: profileCoverImage,
       AppConstant.kFullname: fullname,
       AppConstant.kProfileImageUrl: profileImageUrl,
       AppConstant.kJobTitle: jobTitle,
@@ -57,6 +61,7 @@ class UserModel {
 
   /// CopyWith method for immutability and updating specific fields
   UserModel copyWith({
+    String? profileCoverImage,
     String? fullname,
     String? profileImageUrl,
     String? jobTitle,
@@ -68,6 +73,7 @@ class UserModel {
     DateTime? birthDate,
   }) {
     return UserModel(
+      profileCoverImage: profileCoverImage ?? this.profileCoverImage,
       fullname: fullname ?? this.fullname,
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
       jobTitle: jobTitle ?? this.jobTitle,

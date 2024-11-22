@@ -16,14 +16,12 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetUserControllerImpl userController = Get.find();
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            ProfileHeader(userController: userController),
+            ProfileHeader(),
             GetX<GetUserControllerImpl>(builder: (controller) {
               return Column(
                 children: [

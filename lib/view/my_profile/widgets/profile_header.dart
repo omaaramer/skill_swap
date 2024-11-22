@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
+import 'package:skill_swap/controller/profile/pick_photo_controller.dart';
+import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/view/home_page/widgets/card_image.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({
-    super.key,
-    required this.userController,
-  });
-
-  final GetUserControllerImpl userController;
+  const ProfileHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +18,28 @@ class ProfileHeader extends StatelessWidget {
         children: [
           Align(
             alignment: AlignmentDirectional.topCenter,
-            child: CustomCardImage(
-              height: 140.sp,
-              imageUrl:
-                  "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-            ),
+            child: GetX<GetUserControllerImpl>(
+                init: GetUserControllerImpl(),
+                builder: (controller) {
+                  return CustomCardImage(
+                    height: 140.sp,
+                    imageUrl: controller.user.value?.profileCoverImage ??
+                        'https://via.placeholder.com/150',
+                  );
+                }),
           ),
-          CircleAvatar(
-            radius: 62.sp,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            child: CircleAvatar(
-              radius: 60.sp,
-              backgroundImage: NetworkImage(
-                userController.user.value!.profileImageUrl,
+          GetX<GetUserControllerImpl>(builder: (controller) {
+            return CircleAvatar(
+              radius: 62.sp,
+              backgroundColor: AppColors.background,
+              child: CircleAvatar(
+                radius: 60.sp,
+                backgroundImage: NetworkImage(
+                  controller.user.value!.profileImageUrl,
+                ),
               ),
-            ),
-          )
+            );
+          })
         ],
       ),
     );

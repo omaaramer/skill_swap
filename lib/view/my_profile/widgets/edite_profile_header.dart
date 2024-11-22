@@ -7,6 +7,7 @@ import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/controller/profile/pick_photo_controller.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/show_photo_bottom_sheet.dart';
+import 'package:skill_swap/data/models/image_pick_prams.dart';
 import 'package:skill_swap/view/home_page/widgets/card_image.dart';
 
 class EditeProfileHeader extends StatelessWidget {
@@ -33,11 +34,15 @@ class EditeProfileHeader extends StatelessWidget {
             child: Stack(
               alignment: AlignmentDirectional.topEnd,
               children: [
-                CustomCardImage(
-                  height: 140.sp,
-                  imageUrl:
-                      "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-                ),
+                GetX<ImageControllerImpl>(builder: (controller) {
+                  return CustomCardImage(
+                    height: 140.sp,
+                    imageUrl: controller.selectedImage.value != null
+                        ? controller.selectedImage.value!.path
+                        : userController.user.value?.profileCoverImage ??
+                            'https://via.placeholder.com/150',
+                  );
+                }),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
@@ -50,8 +55,11 @@ class EditeProfileHeader extends StatelessWidget {
                           context: context,
                           onTap: (ImageSource source) {
                             imageController.pickImage(
-                              source: source,
-                              userId: userController.user.value!.userId,
+                              params: ImagePickParams(
+                                isProfileImage: false,
+                                source: source,
+                                userId: userController.user.value!.userId,
+                              ),
                             );
                           },
                         );
@@ -68,7 +76,7 @@ class EditeProfileHeader extends StatelessWidget {
             builder: (controller) {
               return CircleAvatar(
                 radius: 62.sp,
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                backgroundColor: AppColors.background,
                 child: Stack(
                   alignment: AlignmentDirectional.bottomEnd,
                   children: [
@@ -79,7 +87,7 @@ class EditeProfileHeader extends StatelessWidget {
                           : NetworkImage(
                               userController.user.value?.profileImageUrl ??
                                   'https://via.placeholder.com/150', // Fallback image
-                            ) as ImageProvider,
+                            ),
                     ),
                     CircleAvatar(
                       radius: 16.sp,
@@ -90,9 +98,11 @@ class EditeProfileHeader extends StatelessWidget {
                             context: context,
                             onTap: (ImageSource source) {
                               imageController.pickImage(
+                                  params: ImagePickParams(
+                                isProfileImage: true,
                                 source: source,
                                 userId: userController.user.value!.userId,
-                              );
+                              ));
                             },
                           );
                         },

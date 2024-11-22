@@ -1,5 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,51 +9,84 @@ import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:skill_swap/constant.dart';
+import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/core/theming/colores.dart';
-import 'package:path/path.dart';
+import 'package:skill_swap/data/models/image_pick_prams.dart';
 
-import '../Add Skills/get_user_controller.dart';
-
+/// Abstract class to enforce method implementation
 abstract class ImageController extends GetxController {
-  Future<void> pickImage({required ImageSource source, required String userId});
+  Future<void> pickImage({required ImagePickParams params});
   Future<File?> cropImage({required File imageFile});
-  Future<void> uploadImageToFirebase(String userId);
+  Future<void> uploadImageToFirebase(String userId, bool isProfileImage);
 }
 
 class ImageControllerImpl extends ImageController {
-  String? url;
-  Rxn<File> selectedImage = Rxn<File>(); // Reactive variable
-  GetUserControllerImpl userController = Get.find();
-  // Method to pick an image from a source (gallery or camera)
+  // final GetUserControllerImpl userController = Get.find();
+  final DocumentReference usersRef = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid);
+  final _storage = FirebaseStorage.instance;
+  final RxBool isLoading = false.obs;
+  Rxn<File> selectedImage = Rxn<File>();
+  String? imageUrl;
+
   @override
-  Future<void> pickImage(
-      {required ImageSource source, required String userId}) async {
+  Future<void> pickImage({required ImagePickParams params}) async {
     try {
-      final XFile? pickedImage = await ImagePicker().pickImage(source: source);
-      if (pickedImage == null) return;
+      isLoading.value = true;
 
-      // Crop the image after picking
-      File? img = File(pickedImage.path);
-      img = await cropImage(imageFile: img);
-      if (img != null) {
-        selectedImage.value = img; // Update the reactive variable
+      final ImagePicker picker = ImagePicker();
+      final XFile? pickedImage = await picker.pickImage(
+        source: params.source,
+        imageQuality: 80, // Add image quality compression
+      );
+
+      if (pickedImage == null) {
+        isLoading.value = false;
+        return;
       }
-      uploadImageToFirebase(userId);
 
-      Get.back();
-      userController.getAllUsers();
+      // Convert XFile to File
+      File imageFile = File(pickedImage.path);
+
+      // Crop image
+      final croppedFile = await cropImage(imageFile: imageFile);
+      if (croppedFile == null) {
+        isLoading.value = false;
+        return;
+      }
+
+      selectedImage.value = croppedFile;
+
+      // Upload to Firebase if userId is provided
+      if (params.userId.isNotEmpty) {
+        await uploadImageToFirebase(params.userId, params.isProfileImage);
+      }
+
+      Get.back(); // Close bottom sheet
     } on PlatformException catch (e) {
-      log('Error picking image: $e');
-      Get.snackbar('Error', 'Failed to pick image: $e');
+      Get.snackbar(
+        'Error',
+        'Failed to pick image: ${e.message}',
+        backgroundColor: Colors.red.shade100,
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'An unexpected error occurred',
+        backgroundColor: Colors.red.shade100,
+      );
+    } finally {
+      isLoading.value = false;
     }
   }
 
-  // Method to crop an image
   @override
   Future<File?> cropImage({required File imageFile}) async {
     try {
-      CroppedFile? croppedImage = await ImageCropper().cropImage(
+      final croppedFile = await ImageCropper().cropImage(
         sourcePath: imageFile.path,
+        compressQuality: 80, // Add compression
         uiSettings: [
           AndroidUiSettings(
             toolbarTitle: 'Crop Image',
@@ -62,45 +97,73 @@ class ImageControllerImpl extends ImageController {
             lockAspectRatio: false,
           ),
           IOSUiSettings(
+            title: 'Crop Image',
             minimumAspectRatio: 1.0,
           ),
         ],
       );
-      if (croppedImage == null) return null;
-      return File(croppedImage.path);
+
+      return croppedFile != null ? File(croppedFile.path) : null;
     } catch (e) {
       log('Error cropping image: $e');
       return null;
     }
   }
 
-  // Method to upload the selected image to Firebase Storage
   @override
-  Future<void> uploadImageToFirebase(String userId) async {
+  Future<void> uploadImageToFirebase(String userId, bool isProfileImage) async {
     try {
-      if (selectedImage.value == null) {
-        Get.snackbar('Error', 'No image selected to upload.');
-        return;
-      }
+      if (selectedImage.value == null) return;
 
-      // Generate a unique file name using the user ID
-      String imageName =
-          "${userId}_profile_image"; // e.g., userId_profile_image
-      var refStorage = FirebaseStorage.instance
-          .ref("${AppConstant.kCloudStorageProfileImages}/$imageName");
+      final String imagePath =
+          isProfileImage ? '_profile_image' : '_cover_image';
+      final String imageName = '$userId$imagePath';
 
-      // Upload the new image
-      UploadTask uploadTask = refStorage.putFile(selectedImage.value!);
-      TaskSnapshot snapshot = await uploadTask;
+      // Create storage reference
+      final storageRef = _storage
+          .ref()
+          .child(AppConstant.kCloudStorageProfileImages)
+          .child(imageName);
 
-      // Get the new download URL
-      url = await snapshot.ref.getDownloadURL();
+      // Upload file with metadata
+      final metadata = SettableMetadata(
+        contentType: 'image/jpeg',
+        customMetadata: {'picked-file-path': selectedImage.value!.path},
+      );
 
-      // Notify listeners of changes
-      update();
+      final uploadTask = storageRef.putFile(selectedImage.value!, metadata);
+
+      // Monitor upload progress if needed
+      uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
+        final progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        log('Upload progress: $progress%');
+      });
+
+      // Wait for upload to complete
+
+      final snapshot = await uploadTask;
+      imageUrl = await snapshot.ref.getDownloadURL();
+
+      usersRef.update({
+        isProfileImage
+            ? AppConstant.kProfileImageUrl
+            : AppConstant.kProfileCoverImage: imageUrl
+      });
     } catch (e) {
       log('Error uploading image: $e');
-      Get.snackbar('Error', 'Failed to upload image: $e');
+      Get.snackbar(
+        'Error',
+        'Failed to upload image. Please try again.',
+        backgroundColor: Colors.red.shade100,
+      );
+      rethrow;
     }
+  }
+
+  // Clear selected image
+  void clearImage() {
+    selectedImage.value = null;
+    update();
   }
 }

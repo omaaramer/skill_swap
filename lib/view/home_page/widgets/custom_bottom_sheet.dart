@@ -38,7 +38,7 @@ class SwapSkillBottomSheet extends StatelessWidget {
               if (skillsController.isLoading.value) {
                 return const Center(child: CircularProgressIndicator());
               }
-              final mySkillsList = skillsController.posts
+              final mySkillsList = skillsController.allSkills
                   .where((skill) =>
                       skill.userId == FirebaseAuth.instance.currentUser!.uid)
                   .toList();

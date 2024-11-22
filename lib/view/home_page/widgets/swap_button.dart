@@ -9,6 +9,8 @@ import 'package:skill_swap/data/models/reciever_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/generated/l10n.dart';
 
+import 'custom_bottom_sheet.dart';
+
 class SwapButton extends StatelessWidget {
   const SwapButton(
       {super.key, required this.userModel, required this.reciever});
@@ -17,7 +19,6 @@ class SwapButton extends StatelessWidget {
   final RecieverModel reciever;
   @override
   Widget build(BuildContext context) {
-    GetSkillPostDataControllerImpl postController = Get.find();
     SendSwapControllerImpl sendSwapController = Get.put(SendSwapControllerImpl(
       userModel: userModel,
     ));
@@ -39,8 +40,7 @@ class SwapButton extends StatelessWidget {
         ],
       ),
       onPressed: () {
-        postController.showSwapSkillBottomSheet(context,
-            (SkillModel selectedSkill) {
+        showSwapSkillBottomSheet(context, (SkillModel selectedSkill) {
           sendSwapController.sendSwapRequest(
             skillModel: selectedSkill,
             receiver: reciever,
@@ -51,8 +51,6 @@ class SwapButton extends StatelessWidget {
     );
   }
 }
-
-
 
 // Get.defaultDialog(
 //           title: "Swap",
@@ -73,3 +71,17 @@ class SwapButton extends StatelessWidget {
 //             child: const Text("No"),
 //           ),
 //         );
+
+void showSwapSkillBottomSheet(
+    BuildContext context, Function(SkillModel) onSkillSelected) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    isScrollControlled: true,
+    builder: (context) {
+      return SwapSkillBottomSheet(onSkillSelected: onSkillSelected);
+    },
+  );
+}

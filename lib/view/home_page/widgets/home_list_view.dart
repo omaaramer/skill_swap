@@ -25,9 +25,9 @@ class HomePageListView extends StatelessWidget {
 
       // Display list of posts if data is loaded and not empty
       return ListView.builder(
-        itemCount: postController.posts.length,
+        itemCount: postController.postSkills.length,
         itemBuilder: (context, index) {
-          final post = postController.posts[index];
+          final post = postController.postSkills[index];
 
           // Find the user who matches the post's userId
           final matchingUsers = userController.userList

@@ -42,8 +42,8 @@ class AboutMeSection extends StatelessWidget {
                   if (editProfileControllerImpl.formKey.currentState!
                       .validate()) {
                     editProfileControllerImpl.updateAboutMeInfo();
+                    userController.user.refresh();
                     Get.back();
-                    // userController.getAllUsers();
                   }
                 },
                 child: const Text("ok"))
