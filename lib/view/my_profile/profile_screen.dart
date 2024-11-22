@@ -28,7 +28,9 @@ class ProfileScreen extends StatelessWidget {
                   Text(controller.user.value!.fullname,
                       style: AppStyle.blackTitle(context)),
                   Text(
-                    controller.user.value!.bio ?? "click edit to add bio",
+                    (controller.user.value?.bio?.isEmpty ?? true)
+                        ? "click edit to add bio"
+                        : controller.user.value!.bio!,
                     style: AppStyle.styleRegular16Grey(context),
                   ),
                 ],

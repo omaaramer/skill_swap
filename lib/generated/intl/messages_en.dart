@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Skill you want to get (eg. programming)"),
         "dobMessage": MessageLookupByLibrary.simpleMessage(
             "Enter your date of birth for better skill matching and personalized recommendations."),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "experience": MessageLookupByLibrary.simpleMessage("Experience"),

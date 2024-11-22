@@ -9,7 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:skill_swap/constant.dart';
-import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/data/models/image_pick_prams.dart';
 

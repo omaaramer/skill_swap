@@ -74,5 +74,6 @@
     "or": "OR",
     "useCamera": "Use a Camera",
     "useGallery": "Browse Gallery",
-    "CropImage" : "Crop Image"
+    "CropImage" : "Crop Image",
+    "editProfile": "Edit Profile"
 }

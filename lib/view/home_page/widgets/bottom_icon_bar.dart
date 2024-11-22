@@ -6,7 +6,6 @@ import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/reciever_model.dart';
-import 'package:skill_swap/data/models/swap_request_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/generated/l10n.dart';
 import 'package:skill_swap/view/chat/chat_screen.dart';

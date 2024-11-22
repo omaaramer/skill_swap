@@ -17,7 +17,15 @@ class EditProfileScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: buildAppBar(context),
+        appBar: buildAppBar(
+            context: context,
+            onPressed: () {
+              if (editProfileControllerImpl.formKey.currentState!.validate()) {
+                editProfileControllerImpl.updateAboutMeInfo();
+                userController.user.refresh();
+                Get.back();
+              }
+            }),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: EditProfileBody(

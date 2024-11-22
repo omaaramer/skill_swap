@@ -34,8 +34,8 @@ class UserModel {
       jobTitle: map[AppConstant.kJobTitle] ?? 'Unspecified',
       address: map[AppConstant.kAddress] ?? 'No Address',
       userId: map[AppConstant.kId] ?? '',
-      aboutMe: map[AppConstant.kAboutMe],
-      bio: map[AppConstant.kBio],
+      aboutMe: map[AppConstant.kAboutMe] ?? '',
+      bio: map[AppConstant.kBio] ?? '',
       phone: map[AppConstant.kPhone],
       birthDate: map[AppConstant.kBirthDate] != null
           ? DateTime.tryParse(map[AppConstant.kBirthDate])

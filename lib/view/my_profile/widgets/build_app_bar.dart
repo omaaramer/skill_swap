@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
-AppBar buildAppBar(BuildContext context) {
+AppBar buildAppBar(
+    {required BuildContext context, required void Function()? onPressed}) {
   return AppBar(
     titleSpacing: 0,
     leading: IconButton(
@@ -11,12 +13,12 @@ AppBar buildAppBar(BuildContext context) {
       },
       icon: const Icon(Icons.arrow_back_ios),
     ),
-    title: const Text("Edit Profile"),
+    title: Text(S.of(context).editProfile),
     actions: [
       TextButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
-          "Update",
+          S.of(context).save,
           style: AppStyle.styleBold18(context),
         ),
       )

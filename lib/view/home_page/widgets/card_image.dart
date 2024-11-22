@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
 
 class CustomCardImage extends StatelessWidget {
   const CustomCardImage({super.key, required this.imageUrl, this.height});

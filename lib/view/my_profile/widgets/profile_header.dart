@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
-import 'package:skill_swap/controller/profile/pick_photo_controller.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/view/home_page/widgets/card_image.dart';
 

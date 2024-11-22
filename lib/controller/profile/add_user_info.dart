@@ -3,13 +3,11 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_cropper/image_cropper.dart';
-import 'package:path/path.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/constant.dart';
-import 'package:skill_swap/controller/profile/edite_profile_controler.dart';
 import 'package:skill_swap/core/routing/routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/data/models/user_model.dart';
@@ -112,7 +110,7 @@ class ProfileControllerImpl extends ProfileController {
         birthDate: birthDate,
         jobTitle: jopTitle.text,
         userId: FirebaseAuth.instance.currentUser!.uid, // مالوش لازمة
-        profileImageUrl: url ?? "none",
+        profileImageUrl: url ?? '',
       );
 
       usersRef.set(user.toJson()).then((value) {

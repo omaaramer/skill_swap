@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_skill_post_data_controller.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
-import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/view/home_page/widgets/custom_swap_card.dart';
 import 'swap_card_loading_indicator.dart';

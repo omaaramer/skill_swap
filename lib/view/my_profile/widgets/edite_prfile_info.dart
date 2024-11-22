@@ -52,8 +52,12 @@ class EditeProfileInfo extends StatelessWidget {
                       style: AppStyle.styleRegular16Grey(context),
                     ),
                   )
-                : Text(controller.user.value!.bio ?? "write your bio",
-                    style: AppStyle.styleRegular16Grey(context)),
+                : Text(
+                    (controller.user.value?.bio?.isEmpty ?? true)
+                        ? "write your bio"
+                        : controller.user.value!.bio!,
+                    style: AppStyle.styleRegular16Grey(context),
+                  ),
           );
         }),
       ],

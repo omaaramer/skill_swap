@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/controller/profile/edite_profile_controler.dart';
 import 'package:skill_swap/core/helpers/valid_inpnut.dart';
@@ -37,16 +36,6 @@ class AboutMeSection extends StatelessWidget {
                 return validInput(value!, 3, 50, "text");
               },
             ),
-            ElevatedButton(
-                onPressed: () {
-                  if (editProfileControllerImpl.formKey.currentState!
-                      .validate()) {
-                    editProfileControllerImpl.updateAboutMeInfo();
-                    userController.user.refresh();
-                    Get.back();
-                  }
-                },
-                child: const Text("ok"))
           ],
         ),
       ),

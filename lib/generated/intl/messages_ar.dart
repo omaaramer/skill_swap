@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "المهارة التي تريد الحصول عليها (مثل: البرمجة)"),
         "dobMessage": MessageLookupByLibrary.simpleMessage(
             "أدخل تاريخ ميلادك لتحسين تطابق المهارات وتوصيات مخصصة."),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "en": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "experience": MessageLookupByLibrary.simpleMessage("الخبرة"),
