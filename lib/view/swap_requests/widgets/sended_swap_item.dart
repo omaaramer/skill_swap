@@ -1,116 +1,92 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_buttom.dart';
 import 'package:skill_swap/data/models/swap_request_model.dart';
+import 'package:skill_swap/generated/l10n.dart';
+
+import 'user_listile.dart';
 
 class SendedSwaps extends StatelessWidget {
   const SendedSwaps({super.key, required this.swapRequest});
   final SwapRequest swapRequest;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 230,
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.secondary,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: const [
-          BoxShadow(
-            color: AppColors.background,
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Card(
+        elevation: 1,
+        child: Container(
+          height: 150.h,
+          decoration: BoxDecoration(
+            color: AppColors.secondary,
+            borderRadius: BorderRadius.circular(8),
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(swapRequest.receiverImage),
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: CachedNetworkImage(
+                    imageUrl: swapRequest.receiverImage,
+                    // height: 140.h,
+                    height: double.infinity,
+                    width: 100.w,
                     fit: BoxFit.cover,
                   ),
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    swapRequest.receiverName,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                SizedBox(width: 10.w),
+                Expanded(
+                  child: Column(
+                    children: [
+                      UserLIstile(
+                        userName: swapRequest.receiverName,
+                        userJopTitle: swapRequest.receiverJopTitle,
+                      ),
+                      const Divider(height: 2),
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            S.of(context).inExpectationFor,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: AppColors.lightBlack,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            swapRequest.receiverSkill,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      AppTextButton(
+                          borderRadius: 12,
+                          verticalPadding: 0,
+                          buttonHeight: 30.h,
+                          buttonText: "Cancel",
+                          textStyle: AppStyle.stylerBold20(context),
+                          onPressed: () {})
+                    ],
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    swapRequest.receiverJopTitle,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: AppColors.lightBlack,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Experience - 5 year +',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ],
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.bookmark),
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
-          const SizedBox(height: 8),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.favorite, color: AppColors.red),
-                  SizedBox(width: 4),
-                  Text('5K+'),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(Icons.share),
-                  SizedBox(width: 4),
-                  Text('60+'),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(Icons.message),
-                  SizedBox(width: 4),
-                  Text('128'),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          AppTextButton(
-              buttonHeight: 20.h,
-              verticalPadding: 2,
-              buttonText: 'UNSWAP',
-              textStyle: const TextStyle(color: AppColors.white),
-              onPressed: () {}),
-        ],
+        ),
       ),
     );
   }

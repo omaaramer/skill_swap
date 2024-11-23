@@ -16,15 +16,13 @@ class EditProfilePageview extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfilePageViewControllerImpl controller =
         Get.put(ProfilePageViewControllerImpl());
-    return SafeArea(
-      child: Scaffold(
-        body: PageView(
-          controller: controller.pageController,
-          children: pages,
-          onPageChanged: (value) {
-            controller.onchangePage(value);
-          },
-        ),
+    return Scaffold(
+      body: PageView(
+        controller: controller.pageController,
+        children: pages,
+        onPageChanged: (value) {
+          controller.onchangePage(value);
+        },
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:icon_broken/icon_broken.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/controller/profile/pick_photo_controller.dart';
+import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/show_photo_bottom_sheet.dart';
 import 'package:skill_swap/data/models/image_pick_prams.dart';
@@ -35,10 +36,29 @@ class EditeProfileHeader extends StatelessWidget {
               alignment: AlignmentDirectional.topEnd,
               children: [
                 GetX<ImageControllerImpl>(builder: (controller) {
-                  return CustomCardImage(
+                  return
+
+                      //  Container(
+                      //   height: 140.sp,
+                      //   width: double.infinity,
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(8),
+                      //     image: DecorationImage(
+                      //       image: NetworkImage(
+                      //         controller.selectedCoverImage.value != null
+                      //             ? controller.selectedCoverImage.value!.path
+                      //             : userController.user.value?.profileCoverImage ??
+                      //                 'https://via.placeholder.com/150',
+                      //       ),
+                      //       fit: BoxFit.cover,
+                      //     ),
+                      //   ),
+                      // );
+
+                      CustomCardImage(
                     height: 140.sp,
-                    imageUrl: controller.selectedImage.value != null
-                        ? controller.selectedImage.value!.path
+                    imageUrl: controller.selectedCoverImage.value != null
+                        ? controller.selectedCoverImage.value!.path
                         : userController.user.value?.profileCoverImage ??
                             'https://via.placeholder.com/150',
                   );
@@ -82,11 +102,12 @@ class EditeProfileHeader extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 60.sp,
-                      backgroundImage: controller.selectedImage.value != null
-                          ? FileImage(controller.selectedImage.value!)
+                      backgroundImage: controller.selectedProfileImage.value !=
+                              null
+                          ? FileImage(controller.selectedProfileImage.value!)
                           : NetworkImage(
                               userController.user.value?.profileImageUrl ??
-                                  'https://via.placeholder.com/150', // Fallback image
+                                  Assets.imagesPlaceholder, // Fallback image
                             ),
                     ),
                     CircleAvatar(

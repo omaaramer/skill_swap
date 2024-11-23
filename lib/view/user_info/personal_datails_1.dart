@@ -16,11 +16,11 @@ class PersonalDatailsOne extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileControllerImpl profileController = Get.put(ProfileControllerImpl());
     ProfilePageViewControllerImpl profilepageController = Get.find();
-    return SafeArea(
-      child: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Scaffold(
-          body: Padding(
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomScrollView(
               scrollDirection: Axis.vertical,
@@ -84,6 +84,7 @@ class PersonalDatailsOne extends StatelessWidget {
                               buttonText: S.of(context).saveChanges,
                               textStyle: AppStyle.stylerBold20(context),
                               onPressed: () {
+                                FocusManager.instance.primaryFocus?.unfocus();
                                 if (profilepageController.formKey.currentState!
                                     .validate()) {
                                   profilepageController.next();

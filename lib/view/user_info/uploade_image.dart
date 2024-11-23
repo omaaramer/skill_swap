@@ -16,65 +16,63 @@ class UploadeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileControllerImpl profileController = Get.find();
-    GetUserControllerImpl userController = Get.put(GetUserControllerImpl());
-    return SafeArea(
-        child: Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            Row(
-              children: [
-                Text(
-                  S.of(context).uploadPictures,
-                  style: AppStyle.styleBold26(context),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(Routes.homePage);
-                    },
-                    child: Text(
-                      S.of(context).skip,
-                      style: AppStyle.styleBold26(context),
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              Row(
+                children: [
+                  Text(
+                    S.of(context).uploadPictures,
+                    style: AppStyle.styleBold26(context),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(Routes.homePage);
+                      },
+                      child: Text(
+                        S.of(context).skip,
+                        style: AppStyle.styleBold26(context),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Text(
-              S.of(context).profilePictureMessage,
-              textAlign: TextAlign.center,
-              style: AppStyle.styleRegular16Grey(context),
-            ),
-            const Spacer(),
-            GetBuilder<ProfileControllerImpl>(
-              builder: (_) => CustomUploadWidget(
-                  url: profileController.url,
+                ],
+              ),
+              const SizedBox(height: 20),
+              Text(
+                S.of(context).profilePictureMessage,
+                textAlign: TextAlign.center,
+                style: AppStyle.styleRegular16Grey(context),
+              ),
+              const Spacer(),
+              GetBuilder<ProfileControllerImpl>(
+                builder: (_) => CustomUploadWidget(
+                    url: profileController.url,
+                    onPressed: () {
+                      showPhotoBottomSheet(
+                        context: context,
+                        onTap: (ImageSource source) {
+                          profileController.getImageFromGallery(source: source);
+                        },
+                      );
+                    }),
+              ),
+              const Spacer(),
+              AppTextButton(
+                  buttonText: S.of(context).next,
+                  textStyle: AppStyle.stylerBold20(context),
                   onPressed: () {
-                    showPhotoBottomSheet(
-                      context: context,
-                      onTap: (ImageSource source) {
-                        profileController.getImageFromGallery(
-                            source: source,
-                            userId: userController.user.value!.userId);
-                      },
-                    );
+                    profileController.addUserData();
                   }),
-            ),
-            const Spacer(),
-            AppTextButton(
-                buttonText: S.of(context).next,
-                textStyle: AppStyle.stylerBold20(context),
-                onPressed: () {
-                  profileController.addUserData();
-                }),
-          ],
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }

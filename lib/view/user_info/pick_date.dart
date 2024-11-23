@@ -16,55 +16,56 @@ class PickDate extends StatelessWidget {
     ProfilePageViewControllerImpl profilePageViewController = Get.find();
     ProfileControllerImpl profileController = Get.put(ProfileControllerImpl());
 
-    return SafeArea(
-        child: Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            Text(S.of(context).dateOfBirth,
-                style: AppStyle.styleBold26(context)),
-            const SizedBox(height: 10),
-            Text(
-              S.of(context).dobMessage,
-              textAlign: TextAlign.center,
-              style: AppStyle.styleRegular16Grey(context),
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.date,
-                initialDateTime: DateTime(2000, 1, 1),
-                onDateTimeChanged: profileController.updateBirthDate,
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              Text(S.of(context).dateOfBirth,
+                  style: AppStyle.styleBold26(context)),
+              const SizedBox(height: 10),
+              Text(
+                S.of(context).dobMessage,
+                textAlign: TextAlign.center,
+                style: AppStyle.styleRegular16Grey(context),
               ),
-            ),
-            const SizedBox(height: 10),
-            GetBuilder<ProfileControllerImpl>(
-                builder: (_) => Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 5),
-                      decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          color: AppColors.secondary),
-                      child: Text(
-                          "${profileController.birthDate.toLocal()}"
-                              .split(' ')[0],
-                          style: AppStyle.styleBold26(context)),
-                    )),
-            const SizedBox(height: 10),
-            AppTextButton(
-                buttonText: S.of(context).selectDate,
-                textStyle: AppStyle.stylerBold20(context),
-                onPressed: () {
-                  // Get.toNamed(Routes.editProfile);
+              const SizedBox(height: 10),
+              Expanded(
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.date,
+                  initialDateTime: DateTime(2000, 1, 1),
+                  onDateTimeChanged: profileController.updateBirthDate,
+                ),
+              ),
+              const SizedBox(height: 10),
+              GetBuilder<ProfileControllerImpl>(
+                  builder: (_) => Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 5),
+                        decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            color: AppColors.secondary),
+                        child: Text(
+                            "${profileController.birthDate.toLocal()}"
+                                .split(' ')[0],
+                            style: AppStyle.styleBold26(context)),
+                      )),
+              const SizedBox(height: 10),
+              AppTextButton(
+                  buttonText: S.of(context).selectDate,
+                  textStyle: AppStyle.stylerBold20(context),
+                  onPressed: () {
+                    // Get.toNamed(Routes.editProfile);
 
-                  profilePageViewController.next();
-                }),
-          ],
+                    profilePageViewController.next();
+                  }),
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }

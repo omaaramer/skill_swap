@@ -26,7 +26,8 @@ class ImageControllerImpl extends ImageController {
       .doc(FirebaseAuth.instance.currentUser!.uid);
   final _storage = FirebaseStorage.instance;
   final RxBool isLoading = false.obs;
-  Rxn<File> selectedImage = Rxn<File>();
+  Rxn<File> selectedProfileImage = Rxn<File>();
+  Rxn<File> selectedCoverImage = Rxn<File>();
   String? imageUrl;
 
   @override
@@ -54,12 +55,18 @@ class ImageControllerImpl extends ImageController {
         isLoading.value = false;
         return;
       }
-
-      selectedImage.value = croppedFile;
+      if (params.isProfileImage) {
+        selectedProfileImage.value = croppedFile;
+      } else {
+        selectedCoverImage.value = croppedFile;
+      }
 
       // Upload to Firebase if userId is provided
       if (params.userId.isNotEmpty) {
-        await uploadImageToFirebase(params.userId, params.isProfileImage);
+        await uploadImageToFirebase(
+          params.userId,
+          params.isProfileImage,
+        );
       }
 
       Get.back(); // Close bottom sheet
@@ -110,10 +117,14 @@ class ImageControllerImpl extends ImageController {
   }
 
   @override
-  Future<void> uploadImageToFirebase(String userId, bool isProfileImage) async {
+  Future<void> uploadImageToFirebase(
+    String userId,
+    bool isProfileImage,
+  ) async {
+    String selectedImage = isProfileImage
+        ? selectedProfileImage.value!.path
+        : selectedCoverImage.value!.path;
     try {
-      if (selectedImage.value == null) return;
-
       final String imagePath =
           isProfileImage ? '_profile_image' : '_cover_image';
       final String imageName = '$userId$imagePath';
@@ -127,10 +138,10 @@ class ImageControllerImpl extends ImageController {
       // Upload file with metadata
       final metadata = SettableMetadata(
         contentType: 'image/jpeg',
-        customMetadata: {'picked-file-path': selectedImage.value!.path},
+        customMetadata: {'picked-file-path': selectedImage},
       );
 
-      final uploadTask = storageRef.putFile(selectedImage.value!, metadata);
+      final uploadTask = storageRef.putFile(File(selectedImage), metadata);
 
       // Monitor upload progress if needed
       uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
@@ -162,7 +173,7 @@ class ImageControllerImpl extends ImageController {
 
   // Clear selected image
   void clearImage() {
-    selectedImage.value = null;
+    selectedProfileImage.value = null;
     update();
   }
 }

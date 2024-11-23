@@ -6,7 +6,6 @@ abstract class AppStyle {
   static TextStyle styleBold26(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 26),
-        fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         color: AppColors.primary);
   }
@@ -14,7 +13,6 @@ abstract class AppStyle {
   static TextStyle blackTitle(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 20),
-      fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
     );
   }
@@ -22,7 +20,6 @@ abstract class AppStyle {
   static TextStyle styleBold18(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 18),
-        fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         color: AppColors.primary);
   }
@@ -30,14 +27,12 @@ abstract class AppStyle {
   static TextStyle styleBold30(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 30),
-        fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         color: Colors.black);
   }
 
   static TextStyle styleRegular16Grey(context) {
     return TextStyle(
-      fontFamily: 'Poppins',
       height: 2,
       color: Colors.grey.shade600,
       fontWeight: FontWeight.w500,
@@ -47,7 +42,6 @@ abstract class AppStyle {
 
   static TextStyle styleBold50(context) {
     return TextStyle(
-        fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         fontSize: getResponsiveFontSize(context, fontSize: 50),
         color: Colors.white);
@@ -56,7 +50,6 @@ abstract class AppStyle {
   static TextStyle stylerBold20(context) {
     return TextStyle(
       fontWeight: FontWeight.bold,
-      fontFamily: 'Poppins',
       color: Colors.white,
       fontSize: getResponsiveFontSize(context, fontSize: 20),
     );

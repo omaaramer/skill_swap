@@ -13,7 +13,7 @@ import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 
 abstract class ProfileController extends GetxController {
-  getImageFromGallery({required ImageSource source, required String userId});
+  getImageFromGallery({required ImageSource source});
   addUserData();
   updateBirthDate(DateTime newDateTime);
   Future<File?> cropImage({required File imageFile});
@@ -26,7 +26,7 @@ class ProfileControllerImpl extends ProfileController {
   TextEditingController phone = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   final formKey = GlobalKey<FormState>();
-
+  final String userId = FirebaseAuth.instance.currentUser!.uid;
   String? url;
   Rxn<File> selectedImage = Rxn<File>(); // Reactive variable
   DateTime birthDate = DateTime.now();
@@ -35,8 +35,7 @@ class ProfileControllerImpl extends ProfileController {
       .doc(FirebaseAuth.instance.currentUser!.uid);
 
   @override
-  Future<void> getImageFromGallery(
-      {required ImageSource source, required String userId}) async {
+  Future<void> getImageFromGallery({required ImageSource source}) async {
     try {
       // Pick an image from the gallery
       XFile? pickedImage = await _picker.pickImage(source: source);
@@ -109,7 +108,7 @@ class ProfileControllerImpl extends ProfileController {
         phone: phone.text,
         birthDate: birthDate,
         jobTitle: jopTitle.text,
-        userId: FirebaseAuth.instance.currentUser!.uid, // مالوش لازمة
+        userId: userId, // مالوش لازمة
         profileImageUrl: url ?? '',
       );
 

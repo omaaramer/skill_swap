@@ -129,7 +129,7 @@ class AddSkillControllerImpl extends AddSkillController {
       var imageName = basename(imageFromGallery.path);
 
       var refStorage = FirebaseStorage.instance
-          .ref("$AppConstant.kCloudStorageSkillImages/$imageName");
+          .ref("${AppConstant.kCloudStorageSkillImages}/$imageName");
 
       await refStorage.putFile(_image!);
 

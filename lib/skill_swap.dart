@@ -7,6 +7,7 @@ import 'package:skill_swap/core/routing/get_routes.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/generated/l10n.dart';
 import 'core/localization/change_local.dart';
+import 'core/localization/is_arabic.dart';
 
 class SkillSwap extends StatelessWidget {
   const SkillSwap({super.key});
@@ -30,6 +31,7 @@ class SkillSwap extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
         title: 'SkillSwap',
         theme: ThemeData(
+          fontFamily: MyFunctions.isArabic() ? 'Cairo' : 'Poppins',
           primaryColor: AppColors.primary,
           brightness: Brightness.light, // This is the light theme
         ),

@@ -8,7 +8,6 @@ import 'swap_card_loading_indicator.dart';
 
 class HomePageListView extends StatelessWidget {
   const HomePageListView({super.key, required this.postController});
-  final String defaultImageUrl = Assets.imagesPlaceholder;
   final GetSkillPostDataControllerImpl postController;
 
   @override
@@ -20,6 +19,16 @@ class HomePageListView extends StatelessWidget {
       // Display loading indicator if data is still loading
       if (postController.isLoading.value) {
         return const PostCardLiadingIndicator();
+      }
+
+      // Handle case when there are no posts
+      if (postController.postSkills.isEmpty) {
+        return Center(
+          child: Text(
+            'No posts available', // Message to display when no posts
+            style: TextStyle(fontSize: 18, color: Colors.grey),
+          ),
+        );
       }
 
       // Display list of posts if data is loaded and not empty
@@ -40,8 +49,13 @@ class HomePageListView extends StatelessWidget {
               postModel: post,
             );
           } else {
-            // Optionally, handle case if user is not found for the post
-            return const SizedBox.shrink();
+            // Handle case if user is not found for the post
+            return Center(
+              child: Text(
+                'User not found',
+                style: TextStyle(fontSize: 16, color: Colors.redAccent),
+              ),
+            );
           }
         },
       );

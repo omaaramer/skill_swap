@@ -12,9 +12,9 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => ProfilePageViewControllerImpl());
 
-    return const SafeArea(
-      child: Scaffold(
-        body: Column(children: [
+    return Scaffold(
+      body: SafeArea(
+        child: Column(children: [
           Expanded(flex: 9, child: EditProfilePageview()),
           // SizedBox(height: 10),
           Expanded(flex: 1, child: SmothIndicator()),

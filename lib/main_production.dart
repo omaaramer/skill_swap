@@ -23,7 +23,7 @@ void main() async {
   // FirebaseNotifications().initNotifications();
   await Hive.initFlutter();
   Hive.registerAdapter(SkillModelAdapter());
-  await Hive.openBox<SkillModel>(AppConstant.kPostBox);
+  // await Hive.openBox<SkillModel>(AppConstant.kPostBox);
   runApp(
     // DevicePreview(enabled: true, builder: (context) =>
     const SkillSwap(),

@@ -55,7 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "haveAccount": MessageLookupByLibrary.simpleMessage("لديك حساب؟"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
-        "inExpectationFor": MessageLookupByLibrary.simpleMessage("في انتظار"),
+        "inExpectationFor":
+            MessageLookupByLibrary.simpleMessage("في انتظار تعلم"),
         "inPerson": MessageLookupByLibrary.simpleMessage("شخصيًا"),
         "introMessage": MessageLookupByLibrary.simpleMessage(
             "اكتشف عالمًا من المهارات والمعرفة غير المحدودة مع تطبيق تبادل المهارات المجاني، حيث المشاركة هي العناية!"),

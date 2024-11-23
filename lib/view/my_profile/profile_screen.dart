@@ -19,48 +19,50 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            ProfileHeader(),
-            GetX<GetUserControllerImpl>(builder: (controller) {
-              return Column(
-                children: [
-                  Text(controller.user.value!.fullname,
-                      style: AppStyle.blackTitle(context)),
-                  Text(
-                    (controller.user.value?.bio?.isEmpty ?? true)
-                        ? "click edit to add bio"
-                        : controller.user.value!.bio!,
-                    style: AppStyle.styleRegular16Grey(context),
-                  ),
-                ],
-              );
-            }),
-            SizedBox(height: 20.sp),
-            const ProfileAchivements(),
-            SizedBox(height: 20.sp),
-            const profile_buttons(),
-            SizedBox(width: 50.sp),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ProfileHeader(),
+              GetX<GetUserControllerImpl>(builder: (controller) {
+                return Column(
                   children: [
-                    Text("حول", style: AppStyle.blackTitle(context)),
-                    GetX<GetUserControllerImpl>(builder: (controller) {
-                      return Text(
-                        controller.user.value!.aboutMe ??
-                            "click edit to add about me",
-                        style: AppStyle.styleRegular16Grey(context),
-                      );
-                    })
+                    Text(controller.user.value!.fullname,
+                        style: AppStyle.blackTitle(context)),
+                    Text(
+                      (controller.user.value?.bio?.isEmpty ?? true)
+                          ? "click edit to add bio"
+                          : controller.user.value!.bio!,
+                      style: AppStyle.styleRegular16Grey(context),
+                    ),
                   ],
+                );
+              }),
+              SizedBox(height: 20.sp),
+              const ProfileAchivements(),
+              SizedBox(height: 20.sp),
+              const profile_buttons(),
+              SizedBox(width: 50.sp),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("حول", style: AppStyle.blackTitle(context)),
+                      GetX<GetUserControllerImpl>(builder: (controller) {
+                        return Text(
+                          controller.user.value!.aboutMe ??
+                              "click edit to add about me",
+                          style: AppStyle.styleRegular16Grey(context),
+                        );
+                      })
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -32,9 +32,6 @@ class AboutMeSection extends StatelessWidget {
               },
               maxLines: 5,
               hint: "اكتب نبذة عنك",
-              validator: (value) {
-                return validInput(value!, 3, 50, "text");
-              },
             ),
           ],
         ),
