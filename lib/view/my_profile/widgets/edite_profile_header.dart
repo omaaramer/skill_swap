@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
 import 'package:skill_swap/controller/profile/pick_photo_controller.dart';
 import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
 import 'package:skill_swap/core/widgets/show_photo_bottom_sheet.dart';
 import 'package:skill_swap/data/models/image_pick_prams.dart';
 import 'package:skill_swap/view/home_page/widgets/card_image.dart';
@@ -36,32 +38,49 @@ class EditeProfileHeader extends StatelessWidget {
               alignment: AlignmentDirectional.topEnd,
               children: [
                 GetX<ImageControllerImpl>(builder: (controller) {
-                  return
-
-                      //  Container(
-                      //   height: 140.sp,
-                      //   width: double.infinity,
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(8),
-                      //     image: DecorationImage(
-                      //       image: NetworkImage(
-                      //         controller.selectedCoverImage.value != null
-                      //             ? controller.selectedCoverImage.value!.path
-                      //             : userController.user.value?.profileCoverImage ??
-                      //                 'https://via.placeholder.com/150',
-                      //       ),
-                      //       fit: BoxFit.cover,
-                      //     ),
-                      //   ),
-                      // );
-
-                      CustomCardImage(
+                  return Container(
                     height: 140.sp,
-                    imageUrl: controller.selectedCoverImage.value != null
-                        ? controller.selectedCoverImage.value!.path
-                        : userController.user.value?.profileCoverImage ??
-                            'https://via.placeholder.com/150',
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: controller.selectedCoverImage.value != null
+                        ? ClipRRect(
+                            // Ensures the local image respects border radius
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.file(
+                              controller.selectedCoverImage.value!,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : CachedNetworkImage(
+                            imageUrl:
+                                userController.user.value?.profileCoverImage ??
+                                    'https://via.placeholder.com/150',
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => CustomFadingWidget(
+                              child: Container(
+                                width: double.infinity,
+                                height: 140.sp,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.grey.shade300,
+                                ),
+                              ),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
                   );
+
+                  //     CustomCardImage(
+                  //   height: 140.sp,
+                  //   imageUrl: controller.selectedCoverImage.value != null
+                  //       ? controller.selectedCoverImage.value!.path
+                  //       : userController.user.value?.profileCoverImage ??
+                  //           'https://via.placeholder.com/150',
+                  // );
                 }),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

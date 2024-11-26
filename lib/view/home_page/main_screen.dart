@@ -13,26 +13,24 @@ class HomePage extends StatelessWidget {
     final controller =
         Get.put(HomePageControllerImpl()); // Initialize controller
 
-    return SafeArea(
-      child: Scaffold(
-        // backgroundColor: Colors.grey,
-        key: scaffoldKey,
-        drawer: const CustomDrawer(),
+    return Scaffold(
+      // backgroundColor: Colors.grey,
+      key: scaffoldKey,
+      drawer: const CustomDrawer(),
 
-        appBar: AppBar(
-          elevation: 1,
-          title: Obx(
-            () => Text(controller.titles[controller.selectedIndex.value]),
-          ),
-          leading: IconButton(
-              onPressed: () {
-                scaffoldKey.currentState?.openDrawer();
-              },
-              icon: const Icon(Icons.menu)),
+      appBar: AppBar(
+        elevation: 1,
+        title: Obx(
+          () => Text(controller.titles[controller.selectedIndex.value]),
         ),
-        bottomNavigationBar: CustomBottomNavBar(controller: controller),
-        body: Obx(() => controller.screens[controller.selectedIndex.value]),
+        leading: IconButton(
+            onPressed: () {
+              scaffoldKey.currentState?.openDrawer();
+            },
+            icon: const Icon(Icons.menu)),
       ),
+      bottomNavigationBar: CustomBottomNavBar(controller: controller),
+      body: Obx(() => controller.screens[controller.selectedIndex.value]),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/generated/l10n.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -15,7 +16,7 @@ class CustomDrawer extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
-            title: const Text("Sign Out"),
+            title: Text(S.of(context).signOut),
             onTap: () async {
               await FirebaseAuth.instance.signOut();
               GoogleSignIn googleSignIn = GoogleSignIn();

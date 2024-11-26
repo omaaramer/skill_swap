@@ -75,7 +75,7 @@
     "useCamera": "استخدم الكاميرا",
     "useGallery": "تصفح المعرض",
     "CropImage" : "قص صورة",
-    "editProfile": "تعديل الملف الشخصي"
-    
+    "editProfile": "تعديل الملف الشخصي",
+    "signOut" : "تسجيل الخروج"
 
 }

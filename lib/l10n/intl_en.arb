@@ -75,5 +75,6 @@
     "useCamera": "Use a Camera",
     "useGallery": "Browse Gallery",
     "CropImage" : "Crop Image",
-    "editProfile": "Edit Profile"
+    "editProfile": "Edit Profile",
+    "signOut": "SIGN OUT"
 }

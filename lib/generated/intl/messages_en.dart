@@ -110,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "signIn": MessageLookupByLibrary.simpleMessage("SIGN IN"),
+        "signOut": MessageLookupByLibrary.simpleMessage("SIGN OUT"),
         "signUp": MessageLookupByLibrary.simpleMessage("SIGN UP"),
         "skills": MessageLookupByLibrary.simpleMessage("Skills"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
