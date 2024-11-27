@@ -7,8 +7,7 @@ import 'package:skill_swap/data/models/post_model.dart';
 import 'package:skill_swap/data/models/reciever_model.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 import 'package:skill_swap/generated/l10n.dart';
-
-import 'custom_bottom_sheet.dart';
+import 'show_swap_bottom_sheet.dart';
 
 class SwapButton extends StatelessWidget {
   const SwapButton(
@@ -49,38 +48,4 @@ class SwapButton extends StatelessWidget {
       },
     );
   }
-}
-
-// Get.defaultDialog(
-//           title: "Swap",
-//           content: const Text("Send a Swap Request?"),
-//           confirm: TextButton(
-//             onPressed: () {
-//               sendSwapController.sendSwapRequest(
-//                 receiver: reciever,
-//               );
-//               Get.back();
-//             },
-//             child: const Text("Yes"),
-//           ),
-//           cancel: TextButton(
-//             onPressed: () {
-//               Get.back();
-//             },
-//             child: const Text("No"),
-//           ),
-//         );
-
-void showSwapSkillBottomSheet(
-    BuildContext context, Function(SkillModel) onSkillSelected) {
-  showModalBottomSheet(
-    context: context,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-    ),
-    isScrollControlled: true,
-    builder: (context) {
-      return SwapSkillBottomSheet(onSkillSelected: onSkillSelected);
-    },
-  );
 }

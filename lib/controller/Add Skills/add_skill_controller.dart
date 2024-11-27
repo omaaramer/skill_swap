@@ -77,7 +77,7 @@ class AddSkillControllerImpl extends AddSkillController {
           FirebaseFirestore.instance.collection('skills');
 
       await skillsRef.add({
-        "isOnline": isOnline ? true : false,
+        AppConstant.kIsOnline: isOnline ? true : false,
         AppConstant.kMySkill: mySkill.text,
         AppConstant.kSkillNeeded: skillNeeded.text,
         AppConstant.kId: FirebaseAuth.instance.currentUser!.uid,

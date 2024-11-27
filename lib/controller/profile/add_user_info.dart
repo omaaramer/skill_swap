@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skill_swap/constant.dart';
 import 'package:skill_swap/core/routing/routes.dart';
+import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/data/models/user_model.dart';
 
@@ -30,6 +31,7 @@ class ProfileControllerImpl extends ProfileController {
   String? url;
   Rxn<File> selectedImage = Rxn<File>(); // Reactive variable
   DateTime birthDate = DateTime.now();
+  final String coverImagePlaceholder = "https://via.placeholder.com/150";
   DocumentReference usersRef = FirebaseFirestore.instance
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser!.uid);
@@ -103,6 +105,7 @@ class ProfileControllerImpl extends ProfileController {
   addUserData() {
     if (url != null) {
       final UserModel user = UserModel(
+        profileCoverImage: coverImagePlaceholder,
         fullname: name.text,
         address: address.text,
         phone: phone.text,

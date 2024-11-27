@@ -76,6 +76,7 @@
     "useGallery": "تصفح المعرض",
     "CropImage" : "قص صورة",
     "editProfile": "تعديل الملف الشخصي",
-    "signOut" : "تسجيل الخروج"
+    "signOut" : "تسجيل الخروج",
+    "chooseSkill": " اختر المهارة للتبادل" 
 
 }

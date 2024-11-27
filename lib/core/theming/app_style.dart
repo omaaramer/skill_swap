@@ -24,6 +24,12 @@ abstract class AppStyle {
         color: AppColors.primary);
   }
 
+  static TextStyle regular18Primary(context) {
+    return TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 18),
+        color: AppColors.primary);
+  }
+
   static TextStyle styleBold30(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 30),

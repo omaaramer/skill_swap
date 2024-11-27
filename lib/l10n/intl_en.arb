@@ -76,5 +76,6 @@
     "useGallery": "Browse Gallery",
     "CropImage" : "Crop Image",
     "editProfile": "Edit Profile",
-    "signOut": "SIGN OUT"
+    "signOut": "SIGN OUT",
+    "chooseSkill" : "Choose a Skill to Swap"
 }

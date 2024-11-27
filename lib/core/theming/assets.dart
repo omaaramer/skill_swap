@@ -1,9 +1,14 @@
+// ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
   
   /// Assets for imagesAppleLogo
   /// assets/images/apple_logo.png
   static const String imagesAppleLogo = "assets/images/apple_logo.png";
+
+  /// Assets for imagesCoverPlaceholder
+  /// assets/images/cover_placeholder.jpg
+  static const String imagesCoverPlaceholder = "assets/images/cover_placeholder.jpg";
 
   /// Assets for imagesDownload
   /// assets/images/download.jfif
@@ -60,6 +65,10 @@ class Assets {
   /// Assets for imagesPlaceholder
   /// assets/images/placeholder.png
   static const String imagesPlaceholder = "assets/images/placeholder.png";
+
+  /// Assets for imagesProfilePlaceholder
+  /// assets/images/profile_placeholder.png
+  static const String imagesProfilePlaceholder = "assets/images/profile_placeholder.png";
 
   /// Assets for imagesSaveIcon
   /// assets/images/save_icon.png

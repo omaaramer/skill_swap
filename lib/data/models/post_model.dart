@@ -36,7 +36,7 @@ class SkillModel {
   factory SkillModel.fromJson(Map<String, dynamic> map) {
     return SkillModel(
       skillImage: map[AppConstant.kSkillImageUrl] ?? '',
-      skillId: map['skillId'] ?? '',
+      skillId: map[AppConstant.kSkillId] ?? '',
       mySkill: map[AppConstant.kMySkill] ?? '',
       skillNeeded: map[AppConstant.kSkillNeeded] ?? '',
       description: map[AppConstant.kMySkillDescription] ?? '',
@@ -48,7 +48,7 @@ class SkillModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'skillId': skillId,
+      AppConstant.kSkillId: skillId,
       AppConstant.kMySkill: mySkill,
       AppConstant.kSkillNeeded: skillNeeded,
       AppConstant.kSkillNeededDescription: description,

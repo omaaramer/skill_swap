@@ -4,12 +4,15 @@ import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
 import 'package:skill_swap/core/theming/app_style.dart';
 import 'package:skill_swap/core/theming/colores.dart';
+import 'package:skill_swap/generated/l10n.dart';
+import 'package:skill_swap/view/auth/widgets/divider.dart';
 import 'package:skill_swap/view/home_page/add_skill_screen.dart';
 import '../../controller/Add Skills/get_user_controller.dart';
 import 'edit_profile.dart';
 import 'widgets/custom_outline_button.dart';
 import 'widgets/profile_header.dart';
 import 'widgets/profile_info_row.dart';
+import 'widgets/profile_skills_listview.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -37,11 +40,35 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 );
               }),
-              SizedBox(height: 20.sp),
-              const ProfileAchivements(),
-              SizedBox(height: 20.sp),
-              const profile_buttons(),
-              SizedBox(width: 50.sp),
+              SizedBox(height: 10.sp),
+              const ProfileButtons(),
+              SizedBox(height: 10.sp),
+              // const ProfileAchivements(),
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Divider(
+                      height: 20,
+                      thickness: 1.5,
+                      color: AppColors.secondary,
+                    ),
+                    Text(S.of(context).skills,
+                        style: AppStyle.blackTitle(context),
+                        textAlign: TextAlign.start),
+                    SizedBox(
+                      height: 100,
+                      child: ProfileSkillsListView(),
+                    ),
+                    Divider(
+                      height: 20,
+                      thickness: 1,
+                      color: AppColors.secondary,
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: SizedBox(
@@ -61,6 +88,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -69,8 +97,8 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class profile_buttons extends StatelessWidget {
-  const profile_buttons({
+class ProfileButtons extends StatelessWidget {
+  const ProfileButtons({
     super.key,
   });
 
@@ -83,7 +111,8 @@ class profile_buttons extends StatelessWidget {
             onPressed: () {
               Get.off(() => const AddSkillScreen());
             },
-            child: Text('Add Skills', style: AppStyle.styleBold18(context)),
+            child: Text(S.of(context).addSkill,
+                style: AppStyle.regular18Primary(context)),
           ),
         ),
         SizedBox(width: 5.sp),
@@ -92,7 +121,8 @@ class profile_buttons extends StatelessWidget {
             onPressed: () {
               Get.to(() => const EditProfileScreen());
             },
-            child: Icon(IconBroken.Edit, color: AppColors.primary, size: 20.sp),
+            child: Text(S.of(context).editProfile,
+                style: AppStyle.regular18Primary(context)),
           ),
         ),
       ],

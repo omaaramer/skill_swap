@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkYourEmail":
             MessageLookupByLibrary.simpleMessage("تحقق من بريدك الإلكتروني"),
         "chooseImage": MessageLookupByLibrary.simpleMessage("اختر صورة"),
+        "chooseSkill":
+            MessageLookupByLibrary.simpleMessage(" اختر المهارة للتبادل"),
         "congratulations": MessageLookupByLibrary.simpleMessage("تهانينا"),
         "connect": MessageLookupByLibrary.simpleMessage("تواصل"),
         "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:skill_swap/controller/Add%20Skills/get_user_controller.dart';
+import 'package:skill_swap/core/theming/assets.dart';
 import 'package:skill_swap/core/theming/colores.dart';
 import 'package:skill_swap/core/widgets/custom_fading_widget.dart';
 import 'package:skill_swap/view/home_page/widgets/card_image.dart';
@@ -29,15 +30,15 @@ class ProfileHeader extends StatelessWidget {
                       height: 140.sp,
                       imageUrl: controller.user.value!.profileCoverImage!,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => CustomFadingWidget(
-                        child: Container(
-                          width: double.infinity,
-                          height: 140.sp,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.grey),
-                        ),
-                      ),
+                      // placeholder: (context, url) => CustomFadingWidget(
+                      //   child: Container(
+                      //     width: double.infinity,
+                      //     height: 140.sp,
+                      //     decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         color: Colors.grey),
+                      //   ),
+                      // ),
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                     ),

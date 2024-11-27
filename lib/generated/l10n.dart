@@ -829,6 +829,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Choose a Skill to Swap`
+  String get chooseSkill {
+    return Intl.message(
+      'Choose a Skill to Swap',
+      name: 'chooseSkill',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

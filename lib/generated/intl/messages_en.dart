@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkYourEmail":
             MessageLookupByLibrary.simpleMessage("Check Your Email"),
         "chooseImage": MessageLookupByLibrary.simpleMessage("Choose Image"),
+        "chooseSkill":
+            MessageLookupByLibrary.simpleMessage("Choose a Skill to Swap"),
         "congratulations":
             MessageLookupByLibrary.simpleMessage("Congratulations"),
         "connect": MessageLookupByLibrary.simpleMessage("Connect"),

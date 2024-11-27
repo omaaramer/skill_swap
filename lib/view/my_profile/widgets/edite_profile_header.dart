@@ -56,19 +56,8 @@ class EditeProfileHeader extends StatelessWidget {
                           )
                         : CachedNetworkImage(
                             imageUrl:
-                                userController.user.value?.profileCoverImage ??
-                                    'https://via.placeholder.com/150',
+                                userController.user.value!.profileCoverImage!,
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => CustomFadingWidget(
-                              child: Container(
-                                width: double.infinity,
-                                height: 140.sp,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.shade300,
-                                ),
-                              ),
-                            ),
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                           ),
